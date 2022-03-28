@@ -24,3 +24,8 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+-------------------------------------------------------------------------------------------------------------------------------
+This project backend was developed with [C# ASP.NET Core web App](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-aspnet-core?view=vs-2019).
+
+And released on `Visual Studio 2019` IDE.
