@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Group6DBModelGjasht.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AGJENSITE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KODI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KODI_POSTAR_ID" Type="bigint" Nullable="false" />
+          <Property Name="ADRESA" Type="varchar" MaxLength="150" />
+          <Property Name="TEL" Type="varchar" MaxLength="50" />
+          <Property Name="SHOQERIA_ID" Type="bigint" />
+          <Property Name="SHOQERI_AGJENTE_ID" Type="bigint" />
+          <Property Name="PARTNER" Type="bit" Nullable="false" />
+          <Property Name="AKTIVE" Type="bit" Nullable="false" />
+          <Property Name="NIPT" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KORRIERET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KODI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MBIEMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AKTIV" Type="bit" Nullable="false" />
+          <Property Name="DATE_RREGJISTRIMI" Type="datetime" Nullable="false" />
+          <Property Name="AGJENSIA_ID" Type="bigint" Nullable="false" />
+          <Property Name="TIPI_PUNONJESI_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERDORUES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AKTIVE" Type="bit" Nullable="false" />
+          <Property Name="KlienteSubjekteId" Type="bigint" />
+          <Property Name="RoleID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="POD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KODI" Type="varchar" MaxLength="350" />
+          <Property Name="AGJENSIA_ORIGJINE_ID" Type="bigint" Nullable="false" />
+          <Property Name="QYTETI_DESTINACION_ID" Type="bigint" />
+          <Property Name="KORRIERI_ID" Type="bigint" />
+          <Property Name="KODI_PRODUKTI_ID" Type="bigint" Nullable="false" />
+          <Property Name="COPE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PESHA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PESHA_VOLUMETRIKE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATA" Type="datetime" Nullable="false" />
+          <Property Name="PERSHKRIMI" Type="varchar" MaxLength="255" />
+          <Property Name="DER_EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DER_MBIEMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DER_ADRESA" Type="varchar" MaxLength="150" />
+          <Property Name="DER_QYTETI_ID" Type="bigint" Nullable="false" />
+          <Property Name="DER_SHTETI_ID" Type="bigint" Nullable="false" />
+          <Property Name="DER_TEL" Type="varchar" MaxLength="50" />
+          <Property Name="DER_KODI_POSTAR_ID" Type="bigint" Nullable="false" />
+          <Property Name="MAR_EMRI" Type="varchar" MaxLength="50" />
+          <Property Name="MAR_MBIEMRI" Type="varchar" MaxLength="50" />
+          <Property Name="MAR_ADRESA" Type="varchar" MaxLength="150" />
+          <Property Name="MAR_QYTETI_ID" Type="bigint" />
+          <Property Name="MAR_SHTETI_ID" Type="bigint" />
+          <Property Name="MAR_TEL" Type="varchar" MaxLength="50" />
+          <Property Name="MAR_KODI_POSTAR_ID" Type="bigint" />
+          <Property Name="CMIMI_BAZE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SHTESA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TVSH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SHUMA_SHERBIME_EXTRA" Type="varchar" MaxLength="50" />
+          <Property Name="MENYRA_PAGESES_ID" Type="bigint" />
+          <Property Name="PAGUESI_DERGUES_MARRES" Type="bit" />
+          <Property Name="SHERBIME_EXTRA" Type="varchar" MaxLength="50" />
+          <Property Name="SHERBIME_EXTRA_MENYRE_PAGESE_ID" Type="bigint" />
+          <Property Name="DER_SUBJ_ID" Type="bigint" />
+          <Property Name="MARR_SUBJ_ID" Type="bigint" />
+          <Property Name="DATE_RREGJISTRIMI" Type="datetime" />
+          <Property Name="PERDORUES_ID" Type="bigint" />
+          <Property Name="NUMRI_CEK" Type="varchar" MaxLength="50" />
+          <Property Name="MONEDHA_EXTRA_ID" Type="bigint" />
+          <Property Name="POD_STATUS_ID" Type="bigint" />
+          <Property Name="BANKA_ID" Type="bigint" />
+          <Property Name="SIGURUAR" Type="bit" />
+          <Property Name="VLERA_SIGURUAR" Type="varchar" MaxLength="50" />
+          <Property Name="KODI_POSTAR_MARRES" Type="varchar" MaxLength="50" />
+          <Property Name="VLERA_JASHTE_ZONE" Type="varchar" MaxLength="50" />
+          <Property Name="KODI_PERSHKRIMIT_ID" Type="bigint" />
+          <Property Name="MONEDHA_CMIMI_BAZE_ID" Type="bigint" />
+          <Property Name="PERQINDJE_DISCOUNT" Type="varchar" MaxLength="50" />
+          <Property Name="KURSI_CMIMI_BAZE" Type="varchar" MaxLength="50" />
+          <Property Name="CMIMI_BAZE_EURO" Type="varchar" MaxLength="50" />
+          <Property Name="KODI_LEVIZJES" Type="varchar" MaxLength="50" />
+          <Property Name="PERQINDJE_TVSH" Type="varchar" MaxLength="50" />
+          <Property Name="AGJENSIA_DEST_PIKE_PIKE_ID" Type="bigint" />
+          <Property Name="AGJENSIA_REMOTE_ID" Type="bigint" />
+          <Property Name="TERMINAL_PROCESSOR_ID" Type="varchar" MaxLength="50" />
+          <Property Name="TERMINAL_SERIAL_BIOS" Type="varchar" MaxLength="50" />
+          <Property Name="AGJENSIA_DESTINACION_ID" Type="bigint" />
+          <Property Name="KODI_SHERBIMIT" Type="varchar" MaxLength="150" />
+          <Property Name="PERQINDJE_TAKSE_KARBURANTI" Type="varchar" MaxLength="50" />
+          <Property Name="TAKSE_KARBURANTI_VALUE_LEK" Type="varchar" MaxLength="50" />
+          <Property Name="TAKSE_KARBURANTI_VALUE_EURO" Type="varchar" MaxLength="50" />
+          <Property Name="KODI_REFERENCE" Type="varchar" MaxLength="50" />
+          <Property Name="TVSH_SHTESA" Type="varchar" MaxLength="50" />
+          <Property Name="TVSH_VL_SIGURUAR" Type="varchar" MaxLength="50" />
+          <Property Name="TVSH_CMIMI_BAZE" Type="varchar" MaxLength="50" />
+          <Property Name="CMIMI_ZBRITJE" Type="varchar" MaxLength="50" />
+          <Property Name="DERGUES_KUNDREJT_PAGESE_ID" Type="bigint" />
+          <Property Name="BRAND_ID" Type="bigint" />
+          <Property Name="DREJTIM_ID" Type="bigint" />
+          <Property Name="FSHAT_ID" Type="bigint" />
+          <Property Name="QYTET_ID_NEW" Type="bigint" />
+          <Property Name="KONFIRMIM" Type="bit" />
+          <Property Name="AGJENSI_TRANZIT" Type="bigint" />
+        </EntityType>
+        <EntityType Name="QYTETE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JASHTESHTETIT" Type="bit" Nullable="false" />
+          <Property Name="KODI_LEVIZES" Type="varchar" MaxLength="50" />
+          <Property Name="AKTIVE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Group6DB.dbo.ROLES' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ROLES">
+          <Property Name="RoleID" Type="int" />
+          <Property Name="RoleName" Type="varchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="SHTETE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMRI" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TERMINAL_PERDORUES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TERMINAL_ID" Type="bigint" Nullable="false" />
+          <Property Name="PERDORUES_ID" Type="bigint" Nullable="false" />
+          <Property Name="AKTIVE" Type="bit" />
+        </EntityType>
+        <EntityType Name="TERMINALE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PROCESORI" Type="varchar" MaxLength="50" />
+          <Property Name="SERIAL_BIOS" Type="varchar" MaxLength="50" />
+          <Property Name="AKTIVE" Type="bit" />
+          <Property Name="AGJENSIA_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Token_AGJ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KEY" Type="varchar" MaxLength="250" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="DATETIME" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="Group6DBModelGjashtStoreContainer">
+          <EntitySet Name="AGJENSITE" EntityType="Self.AGJENSITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KORRIERET" EntityType="Self.KORRIERET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERDORUES" EntityType="Self.PERDORUES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POD" EntityType="Self.POD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QYTETE" EntityType="Self.QYTETE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SHTETE" EntityType="Self.SHTETE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TERMINAL_PERDORUES" EntityType="Self.TERMINAL_PERDORUES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TERMINALE" EntityType="Self.TERMINALE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Token_AGJ" EntityType="Self.Token_AGJ" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Group6DBModelGjasht" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AGJENSITE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KODI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMRI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KODI_POSTAR_ID" Type="Int64" Nullable="false" />
+          <Property Name="ADRESA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHOQERIA_ID" Type="Int64" />
+          <Property Name="SHOQERI_AGJENTE_ID" Type="Int64" />
+          <Property Name="PARTNER" Type="Boolean" Nullable="false" />
+          <Property Name="AKTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="NIPT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PERDORUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AKTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="KlienteSubjekteId" Type="Int64" />
+          <Property Name="RoleID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="TERMINAL_PERDORUES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TERMINAL_ID" Type="Int64" Nullable="false" />
+          <Property Name="PERDORUES_ID" Type="Int64" Nullable="false" />
+          <Property Name="AKTIVE" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TERMINALE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PROCESORI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SERIAL_BIOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AKTIVE" Type="Boolean" />
+          <Property Name="AGJENSIA_ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Token_AGJ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KEY" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATETIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="Group6DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGJENSITEs" EntityType="Self.AGJENSITE" />
+          <EntitySet Name="PERDORUES" EntityType="Self.PERDORUE" />
+          <EntitySet Name="TERMINAL_PERDORUES" EntityType="Self.TERMINAL_PERDORUES" />
+          <EntitySet Name="TERMINALEs" EntityType="Self.TERMINALE" />
+          <EntitySet Name="Token_AGJ" EntityType="Self.Token_AGJ" />
+          <EntitySet Name="KORRIERETs" EntityType="Group6DBModelGjasht.KORRIERET" />
+          <EntitySet Name="PODs" EntityType="Group6DBModelGjasht.POD" />
+          <EntitySet Name="QYTETEs" EntityType="Group6DBModelGjasht.QYTETE" />
+          <EntitySet Name="SHTETEs" EntityType="Group6DBModelGjasht.SHTETE" />
+        </EntityContainer>
+        <EntityType Name="KORRIERET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KODI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MBIEMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AKTIV" Type="Boolean" Nullable="false" />
+          <Property Name="DATE_RREGJISTRIMI" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AGJENSIA_ID" Type="Int64" Nullable="false" />
+          <Property Name="TIPI_PUNONJESI_ID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KODI" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="AGJENSIA_ORIGJINE_ID" Type="Int64" Nullable="false" />
+          <Property Name="QYTETI_DESTINACION_ID" Type="Int64" />
+          <Property Name="KORRIERI_ID" Type="Int64" />
+          <Property Name="KODI_PRODUKTI_ID" Type="Int64" Nullable="false" />
+          <Property Name="COPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PESHA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PESHA_VOLUMETRIKE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PERSHKRIMI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DER_EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DER_MBIEMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DER_ADRESA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DER_QYTETI_ID" Type="Int64" Nullable="false" />
+          <Property Name="DER_SHTETI_ID" Type="Int64" Nullable="false" />
+          <Property Name="DER_TEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DER_KODI_POSTAR_ID" Type="Int64" Nullable="false" />
+          <Property Name="MAR_EMRI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAR_MBIEMRI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAR_ADRESA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="MAR_QYTETI_ID" Type="Int64" />
+          <Property Name="MAR_SHTETI_ID" Type="Int64" />
+          <Property Name="MAR_TEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAR_KODI_POSTAR_ID" Type="Int64" />
+          <Property Name="CMIMI_BAZE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHTESA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TVSH" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHUMA_SHERBIME_EXTRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MENYRA_PAGESES_ID" Type="Int64" />
+          <Property Name="PAGUESI_DERGUES_MARRES" Type="Boolean" />
+          <Property Name="SHERBIME_EXTRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHERBIME_EXTRA_MENYRE_PAGESE_ID" Type="Int64" />
+          <Property Name="DER_SUBJ_ID" Type="Int64" />
+          <Property Name="MARR_SUBJ_ID" Type="Int64" />
+          <Property Name="DATE_RREGJISTRIMI" Type="DateTime" Precision="3" />
+          <Property Name="PERDORUES_ID" Type="Int64" />
+          <Property Name="NUMRI_CEK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MONEDHA_EXTRA_ID" Type="Int64" />
+          <Property Name="POD_STATUS_ID" Type="Int64" />
+          <Property Name="BANKA_ID" Type="Int64" />
+          <Property Name="SIGURUAR" Type="Boolean" />
+          <Property Name="VLERA_SIGURUAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_POSTAR_MARRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VLERA_JASHTE_ZONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_PERSHKRIMIT_ID" Type="Int64" />
+          <Property Name="MONEDHA_CMIMI_BAZE_ID" Type="Int64" />
+          <Property Name="PERQINDJE_DISCOUNT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KURSI_CMIMI_BAZE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CMIMI_BAZE_EURO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_LEVIZJES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PERQINDJE_TVSH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AGJENSIA_DEST_PIKE_PIKE_ID" Type="Int64" />
+          <Property Name="AGJENSIA_REMOTE_ID" Type="Int64" />
+          <Property Name="TERMINAL_PROCESSOR_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TERMINAL_SERIAL_BIOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AGJENSIA_DESTINACION_ID" Type="Int64" />
+          <Property Name="KODI_SHERBIMIT" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PERQINDJE_TAKSE_KARBURANTI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TAKSE_KARBURANTI_VALUE_LEK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TAKSE_KARBURANTI_VALUE_EURO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_REFERENCE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TVSH_SHTESA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TVSH_VL_SIGURUAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TVSH_CMIMI_BAZE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CMIMI_ZBRITJE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DERGUES_KUNDREJT_PAGESE_ID" Type="Int64" />
+          <Property Name="BRAND_ID" Type="Int64" />
+          <Property Name="DREJTIM_ID" Type="Int64" />
+          <Property Name="FSHAT_ID" Type="Int64" />
+          <Property Name="QYTET_ID_NEW" Type="Int64" />
+          <Property Name="KONFIRMIM" Type="Boolean" />
+          <Property Name="AGJENSI_TRANZIT" Type="Int64" />
+        </EntityType>
+        <EntityType Name="QYTETE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JASHTESHTETIT" Type="Boolean" Nullable="false" />
+          <Property Name="KODI_LEVIZES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AKTIVE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SHTETE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Group6DBModelGjashtStoreContainer" CdmEntityContainer="Group6DBEntities">
+          <EntitySetMapping Name="AGJENSITEs">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.AGJENSITE">
+              <MappingFragment StoreEntitySet="AGJENSITE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KODI" ColumnName="KODI" />
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="KODI_POSTAR_ID" ColumnName="KODI_POSTAR_ID" />
+                <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
+                <ScalarProperty Name="SHOQERIA_ID" ColumnName="SHOQERIA_ID" />
+                <ScalarProperty Name="SHOQERI_AGJENTE_ID" ColumnName="SHOQERI_AGJENTE_ID" />
+                <ScalarProperty Name="PARTNER" ColumnName="PARTNER" />
+                <ScalarProperty Name="AKTIVE" ColumnName="AKTIVE" />
+                <ScalarProperty Name="NIPT" ColumnName="NIPT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERDORUES">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.PERDORUE">
+              <MappingFragment StoreEntitySet="PERDORUES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="AKTIVE" ColumnName="AKTIVE" />
+                <ScalarProperty Name="KlienteSubjekteId" ColumnName="KlienteSubjekteId" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TERMINAL_PERDORUES">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.TERMINAL_PERDORUES">
+              <MappingFragment StoreEntitySet="TERMINAL_PERDORUES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TERMINAL_ID" ColumnName="TERMINAL_ID" />
+                <ScalarProperty Name="PERDORUES_ID" ColumnName="PERDORUES_ID" />
+                <ScalarProperty Name="AKTIVE" ColumnName="AKTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TERMINALEs">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.TERMINALE">
+              <MappingFragment StoreEntitySet="TERMINALE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_PROCESORI" ColumnName="ID_PROCESORI" />
+                <ScalarProperty Name="SERIAL_BIOS" ColumnName="SERIAL_BIOS" />
+                <ScalarProperty Name="AKTIVE" ColumnName="AKTIVE" />
+                <ScalarProperty Name="AGJENSIA_ID" ColumnName="AGJENSIA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Token_AGJ">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.Token_AGJ">
+              <MappingFragment StoreEntitySet="Token_AGJ">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KEY" ColumnName="KEY" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="DATETIME" ColumnName="DATETIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KORRIERETs">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.KORRIERET">
+              <MappingFragment StoreEntitySet="KORRIERET">
+                <ScalarProperty Name="TIPI_PUNONJESI_ID" ColumnName="TIPI_PUNONJESI_ID" />
+                <ScalarProperty Name="AGJENSIA_ID" ColumnName="AGJENSIA_ID" />
+                <ScalarProperty Name="DATE_RREGJISTRIMI" ColumnName="DATE_RREGJISTRIMI" />
+                <ScalarProperty Name="AKTIV" ColumnName="AKTIV" />
+                <ScalarProperty Name="MBIEMRI" ColumnName="MBIEMRI" />
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="KODI" ColumnName="KODI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PODs">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.POD">
+              <MappingFragment StoreEntitySet="POD">
+                <ScalarProperty Name="AGJENSI_TRANZIT" ColumnName="AGJENSI_TRANZIT" />
+                <ScalarProperty Name="KONFIRMIM" ColumnName="KONFIRMIM" />
+                <ScalarProperty Name="QYTET_ID_NEW" ColumnName="QYTET_ID_NEW" />
+                <ScalarProperty Name="FSHAT_ID" ColumnName="FSHAT_ID" />
+                <ScalarProperty Name="DREJTIM_ID" ColumnName="DREJTIM_ID" />
+                <ScalarProperty Name="BRAND_ID" ColumnName="BRAND_ID" />
+                <ScalarProperty Name="DERGUES_KUNDREJT_PAGESE_ID" ColumnName="DERGUES_KUNDREJT_PAGESE_ID" />
+                <ScalarProperty Name="CMIMI_ZBRITJE" ColumnName="CMIMI_ZBRITJE" />
+                <ScalarProperty Name="TVSH_CMIMI_BAZE" ColumnName="TVSH_CMIMI_BAZE" />
+                <ScalarProperty Name="TVSH_VL_SIGURUAR" ColumnName="TVSH_VL_SIGURUAR" />
+                <ScalarProperty Name="TVSH_SHTESA" ColumnName="TVSH_SHTESA" />
+                <ScalarProperty Name="KODI_REFERENCE" ColumnName="KODI_REFERENCE" />
+                <ScalarProperty Name="TAKSE_KARBURANTI_VALUE_EURO" ColumnName="TAKSE_KARBURANTI_VALUE_EURO" />
+                <ScalarProperty Name="TAKSE_KARBURANTI_VALUE_LEK" ColumnName="TAKSE_KARBURANTI_VALUE_LEK" />
+                <ScalarProperty Name="PERQINDJE_TAKSE_KARBURANTI" ColumnName="PERQINDJE_TAKSE_KARBURANTI" />
+                <ScalarProperty Name="KODI_SHERBIMIT" ColumnName="KODI_SHERBIMIT" />
+                <ScalarProperty Name="AGJENSIA_DESTINACION_ID" ColumnName="AGJENSIA_DESTINACION_ID" />
+                <ScalarProperty Name="TERMINAL_SERIAL_BIOS" ColumnName="TERMINAL_SERIAL_BIOS" />
+                <ScalarProperty Name="TERMINAL_PROCESSOR_ID" ColumnName="TERMINAL_PROCESSOR_ID" />
+                <ScalarProperty Name="AGJENSIA_REMOTE_ID" ColumnName="AGJENSIA_REMOTE_ID" />
+                <ScalarProperty Name="AGJENSIA_DEST_PIKE_PIKE_ID" ColumnName="AGJENSIA_DEST_PIKE_PIKE_ID" />
+                <ScalarProperty Name="PERQINDJE_TVSH" ColumnName="PERQINDJE_TVSH" />
+                <ScalarProperty Name="KODI_LEVIZJES" ColumnName="KODI_LEVIZJES" />
+                <ScalarProperty Name="CMIMI_BAZE_EURO" ColumnName="CMIMI_BAZE_EURO" />
+                <ScalarProperty Name="KURSI_CMIMI_BAZE" ColumnName="KURSI_CMIMI_BAZE" />
+                <ScalarProperty Name="PERQINDJE_DISCOUNT" ColumnName="PERQINDJE_DISCOUNT" />
+                <ScalarProperty Name="MONEDHA_CMIMI_BAZE_ID" ColumnName="MONEDHA_CMIMI_BAZE_ID" />
+                <ScalarProperty Name="KODI_PERSHKRIMIT_ID" ColumnName="KODI_PERSHKRIMIT_ID" />
+                <ScalarProperty Name="VLERA_JASHTE_ZONE" ColumnName="VLERA_JASHTE_ZONE" />
+                <ScalarProperty Name="KODI_POSTAR_MARRES" ColumnName="KODI_POSTAR_MARRES" />
+                <ScalarProperty Name="VLERA_SIGURUAR" ColumnName="VLERA_SIGURUAR" />
+                <ScalarProperty Name="SIGURUAR" ColumnName="SIGURUAR" />
+                <ScalarProperty Name="BANKA_ID" ColumnName="BANKA_ID" />
+                <ScalarProperty Name="POD_STATUS_ID" ColumnName="POD_STATUS_ID" />
+                <ScalarProperty Name="MONEDHA_EXTRA_ID" ColumnName="MONEDHA_EXTRA_ID" />
+                <ScalarProperty Name="NUMRI_CEK" ColumnName="NUMRI_CEK" />
+                <ScalarProperty Name="PERDORUES_ID" ColumnName="PERDORUES_ID" />
+                <ScalarProperty Name="DATE_RREGJISTRIMI" ColumnName="DATE_RREGJISTRIMI" />
+                <ScalarProperty Name="MARR_SUBJ_ID" ColumnName="MARR_SUBJ_ID" />
+                <ScalarProperty Name="DER_SUBJ_ID" ColumnName="DER_SUBJ_ID" />
+                <ScalarProperty Name="SHERBIME_EXTRA_MENYRE_PAGESE_ID" ColumnName="SHERBIME_EXTRA_MENYRE_PAGESE_ID" />
+                <ScalarProperty Name="SHERBIME_EXTRA" ColumnName="SHERBIME_EXTRA" />
+                <ScalarProperty Name="PAGUESI_DERGUES_MARRES" ColumnName="PAGUESI_DERGUES_MARRES" />
+                <ScalarProperty Name="MENYRA_PAGESES_ID" ColumnName="MENYRA_PAGESES_ID" />
+                <ScalarProperty Name="SHUMA_SHERBIME_EXTRA" ColumnName="SHUMA_SHERBIME_EXTRA" />
+                <ScalarProperty Name="TVSH" ColumnName="TVSH" />
+                <ScalarProperty Name="SHTESA" ColumnName="SHTESA" />
+                <ScalarProperty Name="CMIMI_BAZE" ColumnName="CMIMI_BAZE" />
+                <ScalarProperty Name="MAR_KODI_POSTAR_ID" ColumnName="MAR_KODI_POSTAR_ID" />
+                <ScalarProperty Name="MAR_TEL" ColumnName="MAR_TEL" />
+                <ScalarProperty Name="MAR_SHTETI_ID" ColumnName="MAR_SHTETI_ID" />
+                <ScalarProperty Name="MAR_QYTETI_ID" ColumnName="MAR_QYTETI_ID" />
+                <ScalarProperty Name="MAR_ADRESA" ColumnName="MAR_ADRESA" />
+                <ScalarProperty Name="MAR_MBIEMRI" ColumnName="MAR_MBIEMRI" />
+                <ScalarProperty Name="MAR_EMRI" ColumnName="MAR_EMRI" />
+                <ScalarProperty Name="DER_KODI_POSTAR_ID" ColumnName="DER_KODI_POSTAR_ID" />
+                <ScalarProperty Name="DER_TEL" ColumnName="DER_TEL" />
+                <ScalarProperty Name="DER_SHTETI_ID" ColumnName="DER_SHTETI_ID" />
+                <ScalarProperty Name="DER_QYTETI_ID" ColumnName="DER_QYTETI_ID" />
+                <ScalarProperty Name="DER_ADRESA" ColumnName="DER_ADRESA" />
+                <ScalarProperty Name="DER_MBIEMRI" ColumnName="DER_MBIEMRI" />
+                <ScalarProperty Name="DER_EMRI" ColumnName="DER_EMRI" />
+                <ScalarProperty Name="PERSHKRIMI" ColumnName="PERSHKRIMI" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="PESHA_VOLUMETRIKE" ColumnName="PESHA_VOLUMETRIKE" />
+                <ScalarProperty Name="PESHA" ColumnName="PESHA" />
+                <ScalarProperty Name="COPE" ColumnName="COPE" />
+                <ScalarProperty Name="KODI_PRODUKTI_ID" ColumnName="KODI_PRODUKTI_ID" />
+                <ScalarProperty Name="KORRIERI_ID" ColumnName="KORRIERI_ID" />
+                <ScalarProperty Name="QYTETI_DESTINACION_ID" ColumnName="QYTETI_DESTINACION_ID" />
+                <ScalarProperty Name="AGJENSIA_ORIGJINE_ID" ColumnName="AGJENSIA_ORIGJINE_ID" />
+                <ScalarProperty Name="KODI" ColumnName="KODI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QYTETEs">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.QYTETE">
+              <MappingFragment StoreEntitySet="QYTETE">
+                <ScalarProperty Name="AKTIVE" ColumnName="AKTIVE" />
+                <ScalarProperty Name="KODI_LEVIZES" ColumnName="KODI_LEVIZES" />
+                <ScalarProperty Name="JASHTESHTETIT" ColumnName="JASHTESHTETIT" />
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SHTETEs">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.SHTETE">
+              <MappingFragment StoreEntitySet="SHTETE">
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
