@@ -1,0 +1,46 @@
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\bin\Debug\net5.0\appsettings.json
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\bin\Debug\net5.0\AcApiCore.exe
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\bin\Debug\net5.0\AcApiCore.deps.json
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\bin\Debug\net5.0\AcApiCore.runtimeconfig.json
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\bin\Debug\net5.0\AcApiCore.runtimeconfig.dev.json
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\bin\Debug\net5.0\AcApiCore.dll
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\bin\Debug\net5.0\ref\AcApiCore.dll
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\bin\Debug\net5.0\AcApiCore.pdb
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.csproj.AssemblyReference.cache
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.AssemblyInfoInputs.cache
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.AssemblyInfo.cs
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.csproj.CoreCompileInputs.cache
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\staticwebassets\AcApiCore.StaticWebAssets.Manifest.cache
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\staticwebassets\AcApiCore.StaticWebAssets.xml
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\scopedcss\bundle\AcApiCore.styles.css
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.RazorTargetAssemblyInfo.cache
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.dll
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\ref\AcApiCore.dll
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.pdb
+C:\Users\ernit\Desktop\This is full of folders\WebAc\WebAc\AcApiCore\obj\Debug\net5.0\AcApiCore.genruntimeconfig.cache
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\bin\Debug\net5.0\appsettings.json
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\bin\Debug\net5.0\AcApiCore.exe
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\bin\Debug\net5.0\AcApiCore.deps.json
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\bin\Debug\net5.0\AcApiCore.runtimeconfig.json
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\bin\Debug\net5.0\AcApiCore.runtimeconfig.dev.json
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\bin\Debug\net5.0\AcApiCore.dll
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\bin\Debug\net5.0\ref\AcApiCore.dll
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\bin\Debug\net5.0\AcApiCore.pdb
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.csproj.AssemblyReference.cache
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.AssemblyInfoInputs.cache
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.AssemblyInfo.cs
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.csproj.CoreCompileInputs.cache
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\staticwebassets\AcApiCore.StaticWebAssets.Manifest.cache
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\staticwebassets\AcApiCore.StaticWebAssets.xml
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\scopedcss\bundle\AcApiCore.styles.css
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.RazorTargetAssemblyInfo.cache
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.dll
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\ref\AcApiCore.dll
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.pdb
+C:\Users\ernit\Desktop\WebApi\WebApi\AcApiCore\obj\Debug\net5.0\AcApiCore.genruntimeconfig.cache
