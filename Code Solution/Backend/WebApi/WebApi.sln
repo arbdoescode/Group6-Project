@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcApi", "AcApi\AcApi.csproj", "{9413C16D-BE85-4A91-86E2-79647E320FF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcApiCore", "AcApiCore\AcApiCore.csproj", "{C8DBE09C-F27E-4AFC-8132-B74245B137DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9413C16D-BE85-4A91-86E2-79647E320FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9413C16D-BE85-4A91-86E2-79647E320FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9413C16D-BE85-4A91-86E2-79647E320FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9413C16D-BE85-4A91-86E2-79647E320FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8DBE09C-F27E-4AFC-8132-B74245B137DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8DBE09C-F27E-4AFC-8132-B74245B137DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8DBE09C-F27E-4AFC-8132-B74245B137DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8DBE09C-F27E-4AFC-8132-B74245B137DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {223B772B-9ABF-445F-B4A2-6A5F3CBC9B20}
+	EndGlobalSection
+EndGlobal
