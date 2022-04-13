@@ -1,0 +1,2477 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Azure.Security.KeyVault.Keys</name>
+    </assembly>
+    <members>
+        <member name="T:Azure.Security.KeyVault.Keys.CreateEcKeyOptions">
+            <summary>
+            The properties needed to create an Elliptic Curve key using the <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateEcKeyOptions.Name">
+            <summary>
+            Gets the name of the key to create.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateEcKeyOptions.KeyType">
+            <summary>
+            Gets the key type of the <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> to create, including <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Ec"/> and <see cref="P:Azure.Security.KeyVault.Keys.KeyType.EcHsm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateEcKeyOptions.CurveName">
+            <summary>
+            Gets or sets the elliptic curve name. See <see cref="T:Azure.Security.KeyVault.Keys.KeyCurveName"/> for possible values. If null, the service default is used.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateEcKeyOptions.HardwareProtected">
+            <summary>
+            Gets a value indicating whether to create a hardware-protected key in a hardware security module (HSM).
+            </summary>
+            <value><c>true</c> to create a hardware-protected key; otherwise, <c>false</c> to create a software key.</value>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.CreateEcKeyOptions.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.CreateEcKeyOptions"/> class.
+            </summary>
+            <param name="name">The name of the key to create.</param>
+            <param name="hardwareProtected">True to create a hardware-protected key in a hardware security module (HSM). The default is false to create a software key.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.CreateKeyOptions">
+            <summary>
+            The key-specific properties needed to create a key using the <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.CreateKeyOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.CreateKeyOptions"/> class.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateKeyOptions.KeyOperations">
+            <summary>
+            Gets a list of <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> values the key should support.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateKeyOptions.NotBefore">
+            <summary>
+            Gets or sets a <see cref="T:System.DateTimeOffset"/> of when the key will be valid.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateKeyOptions.ExpiresOn">
+            <summary>
+            Gets or sets a <see cref="T:System.DateTimeOffset"/> of when the key will expire.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateKeyOptions.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the key will be enabled. If null, the service default is used.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateKeyOptions.Tags">
+            <summary>
+            Gets a dictionary of tags with specific metadata about the key.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.CreateRsaKeyOptions">
+            <summary>
+            The properties needed to create an Elliptic Curve key using the <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateRsaKeyOptions.Name">
+            <summary>
+            Gets the name of the key to create.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateRsaKeyOptions.KeyType">
+            <summary>
+            Gets the key type of the <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> to create, including <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Rsa"/> and <see cref="P:Azure.Security.KeyVault.Keys.KeyType.RsaHsm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateRsaKeyOptions.KeySize">
+            <summary>
+            Gets or sets the key size in bits, such as 2048, 3072, or 4096. If null, the service default is used.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.CreateRsaKeyOptions.HardwareProtected">
+            <summary>
+            Gets a value indicating whether to create a hardware-protected key in a hardware security module (HSM).
+            </summary>
+            <value><c>true</c> to create a hardware-protected key; otherwise, <c>false</c> to create a software key.</value>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.CreateRsaKeyOptions.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.CreateRsaKeyOptions"/> class.
+            </summary>
+            <param name="name">The name of the key to create.</param>
+            <param name="hardwareProtected">True to create a hardware-protected key in a hardware security module (HSM). The default is false to create a software key.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.AesKw">
+            <summary>
+            AES Key Wrap algoritm as defined in https://tools.ietf.org/html/rfc3394
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient">
+            <summary>
+            A client used to perform cryptographic operations with Azure Key Vault keys.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/> class for mocking.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.#ctor(System.Uri,Azure.Core.TokenCredential)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/> class.
+            </summary>
+            <param name="keyId">The <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Id"/> of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> which will be used for cryptographic operations.</param>
+            <param name="credential">A <see cref="T:Azure.Core.TokenCredential"/> used to authenticate requests to the vault, like DefaultAzureCredential.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="keyId"/> or <paramref name="credential"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.#ctor(System.Uri,Azure.Core.TokenCredential,Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/> class.
+            </summary>
+            <param name="keyId">The <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Id"/> of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> which will be used for cryptographic operations.</param>
+            <param name="credential">A <see cref="T:Azure.Core.TokenCredential"/> used to authenticate requests to the vault, like DefaultAzureCredential.</param>
+            <param name="options"><see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions"/> that allow to configure the management of the request sent to Key Vault.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="keyId"/> or <paramref name="credential"/> is null.</exception>
+            <exception cref="T:System.NotSupportedException">The <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions.Version"/> is not supported.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.KeyId">
+            <summary>
+            Gets the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Id"/> of the key used to perform cryptographic operations for the client.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.EncryptAsync(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the specified plain text.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> to use.</param>
+            <param name="plaintext">The data to encrypt.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the encrypt operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult"/> contains the encrypted data
+            along with all other information needed to decrypt it. This information should be stored with the encrypted data.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Encrypt(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the specified plain text.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> to use.</param>
+            <param name="plaintext">The data to encrypt.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the encrypt operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult"/> contains the encrypted data
+            along with all other information needed to decrypt it. This information should be stored with the encrypted data.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.DecryptAsync(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the specified cipher text.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> to use.</param>
+            <param name="ciphertext">The encrypted data to decrypt.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the decrypt operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult"/> contains the encrypted data
+            along with information regarding the algorithm and key used to decrypt it.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Decrypt(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the specified cipher text.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> to use.</param>
+            <param name="ciphertext">The encrypted data to decrypt.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the decrypt operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult"/> contains the encrypted data
+            along with information regarding the algorithm and key used to decrypt it.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.WrapKeyAsync(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the specified key.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> to use.</param>
+            <param name="key">The key to encrypt.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the wrap operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.WrapResult"/> contains the wrapped key
+            along with all other information needed to unwrap it. This information should be stored with the wrapped key.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.WrapKey(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the specified key.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> to use.</param>
+            <param name="key">The key to encrypt.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the wrap operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.WrapResult"/> contains the wrapped key
+            along with all other information needed to unwrap it. This information should be stored with the wrapped key.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.UnwrapKeyAsync(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the specified encrypted key.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> to use.</param>
+            <param name="encryptedKey">The encrypted key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the unwrap operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult"/> contains the key
+            along with information regarding the algorithm and key used to unwrap it.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.UnwrapKey(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the specified encrypted key.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> to use.</param>
+            <param name="encryptedKey">The encrypted key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the unwrap operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult"/> contains the key
+            along with information regarding the algorithm and key used to unwrap it.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.SignAsync(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Signs the specified digest.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use.</param>
+            <param name="digest">The pre-hashed digest to sign. The hash algorithm used to compute the digest must be compatable with the specified algorithm.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the sign operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignResult"/> contains the signature
+            along with all other information needed to verify it. This information should be stored with the signature.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Sign(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Signs the specified digest.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use.</param>
+            <param name="digest">The pre-hashed digest to sign. The hash algorithm used to compute the digest must be compatable with the specified algorithm.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the sign operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignResult"/> contains the signature
+            along with all other information needed to verify it. This information should be stored with the signature.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.VerifyAsync(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Verifies the specified signature.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use. This must be the same algorithm used to sign the digest.</param>
+            <param name="digest">The pre-hashed digest corresponding to the signature. The hash algorithm used to compute the digest must be compatable with the specified algorithm.</param>
+            <param name="signature">The signature to verify.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the verify operation. If the signature is valid the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.IsValid"/> property of the returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult"/> will be set to true.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Verify(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Verifies the specified signature.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use. This must be the same algorithm used to sign the digest.</param>
+            <param name="digest">The pre-hashed digest corresponding to the signature. The hash algorithm used to compute the digest must be compatable with the specified algorithm.</param>
+            <param name="signature">The signature to verify.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the verify operation. If the signature is valid the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.IsValid"/> property of the returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult"/> will be set to true.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.SignDataAsync(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Signs the specified data.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use.</param>
+            <param name="data">The data to sign.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the sign operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignResult"/> contains the signature
+            along with all other information needed to verify it. This information should be stored with the signature.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.SignData(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Signs the specified data.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use.</param>
+            <param name="data">The data to sign.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the sign operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignResult"/> contains the signature
+            along with all other information needed to verify it. This information should be stored with the signature.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.SignDataAsync(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Signs the specified data.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use.</param>
+            <param name="data">The data to sign.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the sign operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignResult"/> contains the signature
+            along with all other information needed to verify it. This information should be stored with the signature.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="data"/> is null.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.SignData(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Signs the specified data.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use.</param>
+            <param name="data">The data to sign.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the sign operation. The returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignResult"/> contains the signature
+            along with all other information needed to verify it. This information should be stored with the signature.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="data"/> is null.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.VerifyDataAsync(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Verifies the specified signature.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use. This must be the same algorithm used to sign the data.</param>
+            <param name="data">The data corresponding to the signature.</param>
+            <param name="signature">The signature to verify.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the verify operation. If the signature is valid the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.IsValid"/> property of the returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult"/> will be set to true.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="data"/> is null.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.VerifyData(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Verifies the specified signature.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use. This must be the same algorithm used to sign the data.</param>
+            <param name="data">The data corresponding to the signature.</param>
+            <param name="signature">The signature to verify.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the verify operation. If the signature is valid the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.IsValid"/> property of the returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult"/> will be set to true.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="data"/> is null.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.VerifyDataAsync(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.IO.Stream,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Verifies the specified signature.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use. This must be the same algorithm used to sign the data.</param>
+            <param name="data">The data corresponding to the signature.</param>
+            <param name="signature">The signature to verify.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the verify operation. If the signature is valid the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.IsValid"/> property of the returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult"/> will be set to true.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="data"/> is null.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.VerifyData(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.IO.Stream,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Verifies the specified signature.
+            </summary>
+            <param name="algorithm">The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to use. This must be the same algorithm used to sign the data.</param>
+            <param name="data">The data corresponding to the signature.</param>
+            <param name="signature">The signature to verify.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to cancel the operation.</param>
+            <returns>
+            The result of the verify operation. If the signature is valid the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.IsValid"/> property of the returned <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult"/> will be set to true.
+            </returns>
+            <exception cref="T:System.ArgumentException">The specified <paramref name="algorithm"/> does not match the key corresponding to the key identifier.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="data"/> is null.</exception>
+            <exception cref="T:System.NotSupportedException">The operation is not supported with the specified key.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Azure#Core#Cryptography#IKeyEncryptionKey#WrapKey(System.String,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Azure#Core#Cryptography#IKeyEncryptionKey#WrapKeyAsync(System.String,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Azure#Core#Cryptography#IKeyEncryptionKey#UnwrapKey(System.String,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Azure#Core#Cryptography#IKeyEncryptionKey#UnwrapKeyAsync(System.String,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions">
+            <summary>
+            Options that allow you to configure the management of the request sent to Key Vault.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions.LatestVersion">
+            <summary>
+            The latest service version supported by this client library.
+            For more information, see
+            <see href="https://docs.microsoft.com/en-us/rest/api/keyvault/key-vault-versions"/>.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions.ServiceVersion">
+            <summary>
+            The versions of Azure Key Vault supported by this client
+            library.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions.ServiceVersion.V7_0">
+            <summary>
+            The Key Vault API version 7.0.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions.Version">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions.ServiceVersion"/> of the service API used when
+            making requests. For more information, see
+            <see href="https://docs.microsoft.com/en-us/rest/api/keyvault/key-vault-versions"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions.#ctor(Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions.ServiceVersion)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions"/> class.
+            class.
+            </summary>
+            <param name="version">
+            The <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions.ServiceVersion"/> of the service API used when
+            making requests.
+            </param>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult">
+            <summary>
+            Represents information about a decrypt operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult.KeyId">
+            <summary>
+            Gets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Id"/> of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> used to decrypt.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult.Plaintext">
+            <summary>
+            Gets the decrypted data.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult.Algorithm">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> used for the decryption.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm">
+            <summary>
+            An algorithm used for encryption and decryption.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.Rsa15">
+            <summary>
+            Gets an RSA1_5 <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.RsaOaep">
+            <summary>
+            Gets an RSA-OAEP <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.RsaOaep256">
+            <summary>
+            Gets an RSA-OAEP256 <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.op_Equality(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.op_Inequality(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.op_Implicit(System.String)~Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.Equals(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult">
+            <summary>
+            Represents information about an encryption operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult.KeyId">
+            <summary>
+            Gets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Id"/> of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> used to encrypt. This must be stored alongside the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult.Ciphertext"/> as the same key must be used to decrypt it.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult.Ciphertext">
+            <summary>
+            Gets the ciphertext that is the result of the encryption.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult.Algorithm">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm"/> used for encryption. This must be stored alongside the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult.Ciphertext"/> as the same algorithm must be used to decrypt it.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver">
+            <summary>
+            Azure Key Vault KeyResolver. This class resolves Key Vault Key Identifiers and
+            Secret Identifiers to create <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/> instances capable of performing
+            cryptographic operations with the key. Secret Identifiers can only be resolved if the Secret is
+            a byte array with a length matching one of the AES key lengths (128, 192, 256) and the
+            content-type of the secret is application/octet-stream.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver"/> class for mocking.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver.#ctor(Azure.Core.TokenCredential)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver"/> class.
+            </summary>
+            <param name="credential">A <see cref="T:Azure.Core.TokenCredential"/> used to authenticate requests to the vault, such as DefaultAzureCredential.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="credential"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver.#ctor(Azure.Core.TokenCredential,Azure.Security.KeyVault.Keys.Cryptography.CryptographyClientOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver"/> class.
+            </summary>
+            <param name="credential">A <see cref="T:Azure.Core.TokenCredential"/> used to authenticate requests to the vault, such as DefaultAzureCredential.</param>
+            <param name="options">Options to configure the management of the requests sent to Key Vault for both the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver"/> instance as well as all created instances of <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="credential"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver.Resolve(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves a <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/> capable of performing cryptographic operations with the key represented by the specfiied <paramref name="keyId"/>.
+            </summary>
+            <param name="keyId">The key idenitifier of the key used by the created <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/>.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A new <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/> capable of performing cryptographic operations with the key represented by the specfiied <paramref name="keyId"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="keyId"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver.ResolveAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves a <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/> capable of performing cryptographic operations with the key represented by the specfiied <paramref name="keyId"/>.
+            </summary>
+            <param name="keyId">The key idenitifier of the key used by the created <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/>.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A new <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/> capable of performing cryptographic operations with the key represented by the specfiied <paramref name="keyId"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="keyId"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver.Azure#Core#Cryptography#IKeyEncryptionKeyResolver#Resolve(System.String,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyResolver.Azure#Core#Cryptography#IKeyEncryptionKeyResolver#ResolveAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm">
+            <summary>
+            An algorithm used for key wrap and unwrap.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.RsaOaep">
+            <summary>
+            Gets an RSA-OAEP <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.Rsa15">
+            <summary>
+            Gets an RSA1_5 <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.RsaOaep256">
+            <summary>
+            Gets an RSA-OAEP-256 <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.A128KW">
+            <summary>
+            Gets an AES 128 Key Wrap <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.A192KW">
+            <summary>
+            Gets an AES 192 Key Wrap <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.A256KW">
+            <summary>
+            Gets an AES 256 Key Wrap <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.op_Equality(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.op_Inequality(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.op_Implicit(System.String)~Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.Equals(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm">
+            <summary>
+            An algorithm used for signing and verification.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.RS256">
+            <summary>
+            Gets an RSA SHA-256 <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.RS384">
+            <summary>
+            Gets an RSA SHA-384  <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.RS512">
+            <summary>
+            Gets an RSA SHA-512  <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.PS256">
+            <summary>
+            Gets an RSASSA-PSS using SHA-256 and MGF1 with SHA-256 <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.PS384">
+            <summary>
+            Gets an RSASSA-PSS using SHA-384 and MGF1 with SHA-384 <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.PS512">
+            <summary>
+            Gets an RSASSA-PSS using SHA-512 and MGF1 with SHA-512 <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.ES256">
+            <summary>
+            Gets an ECDSA with a P-256 curve <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.ES384">
+            <summary>
+            Gets an ECDSA with a P-384 curve <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.ES512">
+            <summary>
+            Gets an ECDSA with a P-521 curve <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.ES256K">
+            <summary>
+            Gets an ECDSA with a secp256k1 curve <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.op_Equality(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.op_Inequality(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.op_Implicit(System.String)~Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.Equals(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.SignResult">
+            <summary>
+            Represents information about a sign operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignResult.KeyId">
+            <summary>
+            Gets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Id"/> of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> used to sign. This must be stored alongside the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.SignResult.Signature"/> as the same key must be used to verify it.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignResult.Signature">
+            <summary>
+            Gets the signature.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.SignResult.Algorithm">
+            <summary>
+            Gets the algorithm used to sign. This must be stored alongside the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.SignResult.Signature"/> as the same algorithm must be used to verify it.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult">
+            <summary>
+            Represents information about an unwrap operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult.KeyId">
+            <summary>
+            Gets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Id"/> of the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult.Key"/> used to uwrap.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult.Key">
+            <summary>
+            Gets the unwrapped key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult.Algorithm">
+            <summary>
+            Gets the algorithm used.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult">
+            <summary>
+            Represents information about a verify operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.KeyId">
+            <summary>
+            Gets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Id"/> of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> used to verify.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.IsValid">
+            <summary>
+            Gets a value indicating whether the specified signature is valid.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.Algorithm">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm"/>.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.Cryptography.WrapResult">
+            <summary>
+            Represents information about a wrap operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.WrapResult.KeyId">
+            <summary>
+            Gets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Id"/> of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> used to wrap the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.WrapResult.EncryptedKey"/>. This must be stored alongside the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.WrapResult.EncryptedKey"/> as the same key must be used to unwrap it.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.WrapResult.EncryptedKey">
+            <summary>
+            Gets the wrapped key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.Cryptography.WrapResult.Algorithm">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm"/> used. This must be stored alongside the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.WrapResult.EncryptedKey"/> as the same key must be used to unwrap it.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.CryptographyModelFactory">
+            <summary>
+            Model factory that enables mocking for the Key Vault Cryptography library.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.CryptographyModelFactory.DecryptResult(System.String,System.Byte[],Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult"/> for mocking purposes.
+            </summary>
+            <param name="keyId">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult.KeyId"/> property.</param>
+            <param name="plaintext">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult.Plaintext"/> property.</param>
+            <param name="algorithm">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult.Algorithm"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.DecryptResult"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.CryptographyModelFactory.EncryptResult(System.String,System.Byte[],Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult"/> for mocking purposes.
+            </summary>
+            <param name="keyId">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult.KeyId"/> property.</param>
+            <param name="ciphertext">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult.Ciphertext"/> property.</param>
+            <param name="algorithm">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult.Algorithm"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.EncryptResult"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.CryptographyModelFactory.SignResult(System.String,System.Byte[],Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignResult"/> for mocking purposes.
+            </summary>
+            <param name="keyId">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.SignResult.KeyId"/> property.</param>
+            <param name="signature">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.SignResult.Signature"/> property.</param>
+            <param name="algorithm">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.SignResult.Algorithm"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.SignResult"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.CryptographyModelFactory.UnwrapResult(System.String,System.Byte[],Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult"/> for mocking purposes.
+            </summary>
+            <param name="keyId">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult.KeyId"/> property.</param>
+            <param name="key">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult.Key"/> property.</param>
+            <param name="algorithm">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult.Algorithm"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.UnwrapResult"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.CryptographyModelFactory.VerifyResult(System.String,System.Boolean,Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult"/> for mocking purposes.
+            </summary>
+            <param name="keyId">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.KeyId"/> property.</param>
+            <param name="isValid">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.IsValid"/> property.</param>
+            <param name="algorithm">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult.Algorithm"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.VerifyResult"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.CryptographyModelFactory.WrapResult(System.String,System.Byte[],Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.WrapResult"/> for mocking purposes.
+            </summary>
+            <param name="keyId">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.WrapResult.KeyId"/> property.</param>
+            <param name="key">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.WrapResult.EncryptedKey"/> property.</param>
+            <param name="algorithm">Sets the <see cref="P:Azure.Security.KeyVault.Keys.Cryptography.WrapResult.Algorithm"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.WrapResult"/> for mocking purposes.</returns>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.DeletedKey">
+            <summary>
+            Represents a Key Vault key that has been deleted, allowing it to be recovered, if needed.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.DeletedKey.RecoveryId">
+            <summary>
+            Gets a <see cref="T:System.Uri"/> of the deleted key that can be used to recover it.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.DeletedKey.DeletedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> of when the key was deleted.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.DeletedKey.ScheduledPurgeDate">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> for when the deleted key will be purged.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.DeleteKeyOperation">
+            <summary>
+            A long-running operation for <see cref="M:Azure.Security.KeyVault.Keys.KeyClient.StartDeleteKey(System.String,System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Keys.KeyClient.StartDeleteKeyAsync(System.String,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.DeleteKeyOperation.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.DeleteKeyOperation.Value">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Keys.DeletedKey"/>.
+            You should await <see cref="M:Azure.Security.KeyVault.Keys.DeleteKeyOperation.WaitForCompletionAsync(System.Threading.CancellationToken)"/> before attempting to purge or recover a key in this pending state.
+            </summary>
+            <remarks>
+            Azure Key Vault will return a <see cref="T:Azure.Security.KeyVault.Keys.DeletedKey"/> immediately but may take time to actually delete the key if soft-delete is enabled.
+            </remarks>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.DeleteKeyOperation.HasCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.DeleteKeyOperation.HasValue">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.DeleteKeyOperation.GetRawResponse">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.DeleteKeyOperation.UpdateStatus(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.DeleteKeyOperation.UpdateStatusAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.DeleteKeyOperation.WaitForCompletionAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.DeleteKeyOperation.WaitForCompletionAsync(System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.ImportKeyOptions">
+            <summary>
+            The properties needed to import a key.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.ImportKeyOptions.#ctor(System.String,Azure.Security.KeyVault.Keys.JsonWebKey)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.ImportKeyOptions"/> class.
+            </summary>
+            <param name="name">The name of the key to import.</param>
+            <param name="keyMaterial">A <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> containing properties of the key to import.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="keyMaterial"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.ImportKeyOptions.Name">
+            <summary>
+            Gets the name of the key to import.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.ImportKeyOptions.Key">
+            <summary>
+            Gets the cryptographic key, the key type, and the operations you can perform using the key.
+            </summary>
+            <remarks>
+            See http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18 for specifications of a JSON web key.
+            </remarks>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.ImportKeyOptions.HardwareProtected">
+            <summary>
+            Gets or sets a value indicating whether to import the key into a hardware security module (HSM).
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.ImportKeyOptions.Properties">
+            <summary>
+            Gets additional properties of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/>.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.JsonWebKey">
+            <summary>
+            A JSON Web Key (JWK) is a JavaScript Object Notation (JSON) data
+            structure that represents a cryptographic key.
+            For more information, see <see href="http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.Id">
+            <summary>
+            Gets the identifier of the key. This is not limited to a <see cref="T:System.Uri"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.KeyType">
+            <summary>
+            Gets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.KeyType"/> for this <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.KeyOps">
+            <summary>
+            Gets a list of <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> values supported by this key.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.JsonWebKey.#ctor(System.Security.Cryptography.Aes,System.Collections.Generic.IEnumerable{Azure.Security.KeyVault.Keys.KeyOperation})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> class using type <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Oct"/>.
+            </summary>
+            <param name="aesProvider">An <see cref="T:System.Security.Cryptography.Aes"/> provider.</param>
+            <param name="keyOps">
+            Optional list of supported <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> values. If null, the default for the key type is used, including:
+            <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.Encrypt"/>, <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.Decrypt"/>, <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.WrapKey"/>, and <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.UnwrapKey"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="aesProvider"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.JsonWebKey.#ctor(System.Security.Cryptography.ECDsa,System.Boolean,System.Collections.Generic.IEnumerable{Azure.Security.KeyVault.Keys.KeyOperation})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> class using type <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Ec"/>.
+            </summary>
+            <param name="ecdsa">An <see cref="T:System.Security.Cryptography.ECDsa"/> provider.</param>
+            <param name="includePrivateParameters">Whether to include the private key.</param>
+            <param name="keyOps">
+            Optional list of supported <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> values. If null, the default for the key type is used, including:
+            <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.Sign"/>, and <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.Decrypt"/> if <paramref name="includePrivateParameters"/> is true.
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="ecdsa"/> is null.</exception>
+            <exception cref="T:System.InvalidOperationException">The elliptic curve name is invalid.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.JsonWebKey.#ctor(System.Security.Cryptography.RSA,System.Boolean,System.Collections.Generic.IEnumerable{Azure.Security.KeyVault.Keys.KeyOperation})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> class using type <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Rsa"/>.
+            </summary>
+            <param name="rsaProvider">An <see cref="T:System.Security.Cryptography.RSA"/> provider.</param>
+            <param name="includePrivateParameters">Whether to include the private key.</param>
+            <param name="keyOps">
+            Optional list of supported <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> values. If null, the default for the key type is used, including:
+            <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.Encrypt"/>, <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.Verify"/>, and <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.WrapKey"/>;
+            and <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.Decrypt"/>, <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.Sign"/>, and <see cref="P:Azure.Security.KeyVault.Keys.KeyOperation.UnwrapKey"/> if <paramref name="includePrivateParameters"/> is true.
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="rsaProvider"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.N">
+            <summary>
+            Gets the RSA modulus.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.E">
+            <summary>
+            Gets RSA public exponent.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.DP">
+            <summary>
+            Gets the RSA private key parameter.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.DQ">
+            <summary>
+            Gets the RSA private key parameter.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.QI">
+            <summary>
+            Gets the RSA private key parameter.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.P">
+            <summary>
+            Gets the RSA secret prime.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.Q">
+            <summary>
+            Gets the RSA secret prime.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.CurveName">
+            <summary>
+            Gets the name of the elliptical curve.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.X">
+            <summary>
+            Gets the X coordinate of the elliptic curve point.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.Y">
+            <summary>
+            Gets the Y coordinate for the elliptic curve point.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.D">
+            <summary>
+            Gets the RSA private exponent or EC private key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.K">
+            <summary>
+            Gets the symmetric key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.JsonWebKey.T">
+            <summary>
+            Gets the HSM token used with "Bring Your Own Key".
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.JsonWebKey.ToAes">
+            <summary>
+            Converts this <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> of type <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Oct"/> to an <see cref="T:System.Security.Cryptography.Aes"/> object.
+            </summary>
+            <returns>An <see cref="T:System.Security.Cryptography.Aes"/> object.</returns>
+            <exception cref="T:System.InvalidOperationException">This key is not of type <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Oct"/> or <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.K"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.JsonWebKey.ToECDsa(System.Boolean)">
+            <summary>
+            Converts this <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> of type <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Ec"/> or <see cref="P:Azure.Security.KeyVault.Keys.KeyType.EcHsm"/> to an <see cref="T:System.Security.Cryptography.ECDsa"/> object.
+            </summary>
+            <param name="includePrivateParameters">Whether to include private parameters.</param>
+            <returns>An <see cref="T:System.Security.Cryptography.ECDsa"/> object.</returns>
+            <exception cref="T:System.InvalidOperationException">This key is not of type <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Ec"/> or <see cref="P:Azure.Security.KeyVault.Keys.KeyType.EcHsm"/>, or one or more key parameters are invalid.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.JsonWebKey.ToRSA(System.Boolean)">
+            <summary>
+            Converts this <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> of type <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Rsa"/> or <see cref="P:Azure.Security.KeyVault.Keys.KeyType.RsaHsm"/> to an <see cref="T:System.Security.Cryptography.RSA"/> object.
+            </summary>
+            <param name="includePrivateParameters">Whether to include private parameters.</param>
+            <returns>An <see cref="T:System.Security.Cryptography.RSA"/> object.</returns>
+            <exception cref="T:System.InvalidOperationException">This key is not of type <see cref="P:Azure.Security.KeyVault.Keys.KeyType.Rsa"/> or <see cref="P:Azure.Security.KeyVault.Keys.KeyType.RsaHsm"/>, or one or more key parameters are invalid.</exception>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.KeyClient">
+            <summary>
+            The KeyClient provides synchronous and asynchronous methods to manage <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> in the Azure Key Vault. The client
+            supports creating, retrieving, updating, deleting, purging, backing up, restoring and listing the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/>.
+            The client also supports listing <see cref="T:Azure.Security.KeyVault.Keys.DeletedKey"/> for a soft-delete enabled Azure Key Vault.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/> class for mocking.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.#ctor(System.Uri,Azure.Core.TokenCredential)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/> class for the specified vault.
+            </summary>
+            <param name="vaultUri">A <see cref="T:System.Uri"/> to the vault on which the client operates. Appears as "DNS Name" in the Azure portal.</param>
+            <param name="credential">A <see cref="T:Azure.Core.TokenCredential"/> used to authenticate requests to the vault, such as DefaultAzureCredential.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="vaultUri"/> or <paramref name="credential"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.#ctor(System.Uri,Azure.Core.TokenCredential,Azure.Security.KeyVault.Keys.KeyClientOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/> class for the specified vault.
+            </summary>
+            <param name="vaultUri">A <see cref="T:System.Uri"/> to the vault on which the client operates. Appears as "DNS Name" in the Azure portal.</param>
+            <param name="credential">A <see cref="T:Azure.Core.TokenCredential"/> used to authenticate requests to the vault, such as DefaultAzureCredential.</param>
+            <param name="options"><see cref="T:Azure.Security.KeyVault.Keys.KeyClientOptions"/> that allow to configure the management of the request sent to Key Vault.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="vaultUri"/> or <paramref name="credential"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyClient.VaultUri">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> of the vault used to create this instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.CreateKey(System.String,Azure.Security.KeyVault.Keys.KeyType,Azure.Security.KeyVault.Keys.CreateKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates and stores a new key in Key Vault. The create key operation can be used to create any key type in Azure Key Vault.
+            If the named key already exists, Azure Key Vault creates a new version of the key. It requires the keys/create permission.
+            </summary>
+            <param name="name">The name of the key.</param>
+            <param name="keyType">The type of key to create. See <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/> for valid values.</param>
+            <param name="keyOptions">Specific attributes with information about the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string, or <paramref name="keyType"/> contains no value.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.CreateKeyAsync(System.String,Azure.Security.KeyVault.Keys.KeyType,Azure.Security.KeyVault.Keys.CreateKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates and stores a new key in Key Vault. The create key operation can be used to create any key type in Azure Key Vault.
+            If the named key already exists, Azure Key Vault creates a new version of the key. It requires the keys/create permission.
+            </summary>
+            <param name="name">The name of the key.</param>
+            <param name="keyType">The type of key to create. See <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/> for valid values.</param>
+            <param name="keyOptions">Specific attributes with information about the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string, or <paramref name="keyType"/> contains no value.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.CreateEcKey(Azure.Security.KeyVault.Keys.CreateEcKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates and stores a new Elliptic Curve key in Key Vault. If the named key already exists,
+            Azure Key Vault creates a new version of the key. It requires the keys/create permission.
+            </summary>
+            <param name="ecKeyOptions">The key options object containing information about the Elliptic Curve key being created.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="ecKeyOptions"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.CreateEcKeyAsync(Azure.Security.KeyVault.Keys.CreateEcKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates and stores a new Elliptic Curve key in Key Vault. If the named key already exists,
+            Azure Key Vault creates a new version of the key. It requires the keys/create permission.
+            </summary>
+            <param name="ecKeyOptions">The key options object containing information about the Elliptic Curve key being created.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="ecKeyOptions"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.CreateRsaKey(Azure.Security.KeyVault.Keys.CreateRsaKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates and stores a new RSA key in Key Vault. If the named key already exists, Azure Key Vault creates a new
+            version of the key. It requires the keys/create permission.
+            </summary>
+            <param name="rsaKeyOptions">The key options object containing information about the RSA key being created.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="rsaKeyOptions"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.CreateRsaKeyAsync(Azure.Security.KeyVault.Keys.CreateRsaKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates and stores a new RSA key in Key Vault. If the named key already exists, Azure Key Vault creates a new
+            version of the key. It requires the keys/create permission.
+            </summary>
+            <param name="rsaKeyOptions">The key options object containing information about the RSA key being created.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="rsaKeyOptions"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.UpdateKeyProperties(Azure.Security.KeyVault.Keys.KeyProperties,System.Collections.Generic.IEnumerable{Azure.Security.KeyVault.Keys.KeyOperation},System.Threading.CancellationToken)">
+            <summary>
+            The update key operation changes specified attributes of a stored key and
+            can be applied to any key type and key version stored in Azure Key Vault.
+            </summary>
+            <remarks>
+            In order to perform this operation, the key must already exist in the Key
+            Vault. Note: The cryptographic material of a key itself cannot be changed.
+            This operation requires the keys/update permission.
+            </remarks>
+            <param name="properties">The <see cref="T:Azure.Security.KeyVault.Keys.KeyProperties"/> object with updated properties.</param>
+            <param name="keyOperations">Optional list of supported <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/>. If null, no changes will be made to existing key operations.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="properties"/> is null, or <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Version"/> of <paramref name="properties"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.UpdateKeyPropertiesAsync(Azure.Security.KeyVault.Keys.KeyProperties,System.Collections.Generic.IEnumerable{Azure.Security.KeyVault.Keys.KeyOperation},System.Threading.CancellationToken)">
+            <summary>
+            The update key operation changes specified attributes of a stored key and
+            can be applied to any key type and key version stored in Azure Key Vault.
+            </summary>
+            <remarks>
+            In order to perform this operation, the key must already exist in the Key
+            Vault. Note: The cryptographic material of a key itself cannot be changed.
+            This operation requires the keys/update permission.
+            </remarks>
+            <param name="properties">The <see cref="T:Azure.Security.KeyVault.Keys.KeyProperties"/> object with updated properties.</param>
+            <param name="keyOperations">Optional list of supported <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/>. If null, no changes will be made to existing key operations.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="properties"/> or <paramref name="keyOperations"/> is null, or <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Version"/> of <paramref name="properties"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetKey(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the public part of a stored key.
+            </summary>
+            <remarks>
+            The get key operation is applicable to all key types. If the requested key
+            is symmetric, then no key is released in the response. This
+            operation requires the keys/get permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="version">The version of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetKeyAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the public part of a stored key.
+            </summary>
+            <remarks>
+            The get key operation is applicable to all key types. If the requested key
+            is symmetric, then no key is released in the response. This
+            operation requires the keys/get permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="version">The version of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetPropertiesOfKeys(System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all keys in the specified vault. You can use the returned <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Name"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Keys.KeyClient.GetKey(System.String,System.String,System.Threading.CancellationToken)"/>.
+            </summary>
+            <remarks>
+            Retrieves a list of the keys in the Key Vault that contains the public part of a stored key.
+            The list operation is applicable to all key types, however only the base key identifier,
+            attributes, and tags are provided in the response. Individual versions of a
+            key are not listed in the response. This operation requires the keys/list
+            permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetPropertiesOfKeysAsync(System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all keys in the specified vault. You can use the returned <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Name"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Keys.KeyClient.GetKeyAsync(System.String,System.String,System.Threading.CancellationToken)"/>.
+            </summary>
+            <remarks>
+            Retrieves a list of the keys in the Key Vault that contains the public part of a stored key.
+            The list operation is applicable to all key types, however only the base key identifier,
+            attributes, and tags are provided in the response. Individual versions of a
+            key are not listed in the response. This operation requires the keys/list
+            permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetPropertiesOfKeyVersions(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all versions of the specified key. You can use the returned <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Name"/> and <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Version"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Keys.KeyClient.GetKey(System.String,System.String,System.Threading.CancellationToken)"/>.
+            </summary>
+            <remarks>
+            The full key identifier, attributes, and tags are provided in the response.
+            This operation requires the keys/list permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetPropertiesOfKeyVersionsAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all versions of the specified key. You can use the returned <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Name"/> and <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Version"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Keys.KeyClient.GetKeyAsync(System.String,System.String,System.Threading.CancellationToken)"/>.
+            </summary>
+            <remarks>
+            The full key identifier, attributes, and tags are provided in the response.
+            This operation requires the keys/list permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetDeletedKey(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the public part of a deleted key.
+            </summary>
+            <remarks>
+            The Get Deleted Key operation is applicable for soft-delete enabled vaults.
+            While the operation can be invoked on any vault, it will return an error if
+            invoked on a non soft-delete enabled vault. This operation requires the
+            keys/get permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetDeletedKeyAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the public part of a deleted key.
+            </summary>
+            <remarks>
+            The Get Deleted Key operation is applicable for soft-delete enabled vaults.
+            While the operation can be invoked on any vault, it will return an error if
+            invoked on a non soft-delete enabled vault. This operation requires the
+            keys/get permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.StartDeleteKey(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a key of any type from storage in Azure Key Vault.
+            </summary>
+            <remarks>
+            The delete key operation cannot be used to remove individual versions of a
+            key. This operation removes the cryptographic material associated with the
+            key, which means the key is not usable for Sign/Verify, Wrap/Unwrap or
+            Encrypt/Decrypt operations. This operation requires the keys/delete
+            permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Keys.DeleteKeyOperation"/> to wait on this long-running operation.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.StartDeleteKeyAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a key of any type from storage in Azure Key Vault.
+            </summary>
+            <remarks>
+            The delete key operation cannot be used to remove individual versions of a
+            key. This operation removes the cryptographic material associated with the
+            key, which means the key is not usable for Sign/Verify, Wrap/Unwrap or
+            Encrypt/Decrypt operations. This operation requires the keys/delete
+            permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Keys.DeleteKeyOperation"/> to wait on this long-running operation.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetDeletedKeys(System.Threading.CancellationToken)">
+            <summary>
+            Lists the deleted keys in the specified vault.
+            </summary>
+            <remarks>
+            Retrieves a list of the keys in the Key Vault that contains the public part of a deleted key.
+            This operation includes deletion-specific information.
+            The Get Deleted Keys operation is applicable
+            for vaults enabled for soft-delete. While the operation can be invoked on
+            any vault, it will return an error if invoked on a non soft-delete enabled
+            vault. This operation requires the keys/list permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.GetDeletedKeysAsync(System.Threading.CancellationToken)">
+            <summary>
+            Lists the deleted keys in the specified vault.
+            </summary>
+            <remarks>
+            Retrieves a list of the keys in the Key Vault that contains the public part of a deleted key.
+            This operation includes deletion-specific information.
+            The Get Deleted Keys operation is applicable
+            for vaults enabled for soft-delete. While the operation can be invoked on
+            any vault, it will return an error if invoked on a non soft-delete enabled
+            vault. This operation requires the keys/list permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.PurgeDeletedKey(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Permanently deletes the specified key.
+            </summary>
+            <remarks>
+            The Purge Deleted Key operation is applicable for soft-delete enabled
+            vaults. While the operation can be invoked on any vault, it will return an
+            error if invoked on a non soft-delete enabled vault. This operation
+            requires the keys/purge permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.PurgeDeletedKeyAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Permanently deletes the specified key.
+            </summary>
+            <remarks>
+            The Purge Deleted Key operation is applicable for soft-delete enabled
+            vaults. While the operation can be invoked on any vault, it will return an
+            error if invoked on a non soft-delete enabled vault. This operation
+            requires the keys/purge permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.StartRecoverDeletedKey(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Recovers the deleted key to its latest version.
+            </summary>
+            <remarks>
+            The Recover Deleted Key operation is applicable for deleted keys in
+            soft-delete enabled vaults. It recovers the deleted key back to its latest
+            version under /keys. An attempt to recover an non-deleted key will return
+            an error. Consider this the inverse of the delete operation on soft-delete
+            enabled vaults. This operation requires the keys/recover permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation"/> to wait on this long-running operation.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.StartRecoverDeletedKeyAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Recovers the deleted key to its latest version.
+            </summary>
+            <remarks>
+            The Recover Deleted Key operation is applicable for deleted keys in
+            soft-delete enabled vaults. It recovers the deleted key back to its latest
+            version under /keys. An attempt to recover an non-deleted key will return
+            an error. Consider this the inverse of the delete operation on soft-delete
+            enabled vaults. This operation requires the keys/recover permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation"/> to wait on this long-running operation.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.BackupKey(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Requests that a backup of the specified key be downloaded to the client.
+            </summary>
+            <remarks>
+            The Key Backup operation exports a key from Azure Key Vault in a protected
+            form. Note that this operation does NOT return the actual key in a form that
+            can be used outside the Azure Key Vault system, the returned key
+            is either protected to a Azure Key Vault HSM or to Azure Key Vault itself.
+            The intent of this operation is to allow a client to GENERATE a key in one
+            Azure Key Vault instance, BACKUP the key, and then RESTORE it into another
+            Azure Key Vault instance. The BACKUP operation may be used to export, in
+            protected form, any key type from Azure Key Vault. Individual versions of a
+            key cannot be backed up. BACKUP / RESTORE can be performed within
+            geographical boundaries only; meaning that a BACKUP from one geographical
+            area cannot be restored to another geographical area. For example, a backup
+            from the US geographical area cannot be restored in an EU geographical
+            area. This operation requires the key/backup permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.BackupKeyAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Requests that a backup of the specified key be downloaded to the client.
+            </summary>
+            <remarks>
+            The Key Backup operation exports a key from Azure Key Vault in a protected
+            form. Note that this operation does NOT return the actual key in a form that
+            can be used outside the Azure Key Vault system, the returned key
+            is either protected to a Azure Key Vault HSM or to Azure Key Vault itself.
+            The intent of this operation is to allow a client to GENERATE a key in one
+            Azure Key Vault instance, BACKUP the key, and then RESTORE it into another
+            Azure Key Vault instance. The BACKUP operation may be used to export, in
+            protected form, any key type from Azure Key Vault. Individual versions of a
+            key cannot be backed up. BACKUP / RESTORE can be performed within
+            geographical boundaries only; meaning that a BACKUP from one geographical
+            area cannot be restored to another geographical area. For example, a backup
+            from the US geographical area cannot be restored in an EU geographical
+            area. This operation requires the key/backup permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.RestoreKeyBackup(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Restores a backed up key to a vault.
+            </summary>
+            <remarks>
+            Imports a previously backed up key into Azure Key Vault, restoring the key,
+            its key identifier, attributes and access control policies. The RESTORE
+            operation may be used to import a previously backed up key. Individual
+            versions of a key cannot be restored. The key is restored in its entirety
+            with the same key name as it had when it was backed up. If the key name is
+            not available in the target Key Vault, the RESTORE operation will be
+            rejected. While the key name is retained during restore, the final key
+            identifier will change if the key is restored to a different vault. Restore
+            will restore all versions and preserve version identifiers. The RESTORE
+            operation is subject to security constraints: The target Key Vault must be
+            owned by the same Microsoft Azure Subscription as the source Key Vault The
+            user must have RESTORE permission in the target Key Vault. This operation
+            requires the keys/restore permission.
+            </remarks>
+            <param name="backup">The backup blob associated with a key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="backup"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="backup"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.RestoreKeyBackupAsync(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Restores a backed up key to a vault.
+            </summary>
+            <remarks>
+            Imports a previously backed up key into Azure Key Vault, restoring the key,
+            its key identifier, attributes and access control policies. The RESTORE
+            operation may be used to import a previously backed up key. Individual
+            versions of a key cannot be restored. The key is restored in its entirety
+            with the same key name as it had when it was backed up. If the key name is
+            not available in the target Key Vault, the RESTORE operation will be
+            rejected. While the key name is retained during restore, the final key
+            identifier will change if the key is restored to a different vault. Restore
+            will restore all versions and preserve version identifiers. The RESTORE
+            operation is subject to security constraints: The target Key Vault must be
+            owned by the same Microsoft Azure Subscription as the source Key Vault The
+            user must have RESTORE permission in the target Key Vault. This operation
+            requires the keys/restore permission.
+            </remarks>
+            <param name="backup">The backup blob associated with a key.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="backup"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="backup"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.ImportKey(System.String,Azure.Security.KeyVault.Keys.JsonWebKey,System.Threading.CancellationToken)">
+            <summary>
+            Imports an externally created key, stores it, and returns key parameters
+            and attributes to the client.
+            </summary>
+            <remarks>
+            The import key operation may be used to import any key type into an Azure
+            Key Vault. If the named key already exists, Azure Key Vault creates a new
+            version of the key. This operation requires the keys/import permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="keyMaterial">The <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> being imported.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="keyMaterial"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.ImportKeyAsync(System.String,Azure.Security.KeyVault.Keys.JsonWebKey,System.Threading.CancellationToken)">
+            <summary>
+            Imports an externally created key, stores it, and returns key parameters
+            and attributes to the client.
+            </summary>
+            <remarks>
+            The import key operation may be used to import any key type into an Azure
+            Key Vault. If the named key already exists, Azure Key Vault creates a new
+            version of the key. This operation requires the keys/import permission.
+            </remarks>
+            <param name="name">The name of the key.</param>
+            <param name="keyMaterial">The <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> being imported.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="keyMaterial"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.ImportKey(Azure.Security.KeyVault.Keys.ImportKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Imports an externally created key, stores it, and returns key parameters
+            and attributes to the client.
+            </summary>
+            <remarks>
+            The import key operation may be used to import any key type into an Azure
+            Key Vault. If the named key already exists, Azure Key Vault creates a new
+            version of the key. This operation requires the keys/import permission.
+            </remarks>
+            <param name="importKeyOptions">The key import configuration object containing information about the <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> being imported.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="importKeyOptions"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClient.ImportKeyAsync(Azure.Security.KeyVault.Keys.ImportKeyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Imports an externally created key, stores it, and returns key parameters
+            and attributes to the client.
+            </summary>
+            <remarks>
+            The import key operation may be used to import any key type into an Azure
+            Key Vault. If the named key already exists, Azure Key Vault creates a new
+            version of the key. This operation requires the keys/import permission.
+            </remarks>
+            <param name="importKeyOptions">The key import configuration object containing information about the <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> being imported.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="importKeyOptions"/> is null.</exception>
+            <exception cref="T:Azure.RequestFailedException">The server returned an error. See <see cref="P:System.Exception.Message"/> for details returned from the server.</exception>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.KeyClientOptions">
+            <summary>
+            Options that allow you to configure the management of the request sent to Key Vault.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Keys.KeyClientOptions.LatestVersion">
+            <summary>
+            The latest service version supported by this client library.
+            For more information, see
+            <see href="https://docs.microsoft.com/en-us/rest/api/keyvault/key-vault-versions"/>.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.KeyClientOptions.ServiceVersion">
+            <summary>
+            The versions of Azure Key Vault supported by this client
+            library.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Keys.KeyClientOptions.ServiceVersion.V7_0">
+            <summary>
+            The Key Vault API version 7.0.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyClientOptions.Version">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Keys.KeyClientOptions.ServiceVersion"/> of the service API used when
+            making requests. For more information, see
+            <see href="https://docs.microsoft.com/en-us/rest/api/keyvault/key-vault-versions"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyClientOptions.#ctor(Azure.Security.KeyVault.Keys.KeyClientOptions.ServiceVersion)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyClientOptions"/> class.
+            class.
+            </summary>
+            <param name="version">
+            The <see cref="T:Azure.Security.KeyVault.Keys.KeyClientOptions.ServiceVersion"/> of the service API used when
+            making requests.
+            </param>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.KeyCurveName">
+            <summary>
+            Elliptic Curve Cryptography (ECC) curve names.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyCurveName.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyCurveName"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyCurveName.P256">
+            <summary>
+            Gets the NIST P-256 elliptic curve, AKA SECG curve SECP256R1
+            For more information, see <see href="https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#curve-types"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyCurveName.P256K">
+            <summary>
+            Gets the SECG SECP256K1 elliptic curve.
+            For more information, see <see href="https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#curve-types"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyCurveName.P384">
+            <summary>
+            Gets the NIST P-384 elliptic curve, AKA SECG curve SECP384R1.
+            For more information, see <see href="https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#curve-types"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyCurveName.P521">
+            <summary>
+            Gets the NIST P-521 elliptic curve, AKA SECG curve SECP521R1.
+            For more information, see <see href="https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#curve-types"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyCurveName.op_Equality(Azure.Security.KeyVault.Keys.KeyCurveName,Azure.Security.KeyVault.Keys.KeyCurveName)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.KeyCurveName"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.KeyCurveName"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.KeyCurveName"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyCurveName.op_Inequality(Azure.Security.KeyVault.Keys.KeyCurveName,Azure.Security.KeyVault.Keys.KeyCurveName)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.KeyCurveName"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.KeyCurveName"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.KeyCurveName"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyCurveName.op_Implicit(System.String)~Azure.Security.KeyVault.Keys.KeyCurveName">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Keys.KeyCurveName"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyCurveName.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyCurveName.Equals(Azure.Security.KeyVault.Keys.KeyCurveName)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyCurveName.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyCurveName.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.KeyModelFactory">
+            <summary>
+            Model factory that enables mocking for the Key Vault Keys library.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyModelFactory.JsonWebKey(Azure.Security.KeyVault.Keys.KeyType,System.String,System.Collections.Generic.IEnumerable{Azure.Security.KeyVault.Keys.KeyOperation},System.Nullable{Azure.Security.KeyVault.Keys.KeyCurveName},System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> for mocking purposes.
+            </summary>
+            <param name="keyType">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.KeyType"/> property.</param>
+            <param name="id">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.Id"/> property.</param>
+            <param name="keyOps">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.KeyOps"/> property.</param>
+            <param name="curveName">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.CurveName"/> property.</param>
+            <param name="d">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.D"/> property.</param>
+            <param name="dp">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.DP"/> property.</param>
+            <param name="dq">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.DQ"/> property.</param>
+            <param name="e">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.E"/> property.</param>
+            <param name="k">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.K"/> property.</param>
+            <param name="n">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.N"/> property.</param>
+            <param name="p">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.P"/> property.</param>
+            <param name="q">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.Q"/> property.</param>
+            <param name="qi">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.QI"/> property.</param>
+            <param name="t">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.T"/> property.</param>
+            <param name="x">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.X"/> property.</param>
+            <param name="y">Sets the <see cref="P:Azure.Security.KeyVault.Keys.JsonWebKey.Y"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyModelFactory.KeyProperties(System.Uri,System.Uri,System.String,System.String,System.Boolean,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyProperties"/> for mocking purposes.
+            </summary>
+            <param name="id">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Id"/> property.</param>
+            <param name="vaultUri">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.VaultUri"/> property.</param>
+            <param name="name">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Name"/> property.</param>
+            <param name="version">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Version"/> property.</param>
+            <param name="managed">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Managed"/> property.</param>
+            <param name="createdOn">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.CreatedOn"/> property.</param>
+            <param name="updatedOn">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.UpdatedOn"/> property.</param>
+            <param name="recoveryLevel">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.RecoveryLevel"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyProperties"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyModelFactory.KeyVaultKey(Azure.Security.KeyVault.Keys.KeyProperties,Azure.Security.KeyVault.Keys.JsonWebKey)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> for mocking purposes.
+            </summary>
+            <param name="properties">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Properties"/> property, which provides the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Id"/> and <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Name"/> properties.</param>
+            <param name="key">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Key"/> property, which provides the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.KeyType"/> and <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.KeyOperations"/> properties.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyModelFactory.DeletedKey(Azure.Security.KeyVault.Keys.KeyProperties,Azure.Security.KeyVault.Keys.JsonWebKey,System.Uri,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.DeletedKey"/> for mocking purposes.
+            </summary>
+            <param name="properties">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Properties"/> property, which provides the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Id"/> and <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Name"/> properties.</param>
+            <param name="key">Sets the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Key"/> property, which provides the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.KeyType"/> and <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.KeyOperations"/> properties.</param>
+            <param name="recoveryId">Sets the <see cref="P:Azure.Security.KeyVault.Keys.DeletedKey.RecoveryId"/> property.</param>
+            <param name="deletedOn">Sets the <see cref="P:Azure.Security.KeyVault.Keys.DeletedKey.DeletedOn"/> property.</param>
+            <param name="scheduledPurgeDate">Sets the <see cref="P:Azure.Security.KeyVault.Keys.DeletedKey.ScheduledPurgeDate"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Keys.DeletedKey"/> for mocking purposes.</returns>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.KeyOperation">
+            <summary>
+            An operation that can be performed with the key.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyOperation.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyOperation.Encrypt">
+            <summary>
+            Gets a value that indicates the key can be used to encrypt with the <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.EncryptAsync(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Encrypt(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> methods.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyOperation.Decrypt">
+            <summary>
+            Gets a value that indicates the key can be used to decrypt with the <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.DecryptAsync(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Decrypt(Azure.Security.KeyVault.Keys.Cryptography.EncryptionAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> methods.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyOperation.Sign">
+            <summary>
+            Gets a value that indicates the key can be used to sign with the <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.SignAsync(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Sign(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> methods.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyOperation.Verify">
+            <summary>
+            Gets a value that indicates the key can be used to verify with the <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.VerifyAsync(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Byte[],System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.Verify(Azure.Security.KeyVault.Keys.Cryptography.SignatureAlgorithm,System.Byte[],System.Byte[],System.Threading.CancellationToken)"/> methods.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyOperation.WrapKey">
+            <summary>
+            Gets a value that indicates the key can be used to wrap another key with the <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.WrapKeyAsync(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.WrapKey(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> methods.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyOperation.UnwrapKey">
+            <summary>
+            Gets a value that indicates the key can be used to unwrap another key with the <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.UnwrapKeyAsync(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient.UnwrapKey(Azure.Security.KeyVault.Keys.Cryptography.KeyWrapAlgorithm,System.Byte[],System.Threading.CancellationToken)"/> methods.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyOperation.op_Equality(Azure.Security.KeyVault.Keys.KeyOperation,Azure.Security.KeyVault.Keys.KeyOperation)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyOperation.op_Inequality(Azure.Security.KeyVault.Keys.KeyOperation,Azure.Security.KeyVault.Keys.KeyOperation)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyOperation.op_Implicit(System.String)~Azure.Security.KeyVault.Keys.KeyOperation">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Keys.KeyOperation"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyOperation.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyOperation.Equals(Azure.Security.KeyVault.Keys.KeyOperation)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyOperation.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyOperation.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.KeyProperties">
+            <summary>
+            <see cref="T:Azure.Security.KeyVault.Keys.KeyProperties"/> is the resource containing all the properties of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> except <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> properties.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyProperties.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyProperties"/> class.
+            </summary>
+            <param name="name">The name of the key.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyProperties.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyProperties"/> class.
+            </summary>
+            <param name="id">The Id of the key.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="id"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.Name">
+            <summary>
+            Gets the name of the key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.Id">
+            <summary>
+            Gets the key identifier.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.VaultUri">
+            <summary>
+            Gets the Key Vault base <see cref="T:System.Uri"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.Version">
+            <summary>
+            Gets the version of the key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.Managed">
+            <summary>
+            Gets a value indicating whether the key's lifetime is managed by Key Vault.
+            If this key is backing a Key Vault certificate, the value will be true.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.Tags">
+            <summary>
+            Gets a dictionary of tags with specific metadata about the key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the key is enabled and useable for cryptographic operations.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.NotBefore">
+            <summary>
+            Gets or sets a <see cref="T:System.DateTimeOffset"/> of when the key will be valid and can be used for cryptographic operations.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.ExpiresOn">
+            <summary>
+            Gets or sets a <see cref="T:System.DateTimeOffset"/> of when the key will expire and cannot be used for cryptographic operations.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.CreatedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> of when the key was created.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.UpdatedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> of when the key was updated.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyProperties.RecoveryLevel">
+            <summary>
+            Gets the recovery level currently in effect for keys in the Key Vault.
+            If "Purgeable", the key can be permanently deleted by an authorized user;
+            otherwise, only the service can purge the key at the end of the retention interval.
+            </summary>
+            <value>Possible values include "Purgeable", "Recoverable+Purgeable", "Recoverable", and "Recoverable+ProtectedSubscription".</value>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyProperties.ParseId(System.Uri)">
+            <summary>
+            Parses the key identifier into the <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.VaultUri"/>, <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Name"/>, and <see cref="P:Azure.Security.KeyVault.Keys.KeyProperties.Version"/> of the key.
+            </summary>
+            <param name="idToParse">The key vault object identifier.</param>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.KeyType">
+            <summary>
+            <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/> key types.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyType.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyType.Ec">
+            <summary>
+            An Elliptic Curve Cryptographic (ECC) algorithm.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyType.EcHsm">
+            <summary>
+            An Elliptic Curve Cryptographic (ECC) algorithm backed by HSM.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyType.Rsa">
+            <summary>
+            An RSA cryptographic algorithm.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyType.RsaHsm">
+            <summary>
+            An RSA cryptographic algorithm backed by HSM.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyType.Oct">
+            <summary>
+            An AES cryptographic algorithm.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyType.op_Equality(Azure.Security.KeyVault.Keys.KeyType,Azure.Security.KeyVault.Keys.KeyType)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyType.op_Inequality(Azure.Security.KeyVault.Keys.KeyType,Azure.Security.KeyVault.Keys.KeyType)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyType.op_Implicit(System.String)~Azure.Security.KeyVault.Keys.KeyType">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Keys.KeyType"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyType.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyType.Equals(Azure.Security.KeyVault.Keys.KeyType)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyType.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyType.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.KeyVaultKey">
+            <summary>
+            <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> is the resource consisting of a value and its <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Properties"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.KeyVaultKey.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> class.
+            </summary>
+            <param name="name">The name of the key.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Id">
+            <summary>
+            Gets the key identifier.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Name">
+            <summary>
+            Gets the name of the key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Key">
+            <summary>
+            Gets the cryptographic key, the key type, and the operations you can perform using the key.
+            </summary>
+            <remarks>
+            See http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18 for specifications of a JSON web key.
+            </remarks>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyVaultKey.KeyType">
+            <summary>
+            Gets the <see cref="P:Azure.Security.KeyVault.Keys.KeyVaultKey.KeyType"/> for this <see cref="T:Azure.Security.KeyVault.Keys.JsonWebKey"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyVaultKey.KeyOperations">
+            <summary>
+            Gets the operations you can perform using the key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.KeyVaultKey.Properties">
+            <summary>
+            Gets additional properties of the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/>.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation">
+            <summary>
+            A long-running operation for <see cref="M:Azure.Security.KeyVault.Keys.KeyClient.StartRecoverDeletedKey(System.String,System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Keys.KeyClient.StartRecoverDeletedKeyAsync(System.String,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.Value">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> of the key being recovered.
+            You should await <see cref="M:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.WaitForCompletionAsync(System.Threading.CancellationToken)"/> before attempting to use a key in this pending state.
+            </summary>
+            <remarks>
+            Azure Key Vault will return a <see cref="T:Azure.Security.KeyVault.Keys.KeyVaultKey"/> immediately but may take time to actually recover the deleted key if soft-delete is enabled.
+            </remarks>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.HasCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.HasValue">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.GetRawResponse">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.UpdateStatus(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.UpdateStatusAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.WaitForCompletionAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Azure.Security.KeyVault.Keys.RecoverDeletedKeyOperation.WaitForCompletionAsync(System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Azure.Security.KeyVault.KeyVaultPage`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Azure.Security.KeyVault.KeyVaultPage`1.Items">
+            <summary>
+            Gets the content items.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.KeyVaultPage`1.NextLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="T:Azure.Core.Argument">
+            <summary>
+            Argument validation.
+            </summary>
+            <remarks>
+              <para>This class should be shared via source using Azure.Core.props and contain only common argument validation.
+                It is declared partial so that you can use the same familiar class name but extend it with project-specific validation.
+                To extend the functionality of this class, just declare your own partial <see cref="T:Azure.Core.Argument"/> class with project-specific methods.
+              </para>
+              <para>
+                Be sure to document exceptions thrown by these methods on your public methods.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNull``1(``0,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is null.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNull``1(System.Nullable{``0},System.String)">
+            <summary>
+            Throws if <paramref name="value"/> has not been initialized.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> has not been initialized.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is null or an empty collection.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> is an empty collection.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNullOrEmpty(System.String,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is null or an empty string.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNullOrWhiteSpace(System.String,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is null, an empty string, or consists only of white-space characters.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> is an empty string or consists only of white-space characters.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotDefault``1(``0@,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is the default value for type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of structure to validate which implements <see cref="T:System.IEquatable`1"/>.</typeparam>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> is the default value for type <typeparamref name="T"/>.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertInRange``1(``0,``0,``0,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is less than the <paramref name="minimum"/> or greater than the <paramref name="maximum"/>.
+            </summary>
+            <typeparam name="T">The type of to validate which implements <see cref="T:System.IComparable`1"/>.</typeparam>
+            <param name="value">The value to validate.</param>
+            <param name="minimum">The minimum value to compare.</param>
+            <param name="maximum">The maximum value to compare.</param>
+            <param name="name">The name of the parameter.</param>
+        </member>
+        <member name="T:Azure.Core.ArrayBufferWriter`1">
+            <summary>
+            Represents a heap-based, array-backed output sink into which <typeparam name="T"/> data can be written.
+            </summary>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.#ctor">
+            <summary>
+            Creates an instance of an <see cref="T:Azure.Core.ArrayBufferWriter`1"/>, in which data can be written to,
+            with the default initial capacity.
+            </summary>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.#ctor(System.Int32)">
+            <summary>
+            Creates an instance of an <see cref="T:Azure.Core.ArrayBufferWriter`1"/>, in which data can be written to,
+            with an initial capacity specified.
+            </summary>
+            <param name="initialCapacity">The minimum capacity with which to initialize the underlying buffer.</param>
+            <exception cref="T:System.ArgumentException">
+            Thrown when <paramref name="initialCapacity"/> is not positive (i.e. less than or equal to 0).
+            </exception>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.WrittenMemory">
+            <summary>
+            Returns the data written to the underlying buffer so far, as a <see cref="T:System.ReadOnlyMemory`1"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.WrittenSpan">
+            <summary>
+            Returns the data written to the underlying buffer so far, as a <see cref="T:System.ReadOnlySpan`1"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.WrittenCount">
+            <summary>
+            Returns the amount of data written to the underlying buffer so far.
+            </summary>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.Capacity">
+            <summary>
+            Returns the total amount of space within the underlying buffer.
+            </summary>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.FreeCapacity">
+            <summary>
+            Returns the amount of space available that can still be written into without forcing the underlying buffer to grow.
+            </summary>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.Clear">
+            <summary>
+            Clears the data written to the underlying buffer.
+            </summary>
+            <remarks>
+            You must clear the <see cref="T:Azure.Core.ArrayBufferWriter`1"/> before trying to re-use it.
+            </remarks>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.Advance(System.Int32)">
+            <summary>
+            Notifies <see cref="T:System.Buffers.IBufferWriter`1"/> that <paramref name="count"/> amount of data was written to the output <see cref="T:System.Span`1"/>/<see cref="T:System.Memory`1"/>
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Thrown when <paramref name="count"/> is negative.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Thrown when attempting to advance past the end of the underlying buffer.
+            </exception>
+            <remarks>
+            You must request a new buffer after calling Advance to continue writing more data and cannot write to a previously acquired buffer.
+            </remarks>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.GetMemory(System.Int32)">
+            <summary>
+            Returns a <see cref="T:System.Memory`1"/> to write to that is at least the requested length (specified by <paramref name="sizeHint"/>).
+            If no <paramref name="sizeHint"/> is provided (or it's equal to <code>0</code>), some non-empty buffer is returned.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Thrown when <paramref name="sizeHint"/> is negative.
+            </exception>
+            <remarks>
+            This will never return an empty <see cref="T:System.Memory`1"/>.
+            </remarks>
+            <remarks>
+            There is no guarantee that successive calls will return the same buffer or the same-sized buffer.
+            </remarks>
+            <remarks>
+            You must request a new buffer after calling Advance to continue writing more data and cannot write to a previously acquired buffer.
+            </remarks>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.GetSpan(System.Int32)">
+            <summary>
+            Returns a <see cref="T:System.Span`1"/> to write to that is at least the requested length (specified by <paramref name="sizeHint"/>).
+            If no <paramref name="sizeHint"/> is provided (or it's equal to <code>0</code>), some non-empty buffer is returned.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Thrown when <paramref name="sizeHint"/> is negative.
+            </exception>
+            <remarks>
+            This will never return an empty <see cref="T:System.Span`1"/>.
+            </remarks>
+            <remarks>
+            There is no guarantee that successive calls will return the same buffer or the same-sized buffer.
+            </remarks>
+            <remarks>
+            You must request a new buffer after calling Advance to continue writing more data and cannot write to a previously acquired buffer.
+            </remarks>
+        </member>
+        <member name="T:Azure.Core.Pipeline.ActivityExtensions">
+            <summary>
+            HACK HACK HACK. Some runtime environments like Azure.Functions downgrade System.Diagnostic.DiagnosticSource package version causing method not found exceptions in customer apps
+            This type is a temporary workaround to avoid the issue.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.Azure.KeyClientBuilderExtensions">
+            <summary>
+            Extension methods to <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/> or <see cref="T:Azure.Security.KeyVault.Keys.Cryptography.CryptographyClient"/> to clients builder.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Azure.KeyClientBuilderExtensions.AddKeyClient``1(``0,System.Uri)">
+            <summary>
+            Registers a <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/> instance with the provided <paramref name="vaultUri"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Azure.KeyClientBuilderExtensions.AddKeyClient``2(``0,``1)">
+            <summary>
+            Registers a <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/> instance with connection options loaded from the provided <paramref name="configuration"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Azure.KeyClientBuilderExtensions.AddCryptographyClient``1(``0,System.Uri)">
+            <summary>
+            Registers a <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/> instance with the provided <paramref name="vaultUri"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Azure.KeyClientBuilderExtensions.AddCryptographyClient``2(``0,``1)">
+            <summary>
+            Registers a <see cref="T:Azure.Security.KeyVault.Keys.KeyClient"/> instance with connection options loaded from the provided <paramref name="configuration"/> instance.
+            </summary>
+        </member>
+    </members>
+</doc>
