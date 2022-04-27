@@ -1,0 +1,224 @@
+.Span {
+  color: lightblue;
+  font-size: 20px;
+}
+.Input {
+  width: 100%;
+  padding: 50%;
+  /* box-sizing: border-box; */
+}
+/* .Submit {
+  padding-right: 10px;
+  border-style: btn btn-primary;
+} */
+
+.Label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.InputElemet {
+  outline: none;
+  border: 1px solid #ccc;
+  background-color: white;
+  font: inherit;
+  padding: 6px 10px;
+  display: block;
+  width: 100%;
+}
+
+.Form {
+  margin-top: 80px;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.Form2 {
+  margin-top: 60px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.Form1 {
+  max-width: 580px;
+  padding: 15px 35px 45px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 180px;
+}
+
+
+/* .InputElement:focus {
+  outline: none;
+  background-color: rgb(221, 9, 9);
+}
+
+.Invalid {
+  border: 1px solid red;
+  background-color: salmon;
+} */
+
+/* textarea:required {
+  border-color: red;
+} */
+/* input:required + label {
+  color: red;
+} */
+/* input:invalid {
+  border-left-color: salmon;
+} */
+
+/* style all input elements with a required attribute */
+/* input:required {
+  box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
+} */
+
+/**
+ * style input elements that have a required
+ * attribute and a focus state
+ */
+/* input:required:focus {
+  border: 1px solid red;
+  outline: none;
+} */
+
+/**
+ * style input elements that have a required
+ * attribute and a hover state
+ */
+input:required:hover {
+  opacity: 1;
+}
+
+/* button:hover:focus {
+  box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
+} */
+
+/* .div {
+  border: 25px solid #6c8fb2;
+} */
+
+.outer {
+  margin-top: 5%;
+}
+
+
+/*  */
+
+.checkboxcontainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+
+.checkboxcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: #ccc;
+}
+.checkboxcontainer:hover input ~ .checkmark {
+  background-color: #8c8c8c;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkboxcontainer input:checked ~ .checkmark {
+  background-color: #446ef7;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkboxcontainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkboxcontainer .checkmark:after {
+  left: 10px;
+  top: 5px;
+  width: 10px;
+  height: 16px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@media only screen and (max-width: 990px) {
+  .Form{
+    margin-left: 10px;
+    margin-right: 15px
+  }
+}
+
+
+
+
+@media only screen and (min-width: 768px) {
+  .col-1 {
+    width: 8.33%;
+  }
+  .col-2 {
+    width: 16.66%;
+  }
+  .col-3 {
+    width: 25%;
+  }
+  .col-4 {
+    width: 33.33%;
+  }
+  .col-5 {
+    width: 41.66%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-7 {
+    width: 58.33%;
+  }
+  .col-8 {
+    width: 66.66%;
+  }
+  .col-9 {
+    width: 75%;
+  }
+  .col-10 {
+    width: 83.33%;
+  }
+  .col-11 {
+    width: 91.66%;
+  }
+  .col-12 {
+    width: 100%;
+  }
+  
+}
