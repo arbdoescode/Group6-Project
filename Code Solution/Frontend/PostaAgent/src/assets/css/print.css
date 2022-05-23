@@ -1,0 +1,41 @@
+@media print {
+  @page {
+    margin: 0 auto;
+    size: 300px 250mm;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  #printContainer {
+    width: 250px;
+    margin: auto;
+    text-align: justify;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+}
+
+/* @media all {
+  printed-div {
+    display: none;
+  }
+} */
+
+/* @media print {
+  printed-div {
+    display: block;
+  }
+  .logo-print {
+    width: 291px;
+    height: 109px;
+    display: list-item;
+    list-style-image: url(../img/th.jpg);
+    list-style-position: inside;
+  }
+} */
