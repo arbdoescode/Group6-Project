@@ -1,4 +1,4 @@
-![](https://www.linkpicture.com/q/Gr6logo.png)
+#![Group 6](https://www.linkpicture.com/q/Gr6logo.png)
 Project repository for Software Engineering Course, CEN 3, Epoka University, Academic year 2021-2022
 ----------------------------------------------------------------------------------------------------
 
