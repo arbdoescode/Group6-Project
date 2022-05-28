@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderLinks from "../Header/HeaderLinks.jsx";
 import dashboardRoutes from "../../routes/dashboard.jsx";
-import RaportGrumbullimeArka from "../../views/Raporte/RaportGrumbullimeArka.jsx";
-import RaportPodeGrumbulluar from "../../views/Raporte/RaportPodeGrumbulluar.jsx";
-import RaportDorezimeArka from "../../views/Raporte/RaportDorezimeArka.jsx";
 import Select from "react-select";
 import Grumbullime from "../../views/Grumbullime.jsx";
 
