@@ -906,7 +906,124 @@ namespace AcApi.Services
 
         #region Romeisa Aliu
 
+        public List<string> GetArsye()
+        {
+            List<string> rtn = new List<string>();
+
+            var query = (from obj in dbContext.ARSYE_MOSDOREZIMI
+
+                         select obj.EMRI).ToList();
+
+            rtn = query;
+
+            return rtn;
+        }
+
+        public bool VerifikoCante(string kodcante)
+        {
+
+            var query = (from obj in dbContext.CANTATs
+                         where obj.CANTA_STATUS_ID == 1
+                         select obj).ToList();
+            if (query.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+
+
+
+        private long? GetIdPod( string Pod)
+        {
+            var query = (from obj in dbContext.PODs
+                         where obj.KODI == Pod 
+                         select obj.ID).ToList();
+            return query.FirstOrDefault();
+        }
+
+        public bool VerifikoPodeneCante(string[] kodcante , string canta)
+        {
+            bool result = true;
+            var queryelse = (from obj in dbContext.CANTATs
+                         where obj.KODI == canta
+                         select obj.ID).ToList();
+
+            long smth = queryelse.FirstOrDefault();
+            var query = (from obj in dbContext.CANTA_PODE
+                         where obj.CANTA_ID == smth
+                         select obj.POD_ITEM_ID).ToList();
+            
+
+            for(int i = 0; i < kodcante.Length; i++)
+            {
+                if (query.Contains(GetIdPod(kodcante[i])))
+                {
+                   continue;
+                }
+                else
+                {
+                    result = false;
+                    break;
+                }
+
+            }
+
+            return result;
+
+
+
+
+        }
+
+        public DailyRaportRes DailyRaport()
+        {
+            DailyRaportRes rtn = new DailyRaportRes();
+
+            var query = (from obj in dbContext.PODs
+                         where obj.DATA < DateTime.Today
+                         select obj.KODI).ToList();
+            rtn.NrPod = query;
+
+            var query2 = (from obj in dbContext.PODs
+                         where obj.DATA < DateTime.Today
+                         select obj.KODI_LEVIZJES).ToList();
+
+            rtn.KodLevizje = query2;
+
+            var query3 = (from obj in dbContext.PODs
+                         where obj.DATA < DateTime.Today
+                         select obj.PERSHKRIMI).ToList();
+            rtn.Pershkrimi = query3;
+
+            var query4 = (from obj in dbContext.PODs
+                         where obj.DATA < DateTime.Today
+                         select obj.SHUMA_SHERBIME_EXTRA).ToList();
+            rtn.MenyraPageses = query4;
+
+            var query5 = (from obj in dbContext.PODs
+                         where obj.DATA < DateTime.Today
+                         select obj.MAR_ADRESA).ToList();
+            rtn.Destinacioni = query5;
+
+            var query6 = (from obj in dbContext.PODs
+                         where obj.DATA < DateTime.Today
+                         select obj.PERSHKRIMI).ToList();
+            rtn.KushPaguan = query6;
+
+            return rtn;
+        }
+
+
+
+
         #endregion
+
 
         #endregion
 
