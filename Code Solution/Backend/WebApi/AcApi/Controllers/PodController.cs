@@ -210,8 +210,90 @@ namespace AcApi.Controllers
 
         }
 
-
+        
        
+        [HttpPost]
+        [Route("api/POD/GetArsye")]
+        public List<string> GetArsye()
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                ret = pod.GetArsye();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+        
+        [HttpPost]
+        [Route("api/POD/VerifikoCante")]
+        public bool VerifikoCante(HapVerifikoCanteReq param)
+        {
+            bool ret;
+
+            try
+            {
+
+
+                
+
+                ret = pod.VerifikoCante(param.CantaKodi);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+
+        [HttpPost]
+        [Route("api/POD/VerifikoPodeneCante")]
+        public bool VerifikoPodeneCante(HapVerifikoCanteReq param)
+        {
+            bool ret;
+
+            try
+            {
+               
+                ret = pod.VerifikoPodeneCante(param.NrPod, param.CantaKodi);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+
+        [HttpPost]
+        [Route("api/POD/DailyRaport")]
+        public DailyRaportRes DailyRaport()
+        {
+            DailyRaportRes ret = new DailyRaportRes();
+
+            try
+            {
+                
+                ret = pod.DailyRaport();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+        
 
 
 
