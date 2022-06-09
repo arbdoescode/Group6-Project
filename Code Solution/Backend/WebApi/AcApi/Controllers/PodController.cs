@@ -482,6 +482,108 @@ namespace AcApi.Controllers
             return resp;
 
         }
+        
+        [HttpPost]
+        [Route("api/POD/Dorezo")]
+        public BaseRes SaveNewPodKS([FromBody] DorezoPodReq param)
+        {
+            BaseRes ret = new BaseRes();
+
+
+
+            try
+            {
+                ret = pod.DorezoPod(param);
+
+            }
+            catch (Exception ex)
+            {
+                ret = new PodSaveRes();
+
+                //ret.ResultCode = 1;
+                string strError = ex.Message;
+                ret.ResultMessage += strError;
+
+                if (ex.InnerException != null)
+                {
+                    ret.ResultMessage += ex.InnerException.Message + strError;
+                }
+
+
+                return ret;
+            }
+
+            return ret;
+
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetKod")]
+        public BaseRes GetKod(DorezoPodReq param)
+        {
+            string ret = "";
+
+            BaseRes resp = new BaseRes();
+
+            try
+            {
+                ret = pod.GetKorrier(param.PodKodi);
+
+
+                if (ret != "")
+                {
+
+                    resp.Result = true;
+                    resp.ResultMessage = ret;
+                }
+
+                else
+                {
+
+                    resp.Result = false;
+                    resp.ResultMessage = "Error !";
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+                //ret.ResultCode = 1;
+                string strError = ex.Message;
+
+
+                if (ex.InnerException != null)
+                {
+                    resp.ResultMessage += ex.InnerException.Message + strError;
+                }
+
+
+                return resp;
+            }
+
+            return resp;
+
+        }
+        [HttpPost]
+        [Route("api/POD/GetArsye")]
+        public List<string> GetArsye()
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                ret = pod.GetArsye();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+        
+        
 
 
     }
