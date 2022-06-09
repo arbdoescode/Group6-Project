@@ -212,8 +212,6 @@ namespace AcApi.Controllers
 
         }
 
-
-        //Arb
         [HttpPost]
         [Route("api/POD/KrijoCante")]
         public BaseRes KrijoCante(KrijoCanteReq param)
@@ -366,69 +364,124 @@ namespace AcApi.Controllers
         }
         
         [HttpPost]
-        [Route("api/POD/VerifikoCante")]
-        public bool VerifikoCante(HapVerifikoCanteReq param)
+        [Route("api/POD/HapCante")]
+        public BaseRes HapCante(HapVerifikoCanteReq param)
         {
-            bool ret;
+
+
+            BaseRes resp = new BaseRes();
+
 
             try
             {
 
 
-                
+                resp = pod.HapCante(param);
 
-                ret = pod.VerifikoCante(param.CantaKodi);
+
 
             }
             catch (Exception ex)
             {
-                throw ex;
-            }
-            return ret;
-        }
 
+
+                //ret.ResultCode = 1;
+                string strError = ex.Message;
+
+
+                if (ex.InnerException != null)
+                {
+                    resp.ResultMessage += ex.InnerException.Message + strError;
+                }
+
+
+                return resp;
+            }
+
+            return resp;
+
+        }
 
         [HttpPost]
-        [Route("api/POD/VerifikoPodeneCante")]
-        public bool VerifikoPodeneCante(HapVerifikoCanteReq param)
+        [Route("api/POD/VerifikoCantaPode")]
+        public List<ResponseVerifikoCante> VerifikoCantaPode(HapVerifikoCanteReq param)
         {
-            bool ret;
 
+
+            List<ResponseVerifikoCante> resp = new List<ResponseVerifikoCante>();
+
+
+
+            BaseRes ret = new BaseRes();
+            BaseRes ret2 = new BaseRes();
             try
             {
-               
-                ret = pod.VerifikoPodeneCante(param.NrPod, param.CantaKodi);
+                if (pod.CheckIsCantaHapur(param))
+                {
+
+                    if (param.NrPod.Length == 0)
+                    {
+                        ResponseVerifikoCante res = new ResponseVerifikoCante();
+                        res.Result = true;
+                        res.ResultMessage = "Canta u verifikua me sukses!";
+                        resp.Insert(0, res);
+                    }
+                    for (int i = 0; i < param.NrPod.Length; i++)
+                    {
+                        ResponseVerifikoCante res = new ResponseVerifikoCante();
+
+                        ret = pod.VerifikoCante(param.NrPod[i],param.CantaKodi);
+                        if (ret.Result == true)
+                        {
+
+                            res.NrPod = param.NrPod[i];
+                            res.Result = true;
+                            res.ResultMessage = ret.ResultMessage;
+                            res.Verifikim = "OK";
+                            resp.Add(res);
+
+                        }
+                        else
+                        {
+                            res.NrPod = param.NrPod[i];
+                            res.Result = true;
+                            res.ResultMessage = ret.ResultMessage;
+                            res.Verifikim = "Pa Verifikuar";
+                            resp.Add(res);
+
+                        }
+                    }
+
+                }
+                else
+                {
+                    ResponseVerifikoCante res = new ResponseVerifikoCante();
+                    res.Result = false;
+                    res.ResultMessage = "Kujdes! Nuk mund te verifikoni nje cante e cila nuk eshte hapur nga agjensia juaj.";
+                    resp.Add(res);
+                }
 
             }
             catch (Exception ex)
             {
-                throw ex;
+                ResponseVerifikoCante res = new ResponseVerifikoCante();
+
+                //ret.ResultCode = 1;
+                string strError = ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    res.ResultMessage += ex.InnerException.Message + strError;
+                }
+
+                resp.Add(res);
+
+                return resp;
             }
-            return ret;
+
+            return resp;
+
         }
-
-
-        [HttpPost]
-        [Route("api/POD/DailyRaport")]
-        public DailyRaportRes DailyRaport()
-        {
-            DailyRaportRes ret = new DailyRaportRes();
-
-            try
-            {
-                
-                ret = pod.DailyRaport();
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return ret;
-        }
-
-        
-
 
 
     }
