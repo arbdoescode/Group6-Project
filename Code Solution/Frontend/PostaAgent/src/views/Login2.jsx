@@ -43,7 +43,7 @@ class Login2 extends Component {
           window.UserP.agency = searchresults.Agjensi;
           window.UserP.terminalId = searchresults.TerminalId;
           window.UserP.idProcesori = searchresults.IdProcesori;
-
+          window.UserP.UserRole = searchresults.UserRole;
           this.props.test("test-key", e, searchresults);
 
         
