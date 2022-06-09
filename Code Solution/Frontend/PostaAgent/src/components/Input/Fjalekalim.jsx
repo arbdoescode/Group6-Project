@@ -34,17 +34,19 @@ class Fjalekalim extends Component {
         window.UserP.key
       ).toString()
     };
-
+    if(this.state.pass==this.state.Password){
     axios
-      .post("https://api.albaniancourier.al/api/POD/ndrysho/password", data)
-      //.post("http://localhost:35832/api/POD/ndrysho/password", data)
+      .post("http://localhost:35832/api/POD/ndrysho/password", data)
       .then(response => {
       
 
         this.setState({ message: response.data.ResultDescription });
         swal(this.state.message);
       });
-  
+    }else{
+      console.log(window.UserP);
+      swal("Vendosni parametrat sakt!");
+    }
   };
 
   render() {
@@ -54,7 +56,7 @@ class Fjalekalim extends Component {
           <label className="">Fjalekalimi i Vjeter</label>
           <input
             className="form-control "
-            type="Tag"
+            type="Password"
             value={this.state.Tag}
             name="Tag"
             onChange={e => this.handleInputChange(e, "Tag")}
@@ -75,7 +77,7 @@ class Fjalekalim extends Component {
             <label className="">Perserit Fjalekalimin</label>
             <input
               className="form-control "
-              type="pass"
+              type="Password"
               value={this.state.pass}
               name="pass"
               onChange={e => this.handleInputChange(e, "pass")}
