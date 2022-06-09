@@ -2086,107 +2086,119 @@ namespace AcApi.Services
             return rtn;
         }
 
-        public bool VerifikoCante(string kodcante)
+       public BaseRes HapCante(HapVerifikoCanteReq pReq)
         {
+            BaseRes res = new BaseRes();
 
-            var query = (from obj in dbContext.CANTATs
-                         where obj.CANTA_STATUS_ID == 1
-                         select obj).ToList();
-            if (query.Count == 0)
+            try
+
             {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+                var ret = dbContext.CANTATs.Where(e => e.KODI == pReq.CantaKodi).
+               Select(e => e.CANTA_STATUS_ID).ToList();
 
-        }
-
-
-
-
-        private long? GetIdPod( string Pod)
-        {
-            var query = (from obj in dbContext.PODs
-                         where obj.KODI == Pod 
-                         select obj.ID).ToList();
-            return query.FirstOrDefault();
-        }
-
-        public bool VerifikoPodeneCante(string[] kodcante , string canta)
-        {
-            bool result = true;
-            var queryelse = (from obj in dbContext.CANTATs
-                         where obj.KODI == canta
-                         select obj.ID).ToList();
-
-            long smth = queryelse.FirstOrDefault();
-            var query = (from obj in dbContext.CANTA_PODE
-                         where obj.CANTA_ID == smth
-                         select obj.POD_ITEM_ID).ToList();
-            
-
-            for(int i = 0; i < kodcante.Length; i++)
-            {
-                if (query.Contains(GetIdPod(kodcante[i])))
+                if (ret.Count==0)
                 {
-                   continue;
+                    res.Result = false;
+                    res.ResultMessage = "Canta nuk existon";
+
                 }
                 else
                 {
-                    result = false;
-                    break;
-                }
+                    if (ret[0] != 1)
+                    {
+                        res.Result = false;
+                        res.ResultMessage = "Canta eshte hapur nje here";
+                    }
+                    else
+                    {
+                        var recordToUpdate = (from p in dbContext.CANTATs
+                                             where (p.KODI == pReq.CantaKodi)
+                                             select p).Single();
+                        recordToUpdate.CANTA_STATUS_ID = 2;
+                        dbContext.SaveChanges();
+                        res.Result = true;
+                        res.ResultMessage = "Canta u hap me sukses";
+                    }
+                } 
+                
 
             }
 
-            return result;
 
 
+            catch (Exception ex)
+            {
+                res.Result = false;
+                res.ResultMessage = "Ka ndodhur nje gabim : " + ex.Message;
 
 
+            }
+
+            return res;
         }
 
-        public DailyRaportRes DailyRaport()
+        public BaseRes VerifikoCante(string nrPod, string cantaKode)
         {
-            DailyRaportRes rtn = new DailyRaportRes();
+            BaseRes res = new BaseRes();
+            var ret = dbContext.PODs.Where(e => e.KODI == nrPod).
+               Select(e => e.ID).ToList();
+            long? idPodi = ret[0];
+            var ret2 = dbContext.CANTA_PODE.Where(e => e.POD_ITEM_ID == idPodi).Select(e => e.CANTA_ID).ToList();
+            long idCante = ret2[0];
+            var retCanta = dbContext.CANTATs.Where(e => e.ID == idCante).Select(e => e.KODI).ToList();
 
-            var query = (from obj in dbContext.PODs
-                         where obj.DATA < DateTime.Today
-                         select obj.KODI).ToList();
-            rtn.NrPod = query;
+            if (ret2.Count == 0)
+            {
+                res.Result = false;
+                res.ResultMessage = "Podi nuk existon ne cante";
+            }
+            else
+            {
+                if (retCanta[0] == cantaKode)
+                {
+                    var recordToUpdate = (from p in dbContext.PODs
+                                          where (p.KODI == nrPod)
+                                          select p).Single();
+                    recordToUpdate.POD_STATUS_ID = 4;
+                    dbContext.SaveChanges();
+                    res.Result = true;
+                    res.ResultMessage = "Podi u verifikua";
+                }
+                else
+                {
+                    res.Result = false;
+                    res.ResultMessage = "Podi nuk eshte i kesaj cante";
+                }
+            }
 
-            var query2 = (from obj in dbContext.PODs
-                         where obj.DATA < DateTime.Today
-                         select obj.KODI_LEVIZJES).ToList();
-
-            rtn.KodLevizje = query2;
-
-            var query3 = (from obj in dbContext.PODs
-                         where obj.DATA < DateTime.Today
-                         select obj.PERSHKRIMI).ToList();
-            rtn.Pershkrimi = query3;
-
-            var query4 = (from obj in dbContext.PODs
-                         where obj.DATA < DateTime.Today
-                         select obj.SHUMA_SHERBIME_EXTRA).ToList();
-            rtn.MenyraPageses = query4;
-
-            var query5 = (from obj in dbContext.PODs
-                         where obj.DATA < DateTime.Today
-                         select obj.MAR_ADRESA).ToList();
-            rtn.Destinacioni = query5;
-
-            var query6 = (from obj in dbContext.PODs
-                         where obj.DATA < DateTime.Today
-                         select obj.PERSHKRIMI).ToList();
-            rtn.KushPaguan = query6;
-
-            return rtn;
+            return res;
         }
 
+        public bool CheckIsCantaHapur(HapVerifikoCanteReq param)
+        {
+            bool res = false;
 
+            var ret = dbContext.CANTATs.Where(e => e.KODI == param.CantaKodi).
+               Select(e => e.CANTA_STATUS_ID).ToList();
+
+            if (ret.Count != 0)
+            {
+                if (ret[0] == 2)
+                {
+                    res = true;
+                }
+                else
+                {
+                    res = false;
+                }
+            }
+            else
+            {
+                res = false;
+            }
+
+            return res;
+        }
 
 
         #endregion
