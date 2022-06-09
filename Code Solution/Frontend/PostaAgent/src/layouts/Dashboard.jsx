@@ -10,6 +10,8 @@ import axios from "axios";
 import { style } from "../variables/Variables.jsx";
 
 import dashboardRoutes from "../routes/dashboard.jsx";
+import dashboardRoutes2 from "../routes/dashboardadmin.jsx";
+import dashboardRoutes3 from "../routes/dashboardCourier.jsx";
 import Login2 from "../views/Login2";
 import HeaderLinks from "../components/Header/HeaderLinks";
 
@@ -25,7 +27,8 @@ class Dashboard extends Component {
        user: "",
        _notificationSystem: null,
         number: "",
-       url: "http://localhost:35832/api/",
+       
+       url: "http://localhost:35832/api/", 
       
     };
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -74,6 +77,14 @@ class Dashboard extends Component {
     this.setState({ isLogedIn: false });
     localStorage.setItem('token','');
   };
+  hoverToLogout = (e) => {
+    e.target.style.backgroundColor="#d9d9d9"
+    e.target.style.color="#33adff";
+  };
+  hoverToLeave = (e) => {
+    e.target.style.backgroundColor="#fff"
+    e.target.style.color="#000";
+  };
   handleNotificationClick(position) {
     var color = Math.floor(Math.random() * 4 + 1);
     var level;
@@ -108,7 +119,7 @@ class Dashboard extends Component {
   componentDidMount() {}
 
   componentWillMount() {
-
+      
       const name = localStorage.getItem('token');
 
   if(name){
@@ -120,6 +131,7 @@ class Dashboard extends Component {
       usernameKS: "",
       key: "",
       agencyId:"",
+      // userrole:"",
       url:this.state.url,
     };
     
@@ -248,33 +260,18 @@ class Dashboard extends Component {
           <div id="main-panel" className="main-panel" ref="mainPanel">
             {/* <label> {userProfile.use} </label> */}
             <span className="label label-success" style={style}>
-              <div className="row">
-                <div className="col-md-11">
-                  <NavItem>
-                    <span data-notify="icon" className="pe-7s-users" />
-                    &nbsp; Perdorues : {window.UserP.username}{" "}
-                  </NavItem>
+              {/* headeri */}
+              <div style={{"width":"100%","height":"55px","backgroundColor":"#fff","border":"1px solid #808080","position": "relative"}}>
+                <div style={{"margin": "0","position": "absolute","top": "50%","-ms-transform": "translateY(-50%)","transform": "translateY(-50%)","left":"15px"}}>
+                  <button className="pe-7s-power" onMouseOver={e => this.hoverToLogout(e)} onMouseOut={e => this.hoverToLeave(e)} style={{"color":"#000","background-color": "#fff", "border": "1px solid #d9d9d9","padding": "8px 10px","text-align": "center","text-decoration": "none","display": "inline-block","font-size": "18px","transition-duration": "0.4s","cursor": "pointer","borderRadius":"4px"}} onClick={() => this.redirectToLogin()}>
+                    
+                  </button>
                 </div>
-                <div style={{ float: "right" }}>
-                  {<HeaderLinks {...this.props} />}
-                </div>
-                <Nav pullRight>
-                  {/* <NavItem eventKey={1} href="#">
-                    Account
-                  </NavItem> */}
-                  <NavItem
-                    eventKey={3}
-                       href="#"
-                    onClick={() => this.redirectToLogin()}
-                  >
-                    <span data-notify="icon" className="pe-7s-power" />
-                    &nbsp; Log out
-                  </NavItem>
-                </Nav>
               </div>
             </span>
             <Header {...this.props} />
-            <Switch>
+            { (window.UserP.UserRole==="3") ?<Switch>
+              
               {dashboardRoutes.map((prop, key) => {             
                 if (prop.name === "Notifications")
                   return (     
@@ -311,8 +308,104 @@ class Dashboard extends Component {
                 );
               
               })}
+              
+
+
+
+
       
-            </Switch>
+            </Switch>:(window.UserP.UserRole==="2") ?<Switch>
+              
+              {dashboardRoutes2.map((prop, key) => {             
+                if (prop.name === "Notifications")
+                  return (     
+                               
+                    <Route
+                   
+                      // path={prop.path}
+                      // key={key}                                
+                      // render={(routeProps) =>  (
+                      //    <prop.component                    
+                      //   {...routeProps}
+                      //    handleClick={this.handleNotificationClick}
+                      //    onClick={this.props.items}
+              
+                      // /> 
+                 
+                    path={prop.path}
+                    component={prop.component}   
+                      
+                    key={key}
+                  />                   
+                  );
+
+                if (prop.redirect)
+                  return <Redirect from={prop.path} to={prop.to} key={key}  />;
+                return (
+            
+                  <Route
+                    path={prop.path}
+                    component={prop.component}  
+                         //   component={prop.items}
+                    key={key}
+                  />
+                );
+              
+              })}
+              
+
+
+
+
+      
+            </Switch>:(window.UserP.UserRole==="1") ?<Switch>
+              
+              {dashboardRoutes3.map((prop, key) => {             
+                if (prop.name === "Notifications")
+                  return (     
+                               
+                    <Route
+                   
+                      // path={prop.path}
+                      // key={key}                                
+                      // render={(routeProps) =>  (
+                      //    <prop.component                    
+                      //   {...routeProps}
+                      //    handleClick={this.handleNotificationClick}
+                      //    onClick={this.props.items}
+              
+                      // /> 
+                 
+                    path={prop.path}
+                    component={prop.component}   
+                      
+                    key={key}
+                  />                   
+                  );
+
+                if (prop.redirect)
+                  return <Redirect from={prop.path} to={prop.to} key={key}  />;
+                return (
+            
+                  <Route
+                    path={prop.path}
+                    component={prop.component}  
+                         //   component={prop.items}
+                    key={key}
+                  />
+                );
+              
+              })}
+              
+
+
+
+
+      
+            </Switch>:
+            
+            
+            null}
 
             <Footer />
           </div>
