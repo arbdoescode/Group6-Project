@@ -903,6 +903,142 @@ namespace AcApi.Services
         #region Arb Koci
 
         
+        public BaseRes DorezoPod(DorezoPodReq param)
+        {
+            BaseRes res = new BaseRes();
+
+
+
+            //param.StatusPod = "Dorezuar ne Klient";
+            //param.StatusFizikPod = "I Rregullt";
+
+
+            ////  param.AgjensiaBurim = "";
+
+            //param.AgjensiaDest = "";
+            ////   param.PerdoruesId;
+            //param.Korrieri = CheckKorrierDorezime(param);
+            //param.Shoferi = "";
+            //param.Targa = "";
+
+            //long? podId = GetPodId(param.PodKodi);
+
+            ////if (!ValidateKorrierPod(podId, param.Korrieri))
+            ////{
+            ////    res.Result = false;
+            ////    res.ResultMessage = "Pod nuk është shpërndarë në korrier! Nuk mund te beni dorezimin e podit :  " + param.PodKodi;
+            ////    return res;
+            ////}
+
+            ////else
+            ////{
+            //SqlParameter[] SqlParaArr = PrepParamDorezo(param);
+
+            //ExecuteNonQuery("PROC_SAVE_SEND_NE_KLIENT", SqlParaArr);
+
+
+            //res.ResultMessage = SqlParaArr[15].Value.ToString();
+
+            //if (res.ResultMessage != "Success")
+            //{
+
+            //    res.Result = false;
+            //    res.ResultMessage = SqlParaArr[15].Value.ToString() + " : " + SqlParaArr[14].Value.ToString();
+            //}
+            //else
+            //{
+            //    if (param.ArsyeMosdorezimi == null && GetDerguesId(param.PodKodi) == 1622)
+            //    {
+            //        SendNotificationGjejeVete(param.PodKodi);
+            //    }
+            //    res.Result = true;
+            //    res.ResultMessage = SqlParaArr[15].Value.ToString() + " : " + SqlParaArr[14].Value.ToString();
+            //}
+
+
+            return res;
+
+            //  }
+        }
+
+        public string GetKorrier(string podKodi)
+        {
+            string rsp = "";
+
+            long? test = GetKorrierIdPod(podKodi);
+
+            var ret = dbContext.KORRIERETs.Where(e => e.ID == test).Select(e => e.KODI).FirstOrDefault().ToString();
+            var ret1 = dbContext.KORRIERETs.Where(e => e.ID == test).Select(e => e.EMRI).FirstOrDefault().ToString();
+            var ret2 = dbContext.KORRIERETs.Where(e => e.ID == test).Select(e => e.MBIEMRI).FirstOrDefault().ToString();
+            if (ret.Count() == 0)
+            {
+                return "";
+            }
+
+            else
+            {
+                rsp = ret+" : "+ret1+" "+ret2;
+            }
+
+
+            return rsp;
+        }
+
+        private long? GetKorrierIdPod(string podkodi)
+        {
+            long? ret = 0;
+
+            long? stId = 0;
+
+            try
+            {
+
+                long? podId = GetPodId(podkodi);
+
+                var query = (from t in dbContext.PODs
+                             where
+                             t.ID == podId
+                             select t.KORRIERI_ID);
+
+
+                if (query == null)
+                {
+                    ret = -1;
+                }
+
+                stId = query.ToList().Last<long?>();
+
+                ret = stId;
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+
+            return ret;
+
+        }
+
+        private long? GetPodId(string podKodi)
+        {
+            long podId = 0;
+
+            var query = dbContext.PODs.FirstOrDefault(e => e.KODI == podKodi).ID;
+
+            if (query == null)
+            {
+                return 0;
+            }
+
+            podId = query;
+
+            return podId;
+        }
+    
+        
+        
         public PodSaveRes NdryshoPassword(NdryshoPassReq pReq)
         {
             PodSaveRes res = new PodSaveRes();
