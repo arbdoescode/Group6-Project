@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -156,6 +156,16 @@ namespace AcApi.Controllers
 
         }
 
+        private string GetUserRole(string pUsername)
+        {
+            var ret = kl.PERDORUES.Where(e => e.USERNAME == pUsername).Select(e => e.RoleID).FirstOrDefault().ToString();
+
+            //var retRole = 
+
+            return ret;
+
+
+        }
 
         [HttpPost]
         [Route("api/LoginKS")]
@@ -175,7 +185,7 @@ namespace AcApi.Controllers
                 ret.Agjensi = agencyId.ToString();
                 ret.Result = true;
                 ret.ResultMessage = userKey.GetKeyToday(obj.Username);
-
+                ret.UserRole = GetUserRole(ret.Username);
                 if (ret.ResultMessage == null || ret.ResultMessage.Count() == 0)
                 {
                     ret.ResultMessage= userKey.SaveSecretKey(obj.Username);
