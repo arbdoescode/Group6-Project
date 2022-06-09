@@ -1,483 +1,506 @@
 import React, { Component } from "react";
-import { Grid, Row, Col } from "react-bootstrap";
-import { Card } from "../components/Card/Card.jsx";
-import "../components/Input/Input.css";
-import axios from "axios";
 import Select from "react-select";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../assets/css/Modal.css";
 import ReactTable from "react-table";
-import "react-table/react-table.css";
-import { PodSaveReq } from "../FacadesJson/PodSaveReq";
-import HmacSHA256 from "crypto-js/hmac-sha256";
-import logo from "../assets/img/logo2.png";
-import LoadingSpinner from "../components/Input/LoadingSpinner";
+import DatePicker from "react-date-picker";
+import axios from "axios";
 import SweetAlert from "react-bootstrap-sweetalert";
-import swal from "sweetalert";
-import Dashboard from "../layouts/Dashboard.jsx";
-import Login2 from "./Login2.jsx";
-import { AST_False } from "terser";
-//import { Checkbox } from "@material-ui/core";
-
-const opsione = [
-  { value: "1", label: "D2D" },
-  { value: "2", label: "P2P" },
-  { value: "3", label: "D2P" },
-  { value: "4", label: "P2D" },
-];
+import { PodDorezoReq } from "../FacadesJson/PodDorezoReq";
+import { convertToDropDown } from "../components/Methods/Methods";
+import LoadingSpinner from "../components/Input/LoadingSpinner";
+import HmacSHA256 from "crypto-js/hmac-sha256";
 
 class Dorezime extends Component {
   state = {
-    nrPodi: "",
-    kodKorrieri: "",
-    marresi: "",
-    arsye: "",
+    PodKodi: "",
+    CantaKodi: "",
+    Veprimi: "",
+    Ora: new Date().toString().substring(16, 21),
+    Marresi: "",
+    ArsyeMosdorezimi: "",
+    PerdoruesId: "",
+    Korrieri: "",
+    IdProcesori: "",
+    loading: false,
+    data: new Date().toString().substring(16, 21),
+    date: "", //new Date().toString().substring(16, 21)
+    data2: "",
+    alert: null,
+    posts: [],
+    rapFacade: [PodDorezoReq],
+    ddlDisableArsye: true,
+    ddlMosdorezim: false,
+    username: window.UserP.username,
   };
 
-  handleClick = (e) => {
-    this.setState({ loading: true }, () => {
-      axios
-        .post(window.UserP.url + "POD/SaveNewPODKS", this.state.PodSaveReq)
-        .then((response) => {
-          const searchresults = response.data;
-          if (searchresults.Result == true) {
-            this.setState({
-              cmimibaze: searchresults.ResultMessageTotali,
-              showModal: true,
-              alert: null,
-              error1: searchresults.ResultMessage,
-              loading: false,
-              showPrint: true,
-            });
-            this.showResponse2();
-          } else {
-            this.setState({
-              showModal: true,
-              loading: false,
-              alert: null,
-              error1: searchresults.Error + searchresults.ResultDescription,
-            });
+  componentDidMount() {
+    this.intervalID = setInterval(() => this.tick(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
+  }
+  tick() {
+    this.setState({
+      Ora: new Date().toString().substring(16, 21),
+    });
+  }
 
-            this.showResponse();
-            if (
-              searchresults.Error != null ||
-              searchresults.Error != undefined
-            ) {
-              this.changeInputColor(searchresults.Error);
-            }
-          }
-        });
+  handleChangeRadio = (changeEvent) => {
+    if (changeEvent.target.value === "Dorezuar") {
+      this.setState({ Veprimi: "Dorezuar" });
+    } else {
+      this.setState({ Veprimi: "Mosdorezim" });
+    }
+  };
+
+  checkDorezo = (e) => {
+    if (e.target.value == "Dorezuar") {
+      this.setState({
+        ddlDisableArsye: true,
+        ddlMosdorezim: false,
+        ArsyeMosdorezimi: "",
+      });
+    } else {
+      this.setState({
+        ddlDisableArsye: false,
+        ddlMosdorezim: true,
+        Marresi: "",
+      });
+    }
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      Ora: e.target.value,
     });
   };
 
-  handlePrint = (e) => {
-    const data = {
-      nrKodi: this.state.nrKodi,
+  deleteThisGoal2() {
+    const getAlert = () => (
+      <SweetAlert
+        success
+        title="Kujdes!"
+        closeOnClickOutside={false}
+        onConfirm={() => this.handleClick()}
+        onCancel={() => this.hideAlert()}
+        showCancel
+      >
+        Jeni te sigurt per dorezimin e te dhenave?
+      </SweetAlert>
+    );
 
+    this.setState({
+      alert: getAlert(),
+    });
+  }
+  showErrors() {
+    const getAlert = () => (
+      <SweetAlert
+        success
+        title="Kujdes!"
+        closeOnClickOutside={false}
+        onConfirm={() => this.hideAlert()}
+        onCancel={() => this.hideAlert()}
+        showCancel
+      >
+        {this.state.error1}
+      </SweetAlert>
+    );
+
+    this.setState({
+      alert: getAlert(),
+    });
+  }
+  hideAlert() {
+ 
+    this.setState({
+      alert: null,
+    });
+  }
+
+  resetInput = (e) => {
+    this.setState({
+      PodKodi: "",
+      CantaKodi: "",
+      Veprimi: "",
+      Ora: new Date().toString().substring(16, 21),
+      Marresi: "",
+      ArsyeMosdorezimi: "",
+      PerdoruesId: "2",
+      Korrieri: "",
+      loading: false,
+      data: new Date().toString().substring(16, 21),
+      date: "", //new Date().toString().substring(16, 21)
+      data2: "",
+      alert: null,
+      posts: [],
+      ddlDisableArsye: true,
+      ddlMosdorezim: false,
+    });
+  };
+
+  handleInputChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ [name]: value.toUpperCase() });
+  };
+
+  handleClickModal = (e) => {
+    var posts = [...this.state.posts];
+    posts.push(this.state.nrPod);
+    this.setState({ posts: posts, cope: posts.length + 1 });
+  };
+
+  onChangeFunc = (name) => (value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleChange2(value) {
+    this.setState({ date: this.value });
+  }
+
+  handleKeyPressed = (e) => {
+    const req = {
+      PodKodi: this.state.PodKodi,
       Token: HmacSHA256(
         Math.round(new Date().getTime() / 1000).toString(),
         window.UserP.key
       ).toString(),
-
-      username: window.UserP.username,
+    username: this.state.username,
     };
-    var VleraPostare = " ";
-    if (this.state.PodSaveReq.MenyrePagese == "Me Kesh") {
-      VleraPostare = this.state.cmimitotal;
-    } else {
-      VleraPostare = "0";
-    }
-    var TotaliPrint = (
-      parseFloat(VleraPostare) +
-      parseFloat(this.state.PodSaveReq.ShumaSherbimeExtra)
-    ).toString();
-    var windowName = "";
-    var windowUrl = " ";
-    var myWindow = window.open(
-      windowUrl,
-      windowName,
-      "left=0,top=0,right=0,bottom=0,width=600,height=850"
-    );
-    var JsBarcode = require("jsbarcode");
+    this.setState({ loading: true }, () => {
+      axios.post(window.UserP.url + "POD/GetKod", req).then((response) => {
+        const searchresults = response.data;
+        if (searchresults.Result === true) {
+          this.setState({
+            loading: false,
+            Korrieri: searchresults.ResultMessage,
+          });
 
-    var canvas = document.createElement("canvas");
-    JsBarcode(canvas, this.state.PodSaveReq.PODNr, {
-      format: "CODE39",
-      width: 1,
-      height: 50,
-    });
-
-    myWindow.document.write(
-      "&nbsp" +
-        "&nbsp" +
-        "&nbsp" +
-        "&nbsp" +
-        "<table >" +
-        "<tr>" +
-        "<th >" +
-        //  "<font face='calibri'" +
-        //  ">" +
-        "&nbsp" +
-        "<img src='" +
-        logo +
-        "'>" +
-        "&nbsp" +
-        "Nenshkrimi: _______________" +
-        "1" +
-        "/" +
-        "1" +
-        "</th>" +
-        "  </tr>" +
-        "</table>" +
-        "<table border='1' style='page-break-after: always' >" +
-        "<thead>" +
-        "<tr>" +
-        "<th class='cell'>" +
-        "Dergues" +
-        "</th>" +
-        " <th class='cell'>" +
-        "Info" +
-        "</th>" +
-        "<th class='-cell'>" +
-        "Marres" +
-        "</th>" +
-        "  </tr>" +
-        "  </thead>" +
-        "  <tbody>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        this.state.PodSaveReq.Derguesi +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Emer , Mbiemer" +
-        "</td>" +
-        " <td class='info:-cell'>" +
-        this.state.PodSaveReq.Marresi +
-        "</td>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Adresa" +
-        "</td>" +
-        "<font face='calibri' size='1px'" +
-        ">" +
-        " <td>" +
-        this.state.PodSaveReq.AdresaMarresi.substring(0, 60) +
-        "</td>" +
-        "</font>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Qyteti" +
-        "</td>" +
-        " <td class='info:-cell'>" +
-        this.state.PodSaveReq.QytetiMarres +
-        "</td>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Telefon" +
-        "</td>" +
-        " <td class='info:-cell'>" +
-        this.state.PodSaveReq.TelMarresi +
-        "</td>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Vlere Postare" +
-        "</td>" +
-        " <td class='info:-cell'>" +
-        VleraPostare +
-        "</td>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Vlere Derguese" +
-        "</td>" +
-        " <td class='info:-cell'>" +
-        this.state.PodSaveReq.ShumaSherbimeExtra +
-        "</td>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Totali" +
-        " <td class='info:-cell'>" +
-        TotaliPrint +
-        "</td>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Koment" +
-        " <td class='info:-cell'>" +
-        this.state.PodSaveReq.Komente.substring(0, 120) +
-        "</td>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Barcode" +
-        "</td>" +
-        " <td class='info:-cell'>" +
-        "<img src='" +
-        canvas.toDataURL("image/png") +
-        "'>" +
-        "</td>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Pesha" +
-        "</td>" +
-        " <td class='info:-cell'>" +
-        this.state.PodSaveReq.Pesha +
-        "</td>" +
-        "   </tr>" +
-        "<tr class='firstRow'>" +
-        "<td class='Dergues:-cell'>" +
-        "" +
-        "</td>" +
-        " <td class='Marres:-cell'>" +
-        "Data" +
-        "</td>" +
-        " <td class='info:-cell'>" +
-        new Date().toDateString() +
-        "</td>" +
-        "   </tr>" +
-        "  </tbody>" +
-        "</table>" +
-        "&nbsp" +
-        "&nbsp"
-    );
-
-    myWindow.focus();
-
-    setTimeout(function () {
-      myWindow.print();
-    }, 500);
-  };
-
-  handleInputChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({ [name]: value.toUpperCase() });
-  };
-
-  handleInputChangeNumber = (e) => {
-    const name = e.target.name;
-    // this.setState({ [name]: e.target.value.replace( /[^0-9.]/g, "") });
-    this.setState({
-      [name]: e.target.value
-        .replace(/[^.\d]/g, "")
-        .replace(/^(\d*\.?)|(\d*)\.?/g, "$1$2"),
-      cmimibazezbritje: "-",
-      cmimitaksakarburanti: "-",
-      cmimitotal: "-",
-    });
-    if (name == "cmimibazetry") {
-      this.setState({
-        cmimibazeElse: e.target.value
-          .replace(/[^.\d]/g, "")
-          .replace(/^(\d*\.?)|(\d*)\.?/g, "$1$2"),
+        } else {
+          this.setState({
+            loading: false,
+            error1: searchresults.ResultMessage,
+          });
+        }
       });
-    }
-    console.log(this.state.PodSaveReq);
-  };
-
-  handleInputChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({ [name]: value.toUpperCase() });
+    });
   };
 
   componentWillMount() {
-    this.state.username = window.UserP.username;
-    {
-      fetch(window.UserP.url + "POD/City", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          this.setState({ data2: data });
-        })
-        .catch((error) => {
-          alert("Ju lutem kontaktoni departamentin e IT!");
-          window.location.reload(false);
-        });
-    }
+    fetch(window.UserP.url + "POD/GetArsye", {
+      method: "Post",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        Token: HmacSHA256(
+          Math.round(new Date().getTime() / 1000).toString(),
+          window.UserP.key
+        ).toString(),
+        username: this.state.username,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => this.setState({ data2: data }));
   }
 
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  handleClick = (e) => {
+    const req = {
+      PodKodi: this.state.PodKodi,
+      Ora: this.state.Ora,
+      Marresi: this.state.Marresi,
+      AgjensiaBurim: window.UserP.agencyId,
+      PerdoruesId: window.UserP.PerdoruesID,
+      Terminal: window.UserP.idProcesori,
+      Veprimi: this.state.Veprimi,
+      Korrieri: this.state.Korrieri,
+      ArsyeMosdorezimi: this.state.ArsyeMosdorezimi.value,
+      Token: HmacSHA256(
+        Math.round(new Date().getTime() / 1000).toString(),
+        window.UserP.key
+      ).toString(),
+      username: this.state.username,
+    };
+
+    var posts1 = [...this.state.posts];
+
+    posts1.push(req);
+
+    // this.setState({posts: posts1  });
+
+    
+
+
+    axios
+      .post(window.UserP.url + "POD/Dorezo", req)
+      .then((response) => {
+        const searchresults = response.data;
+        if (searchresults.Result === true) {
+          this.setState({
+            loading: false,
+            error1: searchresults.ResultMessage,
+            posts: posts1,
+          });
+          this.showErrors();
+     
+        } else {
+          this.setState({
+            // showModal: true,
+            loading: false,
+            error1: searchresults.ResultMessage,
+            // posts: posts1
+          });
+         
+          this.showErrors();
+        }
+      })
+      .catch((error) => {
+        this.setState({
+          loading: false,
+          error1: "Ju lutem kontaktoni departamentin e IT!",
+        });
+        this.showErrors();
+      });
+  };
+
   render() {
+    const columns = [
+      {
+        Header: "Nr",
+
+        id: "row",
+        filterable: false,
+
+        Cell: (row) => {
+          return <div>{row.index + 1}</div>;
+        },
+      },
+      {
+        Header: "Korrieri",
+        accessor: "Korrieri",
+      },
+
+      {
+        Header: "Nr Pod",
+        accessor: "PodKodi",
+      },
+
+      {
+        Header: "Marresi",
+        accessor: "Marresi",
+        // Cell: "2"
+        // maxWidth: 150,
+        // filterable: false
+      },
+      {
+        Header: "Arsye Mosdorezimi",
+        accessor: "ArsyeMosdorezimi",
+        // Cell: "3"
+        // maxWidth: 150,
+        // filterable: false
+      },
+      {
+        Header: "Data",
+        accessor: "Data",
+        // Cell: "4"
+        // maxWidth: 150,
+        // filterable: false
+      },
+      {
+        Header: "Ora",
+        accessor: "Ora",
+        // Cell: "5"
+        // maxWidth: 150,
+        // filterable: false
+      },
+    ];
     return (
-      <div className="content">
-        <div className="card card-body bg-light col-md-12">
+      <div className="Form">
+        <div className="card card-body bg-light col-md-9  mt-4">
           <div className="row">
-            <div className="col-md-6">
-              <label className="m-2">NR. POD</label>
+            <div className="col-md-4">
+              <label className="m-2">Nr. POD</label>
+              <input
+                id="PodKodi"
+                name="PodKodi"
+                value={this.state.PodKodi}
+                className="form-control "
+                type="text"
+                onBlur={() => this.handleKeyPressed()}
+                onChange={(e) => this.handleInputChange(e, "PodKodi")}
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-4">
+              {" "}
+              <label className="m-2">Kodi i Korrierit</label>
+              <input
+                value={this.state.Korrieri}
+                name="Korrieri"
+                id="Korrieri"
+                className="form-control "
+                type="text"
+                disabled
+                onChange={(e) => this.handleInputChange(e, "Korrieri")}
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="m-2">Ora</label>
+              <input
+                type="time"
+                id="appt"
+                name="appt"
+                required
+                className="form-control input-sm"
+                //defaultValue={this.state.Ora}
+                value={this.state.Ora}
+                onChange={(e) => this.handleChange(e, "Ora")}
+                // onLoad={this.display_ct()}
+              />
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-md-4">
-              <input
-                id="2"
-                placeholder="Nr. Pod"
-                className="form-control "
-                type="text"
-                required
-                name="nrPodi"
-                value={this.state.nrPodi}
-                onChange={(e) => this.handleInputChange(e, "nrPodi")}
-              />
+          {/* <div className="row mt-9">
+            <div className="col-md-3">
+              {" "}
+              <label className="ml-2">Veprimi</label>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-md-4">
-              <label className="m-2">KODI I KORRIERIT</label>
-            </div>
-            <div className="col-md-4">
-              <label className="m-2">ORA</label>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-4">
-              <input
-                id="2"
-                placeholder="Kodi i Korrierit"
-                className="form-control "
-                type="text"
-                required
-                name="kodKorrieri"
-                value={this.state.kodKorrieri}
-                onChange={(e) => this.handleInputChange(e, "kodKorrieri")}
-              />
-            </div>
-            <div className="col-md-4">
-              <input
-                id="2"
-                placeholder="Nr. Pod"
-                className="form-control "
-                type="time"
-                required
-                name="nrPodi"
-                value={this.state.nrPodi}
-                onChange={(e) => this.handleInputChange(e, "nrPodi")}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-4">
-              <label>ZGJIDHNI VEPRIMIN</label>
-            </div>
+
             <div className="col-md-6">
+              <div className="col-md-3">
+                <input
+                  id="6"
+                  // className="m-4"
+                  className="form-control input-sm"
+                  type="radio"
+                  name="Veprimi"
+                  value="Dorezuar"
+                  defaultChecked
+                  onClick={this.checkDorezo}
+                  onChange={this.handleChangeRadio}
+                />
+
+                <span className="m-2">Dorezim</span>
+              </div>
+              <div className="col-md-3">
+                <input
+                  //   className="m-4"
+                  type="radio"
+                  className="form-control input-sm"
+                  name="Veprimi"
+                  value="Mos Dorezuar"
+                  onClick={this.checkDorezo}
+                  onChange={this.handleChangeRadio}
+                />
+
+                <span className="m-2">Mos Dorezim</span>
+              </div>
+            </div>
+          </div> */}
+
+          <div className="row mt-4">
+            <div className="col-md-4 ">
+              {" "}
+              <label className="ml-2">Zgjidhni Veprimin</label>
+            </div>
+
+            <div className="col-md-4">
               <input
                 id="6"
-                className="ml-2 mt-2"
+                // className="m-4"
                 type="radio"
-                name="dorezuar"
-                value="Dorezim"
-                defaultChecked={this.state.radiocheck1}
+                name="Veprimi"
+                value="Dorezuar"
+                defaultChecked
+                onClick={this.checkDorezo}
                 onChange={this.handleChangeRadio}
               />
+
               <span className="m-2">Dorezim</span>
+
               <input
-                className="ml-5 mt-2"
+                //   className="m-4"
                 type="radio"
-                name="dorezuar"
-                value="Mos Dorezim"
-                defaultChecked={!this.state.radiocheck1}
+                name="Veprimi"
+                value="Mos Dorezuar"
+                onClick={this.checkDorezo}
                 onChange={this.handleChangeRadio}
               />
+
               <span className="m-2">Mos Dorezim</span>
             </div>
           </div>
-
-          <div className="row">
+          <div className="row mt-2">
             <div className="col-md-4">
-              <label className="m-2">MARRESI</label>
-            </div>
-            <div className="col-md-4">
-              <label className="m-2">ARSYE MOSDOREZIMI</label>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-4">
+              {" "}
+              <label className="m-2">Marresi</label>
               <input
-                id="2"
-                placeholder="Marresi"
+                value={this.state.Marresi}
                 className="form-control "
                 type="text"
-                required
-                name="marresi"
-                value={this.state.marresi}
-                onChange={(e) => this.handleInputChange(e, "marresi")}
+                name="Marresi"
+                onChange={(e) => this.handleInputChange(e, "  Marresi")}
+                disabled={this.state.ddlMosdorezim}
               />
             </div>
             <div className="col-md-4">
+              <label className="m-2">Arsye Mosdorezimi</label>
               <Select
-                id="3"
-                className="custom-Select mt-2 "
-                value={this.state.arsye}
-                //onChange={this.onChangeFunc1("arsye")}
-                options={opsione}
-                defaultValue={opsione[0]}
+                value={this.state.ArsyeMosdorezimi}
+                id="ArsyeMosdorezimi"
+                name="ArsyeMosdorezimi"
+                onChange={this.onChangeFunc("ArsyeMosdorezimi")}
+                options={convertToDropDown(this.state.data2)}
+                isDisabled={this.state.ddlDisableArsye}
               />
             </div>
           </div>
         </div>
-        <div className="card card-body bg-light col-md-12">GRID HERE</div>
-        <div className="row">
-          <div classname="col-md-4">
-            <button
-              className="btn btn-primary btn-sm"
-              //onClick={(e) => this.handleGjenero(e)}
-            >
-              &nbsp; Ruaj
-            </button>
-          </div>
-          <div classname="col-md-4">
-            <button
-              className="btn btn-primary btn-sm"
-              //onClick={(e) => this.handleGjenero(e)}
-            >
-              &nbsp; Pastro
-            </button>
-          </div>
+        <div className="card card-body bg-light col-md-9 mt-4">
+          <ReactTable
+            className="-striped"
+            columns={columns}
+            data={this.state.posts}
+            pivotColumnWidth={2}
+            defaultPageSize={5}
+            pageText="Faqe"
+            nextText="Para"
+            rowsText="Rreshta"
+            previousText="Mbrapa"
+            noDataText="Nuk ka te dhena"
+            maxWidth={150}
+          />
         </div>
+    
+        <div className="row">
+        <div className="col-md-3">
+        <button
+          onClick={() => this.deleteThisGoal2()}
+          className="btn btn-primary ml-4"
+        >
+          <i className="fa fa-trash" aria-hidden="true" />
+          <span data-notify="icon" className="pe-7s-diskette" />
+          &nbsp; Ruaj
+        </button>
+        </div>
+        {this.state.alert}
+        <div className="col-md-3">
+        <button className="btn btn-danger ml-4 " onClick={this.resetInput}>
+          <span data-notify="icon" className="pe-7s-trash" />
+          &nbsp; Pastro
+        </button>
+        </div>
+ 
+      </div>
       </div>
     );
   }
