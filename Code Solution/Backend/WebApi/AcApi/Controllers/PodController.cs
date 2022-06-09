@@ -183,9 +183,11 @@ namespace AcApi.Controllers
 
                 try
                 {
-                    //ret = pod.NdryshoPassword(param);
+
+
+                    ret = pod.NdryshoPassword(param);
                   
-                    //return ret;
+                    return ret;
 
                 }
                 catch (Exception ex)
@@ -210,25 +212,157 @@ namespace AcApi.Controllers
 
         }
 
-        
-       
+
+        //Arb
         [HttpPost]
-        [Route("api/POD/GetArsye")]
-        public List<string> GetArsye()
+        [Route("api/POD/KrijoCante")]
+        public BaseRes KrijoCante(KrijoCanteReq param)
         {
-            List<string> ret = null;
+
+
+            BaseRes resp = new BaseRes();
+
 
             try
             {
 
-                ret = pod.GetArsye();
+
+                resp = pod.KrijoCante(param);
+
+
 
             }
             catch (Exception ex)
             {
-                throw ex;
+
+
+                //ret.ResultCode = 1;
+                string strError = ex.Message;
+
+
+                if (ex.InnerException != null)
+                {
+                    resp.ResultMessage += ex.InnerException.Message + strError;
+                }
+
+
+                return resp;
             }
+
+            return resp;
+
+        }
+
+        [HttpPost]
+        [Route("api/POD/GjeneroPodCante")]
+        public string GjeneroPodCante()
+        {
+            string nrPod = "";
+
+
+
+            try
+            {
+                nrPod = pod.GjeneroPodCante();
+
+                //return ret;
+
+            }
+            catch (Exception ex)
+            {
+
+
+                // ret. = 1;
+                string strError = ex.Message;
+                if (ex.InnerException != null)
+                {
+
+                    strError += ex.InnerException.Message;
+                }
+
+
+                return "";
+            }
+
+
+            return nrPod;
+
+
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetKodData")]
+        public List<PodUpdateReq> UpdatePod([FromBody] BaseReq param)
+        {
+            List<PodUpdateReq> ret = new List<PodUpdateReq>();
+
+
+            if (param.nrKodi != "")
+
+                try
+                {
+                    ret = pod.GetPod(param.nrKodi);
+
+
+                    //return ret;
+
+                }
+                catch (Exception ex)
+                {
+                    ret = new List<PodUpdateReq>();
+
+                    // ret. = 1;
+                    string strError = ex.Message;
+                    if (ex.InnerException != null)
+                    {
+
+                        strError += ex.InnerException.Message;
+                    }
+
+
+                    return ret;
+                }
+
+
             return ret;
+
+
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetAgjensi")]
+        public List<string> GetAgjensi()
+        {
+            List<string> ret = new List<string>();
+
+
+
+            try
+            {
+                ret = pod.GetAgjensi();
+                ret.Add("Te Gjitha");
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+                //ret.ResultCode = 1;
+                string strError = ex.Message;
+
+
+                if (ex.InnerException != null)
+                {
+                    //ret += ex.InnerException.Message + strError;
+                }
+
+
+                return ret;
+            }
+
+            return ret;
+
         }
         
         [HttpPost]
