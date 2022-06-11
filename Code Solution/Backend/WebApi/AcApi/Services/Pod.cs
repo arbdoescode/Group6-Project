@@ -2203,6 +2203,72 @@ namespace AcApi.Services
             }
             return listPod;
         }
+        
+         public BindingList<UserInfoRes> GetUserForAdmin(string user)
+        {
+            BindingList<UserInfoRes> result = new BindingList<UserInfoRes>();
+
+            var ret = dbContext.PERDORUES.ToList();
+            for(int i = 0; i < ret.Count; i++)
+            {
+                UserInfoRes res = new UserInfoRes();
+                if (user == "" || user == null)
+                {
+                    
+                    string role = "";
+                    if (ret[i].RoleID == 1)
+                    {
+                        role = "Agjent";
+                    }
+                    else if (ret[i].RoleID == 2)
+                    {
+                        role = "Korrier";
+                    }
+                    else if (ret[i].RoleID == 3)
+                    {
+                        role = "ADMIN";
+                    }
+                    res.Username = ret[i].USERNAME;
+                    res.Password = ret[i].PASSWORD;
+                    res.Aktive = ret[i].AKTIVE;
+                    res.ClientSubjectID = ret[i].KlienteSubjekteId;
+                    res.Role = role;
+                    result.Add(res);
+                }
+                else
+                {
+                    string check = ret[i].USERNAME;
+                    if (check.Contains(user))
+                    {
+                        string role = "";
+                        if (ret[i].RoleID == 1)
+                        {
+                            role = "Agjent";
+                        }
+                        else if (ret[i].RoleID == 2)
+                        {
+                            role = "Korrier";
+                        }
+                        else if (ret[i].RoleID == 3)
+                        {
+                            role = "ADMIN";
+                        }
+                        res.Username = ret[i].USERNAME;
+                        res.Password = ret[i].PASSWORD;
+                        res.Aktive = ret[i].AKTIVE;
+                        res.ClientSubjectID = ret[i].KlienteSubjekteId;
+                        res.Role = role;
+                        result.Add(res);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            
+            return result;
+        }
 
             
         #endregion
