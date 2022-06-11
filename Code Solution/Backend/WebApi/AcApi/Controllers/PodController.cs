@@ -583,6 +583,24 @@ namespace AcApi.Controllers
             return ret;
         }
         
+        [HttpPost]
+        [Route("api/POD/GetUserForAdmin")]
+        public BindingList<UserInfoRes> GetUserForAdmin(BaseReq param)
+        {
+            BindingList<UserInfoRes> ret = null;
+
+            try
+            {
+
+                ret = pod.GetUserForAdmin(param.nrKodi);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
         
 
 
