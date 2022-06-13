@@ -87,7 +87,7 @@ class Grumbullime extends Component {
     show: false,
     showModal: false,
     showsecond: false,
-    showQytetFshat: true,
+    showQytetFshat: false,
     radiocheck1:true,
     radiocheck2:true,
     cmimiShtese: "-",
@@ -266,9 +266,9 @@ class Grumbullime extends Component {
    }
    else if(value.label=="Paguan Marresi" &&  this.state.menyrePagese=="Me Kesh" && this.state.checkedboxKP==false && this.state.kodiProduktit.label=="D2D")
    {
-    this.setState({ showKlientSubjekte: true, showKlienteSubjektKundrejtPagese: false,showTextKP:false });
+    this.setState({ showKlientSubjekte: false, showKlienteSubjektKundrejtPagese: false,showTextKP:false });
    }
-    else if(value.label=="Paguan Derguesi" &&  this.state.menyrePagese=="Me Kredi"){this.setState({ showKlientSubjekte: true, showKlienteSubjektKundrejtPagese: false ,showTextKP:false});}
+    else if(value.label=="Paguan Derguesi" &&  this.state.menyrePagese=="Me Kredi"){this.setState({ showKlientSubjekte: false, showKlienteSubjektKundrejtPagese: false ,showTextKP:false});}
   };
 
   showDerguesKundrejtPageseNew = (value) => {
@@ -324,7 +324,7 @@ class Grumbullime extends Component {
     this.state.PodSaveReq.TelMarresi = this.state.telMarresi;
     this.state.PodSaveReq.AdresaMarresi = this.state.adresaMarresi;
     this.state.PodSaveReq.KodiPostarMarres = this.state.kodiPostarMarres;
-    this.state.PodSaveReq.QytetiMarres = this.state.qytetiMarres;
+    this.state.PodSaveReq.QytetiMarres = this.state.qytetiMarres.label;
     this.state.PodSaveReq.ShtetiMarres = this.state.shtetiMarres.label;
     this.state.PodSaveReq.Korrieri = this.state.korrierUser.label;
     this.state.PodSaveReq.Destinacion = this.state.kodiDestinacion.label;
@@ -417,7 +417,7 @@ class Grumbullime extends Component {
     if (changeEvent.target.value === "Me Kesh" && this.state.checkedboxKP==false) {
       this.setState({ menyrePagese: "Me Kesh",showTextKP:false,radiocheck1:true });
     } else if(changeEvent.target.value === "Me Kesh" && this.state.checkedboxKP==true && this.state.kushPaguan.value=="False"){
-      this.setState({ menyrePagese: "Me Kesh",showTextKP:true,radiocheck1:true });
+      this.setState({ menyrePagese: "Me Kesh",showTextKP:false,radiocheck1:true });
     }else if(this.state.kushPaguan.label=="Paguan Marresi" && changeEvent.target.value=="Me Kesh" && this.state.checkedboxKP==false && this.state.kodiProduktit.label!="D2D")
     {
      this.setState({ showKlientSubjekte: false, showKlienteSubjektKundrejtPagese: false,showTextKP:false });
@@ -427,7 +427,7 @@ class Grumbullime extends Component {
      this.setState({ showKlientSubjekte: true, showKlienteSubjektKundrejtPagese: false,showTextKP:false });
     }else if(this.state.kushPaguan.label=="Paguan Marresi" && changeEvent.target.value=="Me Kesh" && this.state.checkedboxKP==true && this.state.kodiProduktit.label=="D2D")
     {
-     this.setState({ showKlientSubjekte: false, showKlienteSubjektKundrejtPagese: false,showTextKP:true });
+     this.setState({ showKlientSubjekte: false, showKlienteSubjektKundrejtPagese: false,showTextKP:false });
     }
     else {
       this.setState({ menyrePagese: "Me Kredi",showTextKP:false,radiocheck1:false });
@@ -442,55 +442,11 @@ class Grumbullime extends Component {
       if (changeEvent.target.value === "Qytet") {
         this.setState({ isFshat: true ,radiocheck2:true});
         this.state.isFshat=true;
-        { fetch(window.UserP.url + "POD/GetNjesiAdminitrative", {
-          method: "Post",
-          headers: {
-            Accept: "application/json",
-            "Content-type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({
-            Token: HmacSHA256(
-              Math.round(new Date().getTime() / 1000).toString(),
-              window.UserP.key
-            ).toString(),
-            username: this.state.username,
-            isFshat:this.state.isFshat
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            
-            this.setState({ dataNjesiAdministrative: data});
-            
-          });
-        }
+        
       } else {
         this.setState({ isFshat: false ,radiocheck2:false});
         this.state.isFshat=false;
-        { fetch(window.UserP.url + "POD/GetNjesiAdminitrative", {
-          method: "Post",
-          headers: {
-            Accept: "application/json",
-            "Content-type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({
-            Token: HmacSHA256(
-              Math.round(new Date().getTime() / 1000).toString(),
-              window.UserP.key
-            ).toString(),
-            username: this.state.username,
-            isFshat:this.state.isFshat
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            
-            this.setState({ dataNjesiAdministrative: data});
-            
-          });
-        }
+        
       }
 
     };
@@ -556,8 +512,8 @@ class Grumbullime extends Component {
     this.state.checkedboxKP = checked;
     this.state.showText = checked;
     if(this.state.showText==true && this.state.menyrePagese=="Me Kesh" && this.state.kushPaguan.label=="Paguan Marresi"){
-      this.setState({showTextKP:true,showKlientSubjekte: false})
-      this.state.showTextKP=true;
+      this.setState({showTextKP:false,showKlientSubjekte: false})
+      this.state.showTextKP=false;
       this.state.showKlientSubjekte= false;
     }else if(this.state.showText==false && this.state.menyrePagese=="Me Kesh" && this.state.kushPaguan.label=="Paguan Marresi" && this.state.kodiProduktit.label!="D2D"){
       this.setState({showTextKP:false,showKlient:false,derguesi:""})
@@ -892,28 +848,7 @@ class Grumbullime extends Component {
      })
    }
   };
-  handleGjenero = (e) => {
-    axios.post(window.UserP.url + "POD/GjeneroPod", {
-      method: "Post",
-      headers: {
-        Accept: "application/json",
-        "Content-type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        Token: HmacSHA256(
-          Math.round(new Date().getTime() / 1000).toString(),
-          window.UserP.key
-        ).toString(),
-        username: this.state.username,
-      }),
-    }).then((response) => {
-      var searchresults = response.data;
-      this.setState({
-        nrPod: searchresults,
-      });
-    });
-  };
+
 
   handleTotali = (e) => {
     this.readInstanceFromInterface();
@@ -930,7 +865,7 @@ class Grumbullime extends Component {
   };
   componentWillMount() {
     this.state.username = window.UserP.username;
-    
+    console.log(window.UserP)
    { fetch(window.UserP.url + "POD/City", {
       method: "Post",
       headers: {
@@ -953,7 +888,7 @@ class Grumbullime extends Component {
       }).catch((error) => {
    
         alert( "Ju lutem kontaktoni departamentin e IT!");
-        window.location.reload(false);   
+        //window.location.reload(false);   
       });
      
     }
@@ -977,31 +912,6 @@ class Grumbullime extends Component {
         .then((res) => res.json())
         .then((data) => this.setState({ data7: data }));
     }
-      {
-        fetch(window.UserP.url + "POD/GetKlienteSubjekteMarres", {
-          method: "Post",
-          headers: {
-            Accept: "application/json",
-            "Content-type": "application/json",
-             "Access-Control-Allow-Origin": "*"
-          },
-          body: JSON.stringify({
-            Token: HmacSHA256(
-              Math.round(new Date().getTime() / 1000).toString(),
-              window.UserP.key
-            ).toString(),
-            username: window.UserP.username,
-            agjensi: window.UserP.agencyId,
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            
-          this.setState({ data6: data })
-          this.state.data6.push("ZGJIDH");
-         
-          });
-      }
       {
         fetch(window.UserP.url + "POD/GetKodLevizje", {
           method: "Post",
@@ -1045,51 +955,9 @@ class Grumbullime extends Component {
           
         });
       }
-      {
-        fetch(window.UserP.url + "POD/GetDerguesKl", {
-          method: "Post",
-          headers: {
-            Accept: "application/json",
-            "Content-type": "application/json",
-             "Access-Control-Allow-Origin": "*"
-          },
-          body: JSON.stringify({
-            Token: HmacSHA256(
-              Math.round(new Date().getTime() / 1000).toString(),
-              window.UserP.key
-            ).toString(),
-            username: window.UserP.username,
-            agjensi: window.UserP.agencyId,
-            
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => this.setState({ data8: data }));
-      }
-      { fetch(window.UserP.url + "POD/GetNjesiAdminitrative", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          isFshat:this.state.isFshat
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          
-          this.setState({ dataNjesiAdministrative: data});
-          
-        });
-      }
-      this.setState({ loading2: true }, () => {
+     
+      
+      this.setState({ loading2: false }, () => {
 
         fetch(window.UserP.url + "POD/GetKodLevizjeNew", {
           method: "Post",
@@ -1185,74 +1053,7 @@ class Grumbullime extends Component {
               dataLevizjeShtese: data,
               kodiLevizjesShrese:{label:data[0],value:data[0]} 
             }); 
-            fetch(window.UserP.url + "POD/GetDestinacion", {
-              method: "Post",
-              headers: {
-                Accept: "application/json",
-                "Content-type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-              },
-              body: JSON.stringify({
-                Token: HmacSHA256(
-                  Math.round(new Date().getTime() / 1000).toString(),
-                  window.UserP.key
-                ).toString(),
-                username: this.state.username,
-                KodLevizjeBrand: data[0],
-                AgjensiTranzit: window.UserP.agencyId
-              }),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-              this.setState({ dataDestinacion: data,
-                kodiDestinacion:{label:data[0],value:data[0]} 
-              });
-
-              fetch(window.UserP.url + "POD/GetAgjensiFromDestination", {
-                method: "Post",
-                headers: {
-                  Accept: "application/json",
-                  "Content-type": "application/json",
-                  "Access-Control-Allow-Origin": "*",
-                },
-                body: JSON.stringify({
-                  Token: HmacSHA256(
-                    Math.round(new Date().getTime() / 1000).toString(),
-                    window.UserP.key
-                  ).toString(),
-                  username: this.state.username,
-                  AgjensiDestinacion: data[0],
-        
-                }),
-              })
-                .then((res) => res.json())
-                .then((data) => { 
-                this.setState({ qytetiMarres:data[0] });
-                });
-                fetch(window.UserP.url + "POD/GetEmerDestinacion", {
-                  method: "Post",
-                  headers: {
-                    Accept: "application/json",
-                    "Content-type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                  },
-                  body: JSON.stringify({
-                    Token: HmacSHA256(
-                      Math.round(new Date().getTime() / 1000).toString(),
-                      window.UserP.key
-                    ).toString(),
-                    username: this.state.username,
-                    AgjensiDestinacion: data[0],
-          
-                  }),
-                })
-                  .then((res) => res.json())
-                  .then((data) => { 
-                  this.setState({ emerDestinacioni: data[0] });
-                  });
-              
-
-              }); 
+            
             fetch(window.UserP.url + "POD/GetKodLevizjeMenyra", {
               method: "Post",
               headers: {
@@ -1391,32 +1192,12 @@ class Grumbullime extends Component {
       this.setState({
         [name]: value,
         marresi:value.label,
-        showKlientMarresi:true,
+        showKlientMarresi:false,
         showKlient:false,
         derguesi:"",
         derguesiKl: value.label,
       });
-      fetch(window.UserP.url + "POD/GetAdressaDerguesit", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          Derguesi: value.label,
-  
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => { 
-        this.setState({ adresaMarresi:data[0] });
-        });
+      
     }else if(value.label=="ZGJIDH"){
       this.setState({ [name]: value,adresaDerguesit:"",adresaMarresi:"",marresi:"",derguesi:"",derguesiKl: value.label, });      
     }
@@ -1425,7 +1206,7 @@ class Grumbullime extends Component {
       this.setState({
         [name]: value,       
         marresi:value.label,
-        showKlientMarresi:true,
+        showKlientMarresi:false,
         showKlient:false,
         derguesi:"",
         derguesiKl: value.label,
@@ -1433,58 +1214,14 @@ class Grumbullime extends Component {
     }
     else if(this.state.kushPaguan.label=="Paguan Marresi" && this.state.menyrePagese=="Me Kesh"){
       
-      fetch(window.UserP.url + "POD/GetAdressaDerguesit", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          Derguesi: value.label,
-  
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => { 
-        this.setState({ adresaDerguesit:data[0] });
-        });
-
-
-      fetch(window.UserP.url + "POD/GetCityDerguesit", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          Derguesi: value.label,
-  
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => { 
-        this.setState({ qytetiDergues:{value:data[0],label:this.state.data2[parseInt(data[0],10)-1]} });
-        });
-  
+      
       this.setState({
         [name]: value,
       });
     this.setState({
       [name]: value,
       derguesi:value.label,
-      showKlient:true,
+      showKlient:false,
       showKlientMarresi:false,
       marresi:"",
       derguesiKl: value.label,
@@ -1494,58 +1231,14 @@ class Grumbullime extends Component {
     }
     else{
       
-      fetch(window.UserP.url + "POD/GetAdressaDerguesit", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          Derguesi: value.label,
-  
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => { 
-        this.setState({ adresaDerguesit:data[0] });
-        });
-
-
-      fetch(window.UserP.url + "POD/GetCityDerguesit", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          Derguesi: value.label,
-  
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => { 
-        this.setState({ qytetiDergues:{value:data[0],label:this.state.data2[parseInt(data[0],10)-1]} });
-        });
-  
+      
       this.setState({
         [name]: value,
       });
     this.setState({
       [name]: value,
       derguesi:value.label,
-      showKlient:true,
+      showKlient:false,
       showKlientMarresi:false,
       marresi:"",
       derguesiKl: value.label,
@@ -1618,6 +1311,7 @@ class Grumbullime extends Component {
             
             .then((data) => { 
               if(value.value=="NDERKOMBETAR"||value.value=="RAJONAL"){
+                
             this.setState({ 
                 dataKodDrejtim: data ,
                 kodiLevizjesDrejtim:{label:"EKSPORT",value:"EKSPORT"}
@@ -1627,6 +1321,13 @@ class Grumbullime extends Component {
                 dataKodDrejtim: data ,
                 kodiLevizjesDrejtim:{label:data[0],value:data[0]}
               });
+            }
+            if(value.value=="NDERKOMBETAR"){
+              this.setState({
+                showState:false,
+                shtetiMarres:"",
+                showQytetFshat:false
+              })
             } 
             });
     
@@ -1653,29 +1354,7 @@ class Grumbullime extends Component {
                 kodiLevizjesShrese:{label:data[0],value:data[0]},
               }); 
 
-              fetch(window.UserP.url + "POD/GetDestinacion", {
-                method: "Post",
-                headers: {
-                  Accept: "application/json",
-                  "Content-type": "application/json",
-                  "Access-Control-Allow-Origin": "*",
-                },
-                body: JSON.stringify({
-                  Token: HmacSHA256(
-                    Math.round(new Date().getTime() / 1000).toString(),
-                    window.UserP.key
-                  ).toString(),
-                  username: this.state.username,
-                  KodLevizjeBrand: data[0],
-                  AgjensiTranzit: window.UserP.agencyId
-                }),
-              })
-                .then((res) => res.json())
-                .then((data) => {
-                this.setState({ dataDestinacion: data,
-                  kodiDestinacion:{label:data[0],value:data[0]} 
-                });
-                }); 
+              
 
               fetch(window.UserP.url + "POD/GetKodLevizjeMenyra", {
                 method: "Post",
@@ -1710,7 +1389,6 @@ class Grumbullime extends Component {
           });
         }else{
           this.setState({
-            showQytetFshat: true,
             monedhacmimibaze:{ value: "1", label: "LEKE" }
           })
         } 
@@ -1733,54 +1411,14 @@ class Grumbullime extends Component {
         });
 
       }else{
-      fetch(window.UserP.url + "POD/GetAgjensiFromDestination", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          AgjensiDestinacion: value.value,
-
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => { 
-        this.setState({ qytetiMarres:data[0] });
-        });
+      
 
       this.setState({
         [name]: value,
 
       });}
       
-      fetch(window.UserP.url + "POD/GetEmerDestinacion", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          AgjensiDestinacion: value.value,
-
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => { 
-        this.setState({ emerDestinacioni: data[0] });
-        });
+    
       }
   };
   onChangeFunc3 = (name) => (value) => {
@@ -1797,30 +1435,6 @@ class Grumbullime extends Component {
       kursi: "-",
     })
  this.setState({ loading: true }, () => {
-
-     fetch(window.UserP.url + "POD/GetDestinacion", {
-          method: "Post",
-          headers: {
-            Accept: "application/json",
-            "Content-type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({
-            Token: HmacSHA256(
-              Math.round(new Date().getTime() / 1000).toString(),
-              window.UserP.key
-            ).toString(),
-            username: this.state.username,
-            KodLevizjeBrand: value.value,
-            AgjensiTranzit: window.UserP.agencyId
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-          this.setState({ dataDestinacion: data,
-            kodiDestinacion:{label:data[0],value:data[0]} 
-          });
-          }); 
 
     if(name=="kodiLevizjesShrese"){
       if(value.value=="AL-GR"){
@@ -1857,7 +1471,6 @@ class Grumbullime extends Component {
         this.setState({
           shtetiMarres:{value:"Shqiperi",label:"Shqiperi"},
           showState:true,
-          showQytetFshat:true,
           kodiLevizjesDrejtim:{value:"IMPORT",label:"IMPORT"},
         });
       }
@@ -1865,7 +1478,6 @@ class Grumbullime extends Component {
         this.setState({
           shtetiMarres:{value:"Shqiperi",label:"Shqiperi"},
           showState:true,
-          showQytetFshat:true
         });
       }
     this.setState({
@@ -1896,7 +1508,7 @@ class Grumbullime extends Component {
       this.setState({
         [name]: value,    
         derguesi:value.label,
-        showKlient:true,
+        showKlient:false,
         showKlientMarresi:false,    
         marresi:""
   
@@ -1908,7 +1520,7 @@ class Grumbullime extends Component {
       this.setState({
         [name]: value,
         marresi:value.label,
-        showKlientMarresi:true,
+        showKlientMarresi:false,
         showKlient:false,
         derguesi:""
   
@@ -1922,53 +1534,12 @@ class Grumbullime extends Component {
     
     if (this.state.kushPaguan.label=="Paguan Marresi" && this.state.menyrePagese=="Me Kesh")
     {
-      fetch(window.UserP.url + "POD/GetCityDerguesit", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          Derguesi: value.label,
-  
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => { 
-        this.setState({ qytetiDergues:{value:data[0],label:this.state.data2[parseInt(data[0],10)-1]} });
-        });
-        fetch(window.UserP.url + "POD/GetAdressaDerguesit", {
-          method: "Post",
-          headers: {
-            Accept: "application/json",
-            "Content-type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({
-            Token: HmacSHA256(
-              Math.round(new Date().getTime() / 1000).toString(),
-              window.UserP.key
-            ).toString(),
-            username: this.state.username,
-            Derguesi: value.label,
-    
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => { 
-          this.setState({ adresaDerguesit:data[0] });
-          });
+      
      
     this.setState({
       [name]: value,
       derguesi:value.label,
-      showKlient:true,
+      showKlient:false,
       showKlientMarresi:false,
       marresi:"",
       derguesiKl: value.label,
@@ -1976,7 +1547,7 @@ class Grumbullime extends Component {
       this.setState({
         [name]: value,    
         derguesi:value.label,
-        showKlient:true,
+        showKlient:false,
         showKlientMarresi:false,    
         marresi:"",
         derguesiKl: value.label,
@@ -1988,7 +1559,7 @@ class Grumbullime extends Component {
       this.setState({
         [name]: value,
         marresi:value.label,
-        showKlientMarresi:true,
+        showKlientMarresi:false,
         showKlient:false,
         derguesi:"",
         derguesiKl:value.label,
@@ -2006,37 +1577,7 @@ class Grumbullime extends Component {
 
  
 
-  onChangeFuncQF = (name) => (value) => {
-    this.setState({
-      [name]: value,
-    });
-    this.state.qytetfshat=value.value;
-    if(this.state.isFshat==true){
-      this.state.njesiadministrative=value.value;
-    }else{
-      fetch(window.UserP.url + "POD/GetNjesiAdministrativeFshat", {
-        method: "Post",
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          Token: HmacSHA256(
-            Math.round(new Date().getTime() / 1000).toString(),
-            window.UserP.key
-          ).toString(),
-          username: this.state.username,
-          QytetFshat: value.value,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => { 
-        this.setState({ njesiadministrative: data[0] }); 
-        });
 
-    }
-  };
   onChangeFunc1 = (name) => (value) => {  
     this.setState({
       [name]: value,
@@ -2048,7 +1589,7 @@ class Grumbullime extends Component {
          })
        }else if(value=="D2D" && this.state.kushPaguan.label=="Paguan Marresi" && this.state.menyrePagese=="Me Kesh"){
         this.setState({
-         showKlientSubjekte:true
+         showKlientSubjekte:false
         })
       }
      }
@@ -2298,13 +1839,7 @@ class Grumbullime extends Component {
                             ) : null}
                           </div>
                           <div className="col-md-4">
-                            <button
-                              className="btn btn-primary btn-sm"
-                              onClick={(e) => this.handleGjenero(e)}
-                            >
-                              <span data-notify="icon" className="pe-7s-note" />
-                              &nbsp; Gjenero
-                            </button>
+                            
                           </div>
                         </div>
                         <div className="row">
@@ -2782,6 +2317,7 @@ class Grumbullime extends Component {
                               defaultValue={{ value: "__EDSHOP_", label: "__EDSHOP_" }}
                            />                                                   
                           </div>
+                          
                           :""}
                         </div>
 
@@ -2815,9 +2351,7 @@ class Grumbullime extends Component {
                           className="custom-Select mt-2"
                           //value={this.state.kushPaguan}
                           onChange={this.onChangeFuncDergues("derguesiKl")}
-                          options={this.convertToDropDown(this.state.data6)}
                           
-                          defaultValue={{ value: this.state.derguesiKl, label: this.state.derguesiKl }}
                       
                         />                                                                        
                        </div>
@@ -3019,26 +2553,16 @@ class Grumbullime extends Component {
                           </div>
                               <div className="card card-body bg-light col-md-12">
                                 <div className="row">
-                                  <div className="col-md-6">
+                                  <div className="col-md-12">
                                     <label className="m-2">Origjina</label>
                                     <Select
                                       id="Origjina"
                                       className="custom-Select"
-                                      value={{value:window.UserP.agencyId,label:window.UserP.agencyId}}
+                                      value={{value:"TR-U014",label:"TR-U014"}}
                                       isDisabled
                                     />
                                   </div>
-                                  <div className="col-md-6">
-                                    <label className="m-2">Destinacion</label>
-                                    <Select
-                                      id="13"
-                                      className="custom-Select"
-                                      onChange={this.onChangeFunc2("kodiDestinacion")}
-                                      value={this.state.kodiDestinacion}
-                                      options={this.convertToDropDown(this.state.dataDestinacion)}
-                                    />
-                                    <label className="m-2">{this.state.emerDestinacioni}</label>
-                                  </div>
+                                  
                                 </div>
                                 <div className="row">
                                   <div className="col-md-6">
@@ -3058,7 +2582,7 @@ class Grumbullime extends Component {
                                       className="form-control "
                                       type="text"
                                       name="tranzit"
-                                      value={window.UserP.agencyId} 
+                                      value="HUB 001" 
                                       disabled={true}
                                     />
                                   </div>
@@ -3198,7 +2722,7 @@ class Grumbullime extends Component {
                               onChange={this.onChangeFuncShtet("shtetiMarres")}
                               options={this.convertToDropDownState(this.state.dataShtete)}
                               value={this.state.shtetiMarres}
-                              isDisabled={this.state.showState}
+                              //isDisabled={this.state.showState}
                               //required
                             />
                             
@@ -3219,13 +2743,12 @@ class Grumbullime extends Component {
                             ) : (
                               <Select
                                 id="8"
-                                value={{value:this.state.qytetiMarres,label:this.state.qytetiMarres}}
+                                value={this.state.qytetiMarres}
                                 onChange={this.onChangeFunc("qytetiMarres")}
-                                // options={this.convertToDropDown(
-                                //   this.state.data2
-                                // )}
-                                
-                                isDisabled={true}
+                                options={this.convertToDropDownCity(
+                                  this.state.data2
+                                )}
+
                               />
                             )}
                           </div>
@@ -3258,8 +2781,8 @@ class Grumbullime extends Component {
                               id="19"
                               className="custom-Select"
                               value={{value:this.state.qytetfshat,label:this.state.qytetfshat}}   
-                              onChange={this.onChangeFuncQF()}                         
-                              options={this.convertToDropDown(this.state.dataNjesiAdministrative)} 
+                              // onChange={this.onChangeFuncQF()}                         
+                              // options={this.convertToDropDown(this.state.dataNjesiAdministrative)} 
                               required
                             />
                         </div>
