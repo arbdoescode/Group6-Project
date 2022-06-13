@@ -27,7 +27,7 @@ namespace AcApi.Controllers
             this.pod = new Pod();
         }
 
-        [HttpPost]
+       [HttpPost]
         [Route("api/POD/SaveNewPODKS")]
         public PodSaveRes SaveNewPodKS([FromBody]PodSaveReq param)
         {
@@ -35,53 +35,362 @@ namespace AcApi.Controllers
 
             string[] podValidate = new string[20];
 
-            //try
-            //{
-            //    if (pod.ExistPod(param.PODNr))
-            //    {
-                  
+            try
+            {
+                if (pod.ExistPod(param.PODNr))
+                {
 
 
-            //        ret.ResultCode = 1;
-            //        ret.ResultDescription = "Ky Pod eshte i rregjistruar njehere";
-            //        return ret;
-            //    }
 
-            //    podValidate = pod.Validate(param);
+                    ret.ResultCode = 1;
+                    ret.ResultDescription = "Ky Pod eshte i rregjistruar njehere";
+                    return ret;
+                }
 
-            //    if ( podValidate==null)
-            //    {
-            //        ret = pod.SavePOD(param);
-            //    }
-            //    else
-            //    {
+                podValidate = pod.Validate(param);
 
-            //        ret.ResultCode = 1;
-            //        ret.ResultDescription = "Error" ;
-            //        ret.Error = podValidate;
-            //        return ret;
-            //    }
-             
+                if (podValidate == null)
+                {
+                    ret = pod.SavePOD(param);
+                }
+                else
+                {
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    ret = new PodSaveRes();
-
-            //    ret.ResultCode = 1;
-            //    string strError = ex.Message;
+                    ret.ResultCode = 1;
+                    ret.ResultDescription = "Error";
+                    ret.Error = podValidate;
+                    return ret;
+                }
 
 
-            //    if (ex.InnerException != null)
-            //    {
-            //        strError += ex.InnerException.Message;
-            //    }
+            }
+            catch (Exception ex)
+            {
+                ret = new PodSaveRes();
+
+                ret.ResultCode = 1;
+                string strError = ex.Message;
 
 
-            //    return ret;
-            //}
+                if (ex.InnerException != null)
+                {
+                    strError += ex.InnerException.Message;
+                }
+
+
+                return ret;
+            }
 
             return ret;
+
+        }
+
+        [HttpPost]
+        [Route("api/POD/City")]
+        public List<string> GetCity()
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                //ret = pod.TransactionLog(param);
+                ret = pod.GetCity();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+        [HttpPost]
+        [Route("api/POD/FullStates")]
+        public List<string> FullStates()
+        {
+            List<string> ret = new List<string>();
+
+
+
+            try
+            {
+                ret = pod.GetFullStates();
+                ret.Add("Te Gjitha");
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+                //ret.ResultCode = 1;
+                string strError = ex.Message;
+
+
+                if (ex.InnerException != null)
+                {
+                    //ret += ex.InnerException.Message + strError;
+                }
+
+
+                return ret;
+            }
+
+            return ret;
+
+        }
+
+
+        [HttpPost]
+        [Route("api/POD/GetKodePershkrimi")]
+        public List<string> GetKodePershkrmi()
+        {
+            List<string> ret = new List<string>();
+
+
+
+            try
+            {
+                ret = pod.GetKodPershkrimi();
+                ret.Add("Te Gjitha");
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+                //ret.ResultCode = 1;
+                string strError = ex.Message;
+
+
+                if (ex.InnerException != null)
+                {
+                    //ret += ex.InnerException.Message + strError;
+                }
+
+
+                return ret;
+            }
+
+            return ret;
+
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetKodLevizje")]
+        public List<string> GetKodLevizje()
+        {
+            List<string> ret = new List<string>();
+
+
+
+            try
+            {
+                ret = pod.GetKodeLevizje();
+                //  ret.Add("Te Gjitha");
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+                //ret.ResultCode = 1;
+                string strError = ex.Message;
+
+
+                if (ex.InnerException != null)
+                {
+                    //ret += ex.InnerException.Message + strError;
+                }
+
+
+                return ret;
+            }
+
+            return ret;
+
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetKodLevizjeNew")]
+        public List<string> GetKodLevizjeNEW()
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                ret = pod.GetKodLevizje();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+
+        [HttpPost]
+        [Route("api/POD/GetKodLevizjeBrand")]
+        public List<string> GetKodLevizjeBrand([FromBody] PodSaveReq param)
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                ret = pod.GetKodLevizjeBrand(param.KodLevizje);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetKodLevizjeDrejtim")]
+        public List<string> GetKodLevizjeDrejtim([FromBody] PodSaveReq param)
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                ret = pod.GetKodLevizjeDrejtim(param.KodLevizje);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetKodLevizjeShtese")]
+        public List<string> GetKodLevizjeShtese([FromBody] PodSaveReq param)
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                ret = pod.GetKodLevizjeShtese(param.KodLevizje);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetKodLevizjeMenyra")]
+        public List<string> GetKodLevizjeMenyra([FromBody] PodSaveReq param1)
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                ret = pod.GetKodLevizjeMenyra(param1.KodLevizjeBrand);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetKorrierGrumbullime")]
+        public List<string> GetKorrierGrumbullime([FromBody] PodSaveReq param)
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                ret = pod.GetKorrierGrumbullime(param.AgjensiaOrigjineID);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+        [HttpPost]
+        [Route("api/POD/GetShtesaCmim")]
+        public List<string> GetShtesaCmim([FromBody] PodSaveReq param)
+        {
+            List<string> ret = null;
+
+            try
+            {
+
+                ret = pod.GetShtesaCmim();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+        [HttpPost]
+        [Route("api/POD/LlogaritCmiminTotal")]
+        public List<string> LlogaritCmiminTotal([FromBody] PodSaveReq param)
+        {
+            List<string> rsp = new List<string>();
+
+
+
+            try
+            {
+                //rsp = pod.LlogaritCmiminTotal(param);
+                rsp.Clear();
+                rsp.Add("0");
+                rsp.Add("0");
+                rsp.Add("0");
+                rsp.Add("0");
+                //return ret;
+
+            }
+            catch (Exception ex)
+            {
+
+
+                // ret. = 1;
+                string strError = ex.Message;
+                if (ex.InnerException != null)
+                {
+
+                    strError += ex.InnerException.Message;
+                    rsp.Clear();
+                    rsp.Add("0");
+                    rsp.Add("0");
+                    rsp.Add("0");
+                    rsp.Add("0");
+                }
+
+
+                return rsp;
+            }
+
+
+            return rsp;
+
 
         }
 
