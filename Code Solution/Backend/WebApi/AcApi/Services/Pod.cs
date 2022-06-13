@@ -548,11 +548,7 @@ namespace AcApi.Services
             }
             if (pReq.Destinacion == "" || pReq.Destinacion == null)
             {
-                ret = false;
-                str = "Ju lutem plotesoni Destinacionin!";
-                res.Add(str);
-
-                arr[13] = str;
+                
             }
             if (pReq.QytetFshat == "" || pReq.QytetFshat == null)
             {
@@ -666,6 +662,212 @@ namespace AcApi.Services
 
 
         }
+        
+        public List<string> GetFullStates()
+        {
+            List<string> rsp = new List<string>();
+
+            var ret = dbContext.SHTETEs.ToList().Select(e => e.EMRI);
+
+            if (ret != null)
+            {
+                rsp = ret.ToList();
+            }
+            else
+            {
+                return rsp;
+            }
+            return rsp;
+        }
+
+        public List<string> GetCity()
+        {
+            List<string> rsp = new List<string>();
+
+            var ret = dbContext.QYTETEs.ToList().Select(e => e.EMRI);
+
+            if (ret != null)
+            {
+                rsp = ret.ToList();
+            }
+            return rsp;
+        }
+
+        public List<string> GetKodPershkrimi()
+        {
+            List<string> rsp = new List<string>();
+
+            //var ret = dbContext.KODI_PERSHKRIMIT.
+            //    Select(e => e.EMRI).ToList();
+
+            //if (ret.Count() == 0)
+            //{
+            //    return rsp;
+            //}
+
+            //else
+            //{
+            //    rsp = ret;
+            //}
+            rsp.Add("Dokument");
+            rsp.Add("Pako");
+
+            return rsp;
+        }
+
+        public List<string> GetKodLevizje()
+        {
+            List<string> rsp = new List<string>();
+
+            //var ret = dbContext.KODE_LEVIZJE_NEW
+            //                                  .Select(e => e.EMRI_LEVIZJA).ToList();
+            //if (ret != null)
+            //{
+            //    rsp = ret.ToList();
+            //}
+
+            rsp.Add("NDERKOMBETAR");
+            rsp.Add("KOMBETAR");
+            rsp.Add("RAJONAL");
+
+            return rsp;
+        }
+
+        public List<string> GetKodeLevizje()
+        {
+            List<string> rsp = new List<string>();
+
+            //var ret = dbContext.KODI_LEVIZJES.
+            //    Select(e => e.EMRI).ToList();
+
+            //if (ret.Count() == 0)
+            //{
+            //    return rsp;
+            //}
+
+            //else
+            //{
+            //    rsp = ret;
+            //}
+            rsp.Add("Brenda Qytetit");
+            rsp.Add("AL-AL");
+            rsp.Add("AL -BOTE");
+            rsp.Add("AL -GR");
+            rsp.Add("BOTE -AL");
+            rsp.Add("GR -AL");
+            rsp.Add("AL -KS");
+            rsp.Add("KS -AL");
+            rsp.Add("Bote -Al ESWD");
+            rsp.Add("AL -NM");
+            rsp.Add("NM -AL");
+
+
+            return rsp;
+        }
+
+        public List<string> GetKodLevizjeBrand(string LevizjaKombetare)
+        {
+            List<string> rsp = new List<string>();
+
+
+
+            var ret = dbContext.LEVIZJA_BRAND
+                                              .Where(e => e.LEVIZJA == LevizjaKombetare)
+                                              .ToList()
+                                              .Select(e => e.BRAND);
+
+            if (ret != null)
+            {
+                rsp = ret.ToList();
+            }
+            return rsp;
+        }
+        public List<string> GetKodLevizjeDrejtim(string LevizjaKombetare)
+        {
+            List<string> rsp = new List<string>();
+
+
+
+            var ret = dbContext.LEVIZJA_DREJTIM
+                                              .Where(e => e.LEVIZJA == LevizjaKombetare)
+                                              .ToList()
+                                              .Select(e => e.DREJTIM);
+
+            if (ret != null)
+            {
+                rsp = ret.ToList();
+            }
+            return rsp;
+        }
+
+        public List<string> GetKodLevizjeShtese(string LevizjaKombetare)
+        {
+            List<string> rsp = new List<string>();
+
+
+            //var ret = dbContext.KODI_LEVIZJES
+            //                                  .Where(e => e.LEVIZJA == LevizjaKombetare)
+            //                                  .ToList()
+            //                                  .Select(e => e.EMRI);
+
+            //if (ret != null)
+            //{
+            //    rsp = ret.ToList();
+            //}
+            rsp.Add("AL-AL");
+            return rsp;
+        }
+
+        public List<string> GetKodLevizjeMenyra(string LevizjaKombetare)
+        {
+            List<string> rsp = new List<string>();
+
+            var ret = dbContext.KODI_SHERBIMIT
+                                         .Where(e => e.KODI_LEVIZJES == LevizjaKombetare)
+                                         .ToList()
+                                         .Select(e => e.EMRI);
+            if (ret != null)
+            {
+                rsp = ret.ToList();
+            }
+            return rsp;
+
+        }
+
+        public List<string> GetKorrierGrumbullime(string agency)
+        {
+            List<string> rsp = new List<string>();
+            long agencyId = (long)Convert.ToDouble(agency);
+            //var ret = dbContext.LEVIZJA_BRAND
+            //                                  .Select(e => e.BRAND).ToList();
+
+            var ret = dbContext.KORRIERETs.Select(e => e.EMRI + " " + e.MBIEMRI + " | " + e.KODI);
+
+            if (ret != null)
+            {
+                rsp = ret.ToList();
+            }
+            return rsp;
+        }
+
+        public List<string> GetShtesaCmim()
+        {
+            List<string> rsp = new List<string>();
+
+            //var ret = dbContext.LEVIZJA_BRAND
+            //                                  .Select(e => e.BRAND).ToList();
+
+            var ret = dbContext.SHTESA_TYPE
+                                              .ToList()
+                                              .Select(e => e.EMRI);
+
+            if (ret != null)
+            {
+                rsp = ret.ToList();
+            }
+            return rsp;
+        }
+        
 
         public BaseRes KrijoCante(KrijoCanteReq pReq)
         {
