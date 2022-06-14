@@ -4,6 +4,8 @@ import "../components/Login.css";
 import Errors from "../components/Input/Errors";
 import Alerts from "./Alerts";
 import TestVariable from "../variables/TestVariables";
+import logo from "../components/logo.png"
+import photo from "../components/postman.png"
 
 axios.defaults.headers.common["Access-Control-Allow-Headers"] = "Content-Type";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
@@ -43,7 +45,7 @@ class Login2 extends Component {
           window.UserP.agency = searchresults.Agjensi;
           window.UserP.terminalId = searchresults.TerminalId;
           window.UserP.idProcesori = searchresults.IdProcesori;
-          window.UserP.UserRole = searchresults.UserRole;
+
           this.props.test("test-key", e, searchresults);
 
         
@@ -84,22 +86,22 @@ class Login2 extends Component {
   render() {
     return (
       <div>  
-        <div id="top_menu">
-        <div id="logo"></div>
-        <div  >
-        <button class="btn btn-lg float-right" style={{backgroundColor:"#F6B245",borderColor:"transparent",color:"white",width:"200px",borderRadius:"35px",marginRight:"150px"}}>Contacts</button>
-    <button class="btn btn-lg float-right" style={{backgroundColor:"#8C617F",borderColor:"transparent",color:"white",width:"200px",borderRadius:"35px",marginRight:"80px"}}>Home</button>
-  
+     <nav class="navbar navbar-expand-lg bg-transparent">
+  <div class="container-fluid mh-100">
+    <a class="navbar-brand" href="#"  >
+      <img src={logo} alt="" width="300" height="300"/>
+      
+    </a>
+    <div id="btns" class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <button id="btn1" class="btn btn-primary me-md-2 " type="button">Contacts</button>
+  <button id="btn2" class="btn btn-primary" type="button">Home</button>
 </div>
+  </div>
+</nav>
 
-        </div>
-
-        <h1
- 
-      style={{ display: "flex", justifyContent: "center",position:"relative",color:"white"}}
-    >Sign In
-    </h1>
-    <div id="postman">
+      
+  
+    {/* <div id="postman">
     <div class="image-holder"></div>
     </div>
         <div className="Form1"  style={{backgroundColor:"#F7B046",borderRadius:"10%"}}>
@@ -125,12 +127,12 @@ class Login2 extends Component {
                   value={this.state.username}
                   onChange={(e) => this.handleInputChange(e, "username")}
                 />
-                {/* <TestVariable
+                <TestVariable
                   changed={e => this.handleInputChange(e, "password")}
                   name={this.state.password}
-                ></TestVariable> */}
+                ></TestVariable>  */}
 
-                <input
+                {/* <input
                 style={{backgroundColor:"#8E617F", borderRadius:"35px",textAlign:"center", borderColor:"transparent",width:"80%",margin:"auto",fontSize:"18px"}}
                 id="input2"
                   className="form-control mt-4 "
@@ -154,8 +156,62 @@ class Login2 extends Component {
                 </button>
               </div>
             </div>
+          </div> */}
+          <div class="container">
+          {this.state.errors.length === 0 ? (
+                  ""
+                ) : (
+                  <Errors errors={this.state.searchresults} />
+                )}
+          <div class="row" id="row">
+          <div class="col-auto-lg-8 ">  
+                       <img src={photo} class="img-fluid " alt="Responsive image" id="img"></img>
+                     </div>
+                     <div class="col-auto-lg-8 mt-5" id="log" >
+                     <p className="Auth-form-title ">Sign In</p>
+      <form id="form" className="Auth-form ">
+        <div className="Auth-form-content">
+         
+          <div className="form-group">
+            
+            <input
+            id="input"
+              type="email"
+              className="form-control mt-1"
+              placeholder="Username"
+              value={this.state.username}
+              onChange={(e) => this.handleInputChange(e, "username")}
+              required
+            />
           </div>
-   
+          <div className="form-group mt-3">
+           
+            <input
+             id="input"
+              type="password"
+              className="form-control mt-1"
+              placeholder="Enter password"
+              onChange={(e) => this.handleInputChange(e, "password")}
+              value={this.state.password}
+              required
+            />
+          </div>
+          <div  class="d-flex justify-content-center" >
+            <button type="submit" className="btn btn-primary position-relative" id="login" 
+             onClick={(e) => this.handleClick(e)}
+             
+             >
+                 {this.state.tagged ? "Tagged" : "Login"} 
+              Log in
+            </button>
+          </div>
+         
+        </div>
+      </form>
+      </div>
+    </div>
+    </div>
+      
       </div>
     );
   }
