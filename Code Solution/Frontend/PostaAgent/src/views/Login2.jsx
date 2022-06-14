@@ -45,7 +45,7 @@ class Login2 extends Component {
           window.UserP.agency = searchresults.Agjensi;
           window.UserP.terminalId = searchresults.TerminalId;
           window.UserP.idProcesori = searchresults.IdProcesori;
-
+          window.UserP.UserRole = searchresults.UserRole;
           this.props.test("test-key", e, searchresults);
 
         
@@ -179,6 +179,7 @@ class Login2 extends Component {
               type="email"
               className="form-control mt-1"
               placeholder="Username"
+              name="username"
               value={this.state.username}
               onChange={(e) => this.handleInputChange(e, "username")}
               required
@@ -191,6 +192,7 @@ class Login2 extends Component {
               type="password"
               className="form-control mt-1"
               placeholder="Enter password"
+              name="password"
               onChange={(e) => this.handleInputChange(e, "password")}
               value={this.state.password}
               required
@@ -201,7 +203,6 @@ class Login2 extends Component {
              onClick={(e) => this.handleClick(e)}
              
              >
-                 {this.state.tagged ? "Tagged" : "Login"} 
               Log in
             </button>
           </div>
