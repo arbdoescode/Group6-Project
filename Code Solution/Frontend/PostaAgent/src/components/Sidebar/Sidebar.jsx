@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderLinks from "../Header/HeaderLinks.jsx";
+import dashboardRoutes2 from "../../routes/dashboardCourier.jsx";
+import dashboardRoutes3 from "../../routes/dashboardadmin.jsx";
 import dashboardRoutes from "../../routes/dashboard.jsx";
-import Select from "react-select";
-import Grumbullime from "../../views/Grumbullime.jsx";
+
 
 const selectRaport = [
   { value: "1", label: "Raport Grumbullime Arka" },
@@ -54,6 +55,7 @@ class Sidebar extends Component {
           <a className="simple-text logo-normal">Albanian Courier</a>
         </div>
         <div className="sidebar-wrapper">
+        { (window.UserP.UserRole==="1") ?
           <ul className="nav">
             {this.state.width <= 991 ? <HeaderLinks /> : null}
             {dashboardRoutes.map((prop, key) => {
@@ -67,26 +69,6 @@ class Sidebar extends Component {
                     }
                     key={key}
                   >
-
-                    {/* {prop.items?<Select   className="custom-Select mt-4"
-            value={this.state.select}
-            onChange={this.onChangeFunc("select")}
-                  options={selectRaport} >  
-                    {this.state.select.value == "1" ? <p>etst</p> : null}
-                 
-                 {console.log(this.state.select.value , )} 
-                 </Select>  : 
-                     <NavLink
-                     to={prop.path}                
-                    className="nav-link"
-                   active
-                   ClassName="active"
-                      >
-                       <i className={prop.icon} />
-                     <p>{prop.name}</p>
-                    </NavLink>
-             
-                   }  */}
 
                     <NavLink
                      to={prop.path}                
@@ -102,7 +84,65 @@ class Sidebar extends Component {
                    
               return null;
             })}
-          </ul>
+          </ul>:(window.UserP.UserRole==="2") ?
+          <ul className="nav">
+            {this.state.width <= 991 ? <HeaderLinks /> : null}
+            {dashboardRoutes2.map((prop, key) => {
+              if (!prop.redirect)
+                return (
+                  <li
+                    className={
+                      prop.upgrade
+                        ? "active active-pro"
+                        : this.activeRoute(prop.path)
+                    }
+                    key={key}
+                  >
+
+                    <NavLink
+                     to={prop.path}                
+                      className="nav-link"
+                    active
+                    ClassName="active"
+                      >
+                       <i className={prop.icon} />
+                     <p>{prop.name}</p>
+                    </NavLink>
+              </li>
+                  );
+                   
+              return null;
+            })}
+          </ul>:(window.UserP.UserRole==="3") ?
+          <ul className="nav">
+            {this.state.width <= 991 ? <HeaderLinks /> : null}
+            {dashboardRoutes3.map((prop, key) => {
+              if (!prop.redirect)
+                return (
+                  <li
+                    className={
+                      prop.upgrade
+                        ? "active active-pro"
+                        : this.activeRoute(prop.path)
+                    }
+                    key={key}
+                  >
+
+                    <NavLink
+                     to={prop.path}                
+                      className="nav-link"
+                    active
+                    ClassName="active"
+                      >
+                       <i className={prop.icon} />
+                     <p>{prop.name}</p>
+                    </NavLink>
+              </li>
+                  );
+                   
+              return null;
+            })}
+          </ul>:null}
         </div>
        
         
