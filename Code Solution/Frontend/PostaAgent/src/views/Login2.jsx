@@ -85,7 +85,7 @@ class Login2 extends Component {
 
   render() {
     return (
-      <div>  
+      <div class="logindashboard">  
      <nav class="navbar navbar-expand-lg bg-transparent">
   <div class="container-fluid mh-100">
     <a class="navbar-brand" href="#"  >
@@ -163,13 +163,17 @@ class Login2 extends Component {
                 ) : (
                   <Errors errors={this.state.searchresults} />
                 )}
-          <div class="row" id="row">
-          <div class="col-auto-lg-8 ">  
+          <div class="row justify-content-md-center" id="row">
+          <div class="image-postman">  
                        <img src={photo} class="img-fluid " alt="Responsive image" id="img"></img>
                      </div>
-                     <div class="col-auto-lg-8 mt-5" id="log" >
+                    <div class="col-auto-lg-8 mt-5" id="log" >
                      <p className="Auth-form-title ">Sign In</p>
+                     </div></div>
+                     <div class="row justify-content-md-center" >
+                     <div class="col-md-5"  >
       <form id="form" className="Auth-form ">
+        
         <div className="Auth-form-content">
          
           <div className="form-group">
