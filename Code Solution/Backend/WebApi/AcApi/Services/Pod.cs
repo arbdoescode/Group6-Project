@@ -27,53 +27,55 @@ namespace AcApi.Services
         {
             BaseRes res = new BaseRes();
 
+            var ret = dbContext.PODs.Where(e => e.KODI == param.PodKodi).
+               Select(e => e.POD_STATUS_ID).ToList();
+            if (ret[0] == 1)
+            {
+                res.ResultMessage = "Error";
+            }
+            else
+            {
+                res.ResultMessage = "Success";
+                if (param.Veprimi == "Dorezuar")
+                {
 
+                    
+                    var recordToUpdate = (from p in dbContext.PODs
+                                          where (p.KODI == param.PodKodi)
+                                          select p).Single();
+                    recordToUpdate.POD_STATUS_ID = 1;
+                    recordToUpdate.MAR_EMRI = param.Marresi;
+                    recordToUpdate.DATA = DateTime.Now;
+                    dbContext.SaveChanges();
+                }
+                
+            }
 
-            //param.StatusPod = "Dorezuar ne Klient";
-            //param.StatusFizikPod = "I Rregullt";
+            if (res.ResultMessage != "Success")
+            {
 
-
-            ////  param.AgjensiaBurim = "";
-
-            //param.AgjensiaDest = "";
-            ////   param.PerdoruesId;
-            //param.Korrieri = CheckKorrierDorezime(param);
-            //param.Shoferi = "";
-            //param.Targa = "";
-
-            //long? podId = GetPodId(param.PodKodi);
-
-            ////if (!ValidateKorrierPod(podId, param.Korrieri))
-            ////{
-            ////    res.Result = false;
-            ////    res.ResultMessage = "Pod nuk është shpërndarë në korrier! Nuk mund te beni dorezimin e podit :  " + param.PodKodi;
-            ////    return res;
-            ////}
-
-            ////else
-            ////{
-            //SqlParameter[] SqlParaArr = PrepParamDorezo(param);
-
-            //ExecuteNonQuery("PROC_SAVE_SEND_NE_KLIENT", SqlParaArr);
-
-
-            //res.ResultMessage = SqlParaArr[15].Value.ToString();
-
-            //if (res.ResultMessage != "Success")
-            //{
-
-            //    res.Result = false;
-            //    res.ResultMessage = SqlParaArr[15].Value.ToString() + " : " + SqlParaArr[14].Value.ToString();
-            //}
-            //else
-            //{
-            //    if (param.ArsyeMosdorezimi == null && GetDerguesId(param.PodKodi) == 1622)
-            //    {
-            //        SendNotificationGjejeVete(param.PodKodi);
-            //    }
-            //    res.Result = true;
-            //    res.ResultMessage = SqlParaArr[15].Value.ToString() + " : " + SqlParaArr[14].Value.ToString();
-            //}
+                res.Result = false;
+                res.ResultMessage = "Ky Pod eshte dorezuar nje here";
+            }
+            else
+            {
+                if (param.Veprimi == "Mosdorezim")
+                {
+                    res.Result = true;
+                    res.ResultMessage = "Pod eshte kthyer mbrapsht";
+                    var recordToUpdate = (from p in dbContext.PODs
+                                          where (p.KODI == param.PodKodi)
+                                          select p).Single();
+                    recordToUpdate.POD_STATUS_ID = 3;
+                    recordToUpdate.DATA = DateTime.Now;
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    res.Result = true;
+                    res.ResultMessage = "Pod u dorezua me sukses";
+                }
+            }
 
 
             return res;
