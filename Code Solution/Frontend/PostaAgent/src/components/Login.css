@@ -1,50 +1,110 @@
 
 body{
-background-color: #FA3F3F !important;
-overflow: hidden;
-}
-
-#top_menu{
-  margin: 0 auto; 
-  display:block;
-}
-#logo { 
-  float:left;
-
-  width: 200px;
-  height:200px;
-  background: url("logo.png") no-repeat 0 0
-}
-#id{
-  margin: 60px 0px;
-}
-#login{
-  background-color: #FEDCDB;
-  border-color: transparent;
-  width: 40%;
-  border-radius: 35px;
-  margin: auto;
-  color: black;
-  font-size: 18px;
-}
-
-.Form1{
-  position: relative;
-  height: 325px;
-  margin-top: 12%;
+  background-color: #FA3F3F !important;
+  overflow: hidden;
   }
-  .image-holder {
-    float:left;
-  width: 500px;
-  height:500px;
-  background: url("postman.png") no-repeat 0 0
-    }
-
-    #postman{
-display: block;
-margin: 5% auto;
-    }
-    #home_btn{
-      display: flex;
-      justify-content: flex-end;
-    }
+  
+  #btns{
+    margin-bottom: 100px ;
+  }
+  
+  #btn1{
+    background-color: #F6B245;
+    border-color: transparent;
+    color: white;
+    width: 200px;
+    border-radius: 35px;
+    font-size: 21px;
+  
+  }
+  #btn2{
+    background-color: #8C617F;
+    border-color: transparent;
+    color: white;
+    width: 200px;
+    border-radius: 35px;
+    font-size: 21px;
+  
+  }
+  
+  #form{
+   
+    background-color: #F7B046;
+    border-radius: 7%;
+    
+  }
+  #input{
+  background-color: #8E617F;
+  border-color: transparent;
+  border-radius: 35px;
+  width: 450px;
+  height: 50px;
+  
+  }
+  #login{
+    background-color: #FEDCDB;
+    color: black;
+    width: 170px;
+    border-radius: 35px;
+    border-color: transparent;
+    font-size: 21px;
+   
+  }
+  #log{
+    width: 400px;
+    
+  }
+  #img{
+    width:600px;
+   
+  }
+  #row{
+  display:flex;
+  }
+  .container{
+    display:contents;
+  
+  }
+  .container-fluid{
+    height: 50px;
+    margin-top: 100px;
+  }
+      .App {
+        background-color: white;
+       
+      }
+    
+      .Auth-form {
+        width: 600px;
+        height: 400px;
+        box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        border-radius: 8px;
+      
+        background-color: white;
+      }
+      
+      .Auth-form-content {
+        padding-left: 12%;
+        padding-right: 12%;
+        
+      }
+      
+      .Auth-form-title {
+        
+        text-align:center;
+       padding-left: 38%;
+        margin-bottom: 1em;
+        font-size: 44px;
+        color: white;
+        font-weight: 800;
+      }
+      .form-group{
+        margin-top: 18%;
+      }
+      label {
+        font-size: 14px;
+        font-weight: 600;
+        color: rgb(34, 34, 34);
+      }
