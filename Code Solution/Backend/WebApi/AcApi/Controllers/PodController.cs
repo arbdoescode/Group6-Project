@@ -358,12 +358,10 @@ namespace AcApi.Controllers
 
             try
             {
-                //rsp = pod.LlogaritCmiminTotal(param);
                 rsp.Clear();
-                rsp.Add("0");
-                rsp.Add("0");
-                rsp.Add("0");
-                rsp.Add("0");
+                rsp = pod.LlogaritCmiminTotal(param);
+                
+                
                 //return ret;
 
             }
@@ -393,6 +391,7 @@ namespace AcApi.Controllers
 
 
         }
+
 
 
         [HttpPost]
