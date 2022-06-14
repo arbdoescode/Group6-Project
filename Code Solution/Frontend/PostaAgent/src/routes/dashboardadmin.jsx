@@ -1,22 +1,9 @@
-import Grumbullime from "../views/Grumbullime";
+
 //import Raport from "../views/Raport";
 import React from "react";
-import Fjalekalimin from "../components/Input/Fjalekalim";
-import Gjurmim from "../views/Gjurmim";
-import KtheMbrapsht from "../views/KtheMbrapsht";
-import ShperndaKorrier from "../views/ShperndaKorrier";
-import Dorezime from "../views/Dorezime";
-import DorezoKthimeMbrapa from "../views/DorezoKthimeMbrapa";
-import HapCante from "../views/HapCante";
-import PrintoPod from "../views/PrintoPod";
-import KrijoCante from "../views/KrijoCante";
-import KrijoCanteKthime from "../views/KrijoCanteKthime";
-import PranoCante from "../views/PranoCante";
-import Select from "react-select";
-import Raportet from "../views/Raporte/Raportet";
-import ShtoGrumbullime from "../views/ShtoGrumbullime";
 
-import RaportGrumbullimeArka from "../views/Raporte/RaportGrumbullimeArka";
+import UserActivate from "../views/UserActivate.jsx";
+
 
 const selectRaport = [
   { value: "1", label: "Raport Grumbullime Arka" },
@@ -34,13 +21,13 @@ const selectRaport = [
 
 
 const dashboardRoutes = [
-  {
-    path: "/ndrysho/fjalekalimin",
-    name: <p align="left">Ndrysho Fjalekalimin</p>,
-    icon: "pe-7s-door-lock",
-    component: Fjalekalimin,
+    {
+        path: "/aktivizoUser",
+        name: <p align="left">Aktivizo User</p>,
+        icon: "pe-7s-users",
+        component: UserActivate,
     
-  },
+      },
 
   { redirect: true, path: "/#", to: "/dashboard", name: "Dashboard" },
 ];

@@ -1,8 +1,10 @@
-import React from "react";
-import Select from "react-select";
-
-import Fjalekalimin from "../components/Input/Fjalekalim";
 import Grumbullime from "../views/Grumbullime";
+//import Raport from "../views/Raport";
+import React from "react";
+import Fjalekalimin from "../components/Input/Fjalekalim";
+import PrintoPod from "../views/PrintoPod";
+import KrijoCante from "../views/KrijoCante";
+
 
 const selectRaport = [
   { value: "1", label: "Raport Grumbullime Arka" },
@@ -20,7 +22,7 @@ const selectRaport = [
 
 
 const dashboardRoutes = [
-
+ 
   {
     path: "/grumbulime/agjent",
     name: <p align="left">Grumbullime Agjent</p>,
@@ -28,8 +30,22 @@ const dashboardRoutes = [
     component: Grumbullime
 
 
+  }, 
+  {
+    path: "/printo/fature",
+    name: <p align="left">Printo Pod</p>,
+    icon: "pe-7s-print",
+    component: PrintoPod,
+    
   },
-  
+  {
+    path: "/krijo/cante",
+    name: <p align="left">Krijo Cante</p>,
+    icon: "pe-7s-shopbag",
+    component: KrijoCante,
+  },
+
+
   {
       path: "/ndrysho/fjalekalimin",
     name: <p align="left">Ndrysho Fjalekalimin</p>,
