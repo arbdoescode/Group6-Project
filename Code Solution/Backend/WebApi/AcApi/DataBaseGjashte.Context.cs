@@ -12,6 +12,8 @@ namespace AcApi
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Group6DBEntities : DbContext
     {
@@ -34,5 +36,378 @@ namespace AcApi
         public virtual DbSet<POD> PODs { get; set; }
         public virtual DbSet<QYTETE> QYTETEs { get; set; }
         public virtual DbSet<SHTETE> SHTETEs { get; set; }
+        public virtual DbSet<POD_ORDERS> POD_ORDERS { get; set; }
+        public virtual DbSet<CONFIG_TAKSE_KARBURANTI> CONFIG_TAKSE_KARBURANTI { get; set; }
+        public virtual DbSet<KLIENTE_SUBJEKTE> KLIENTE_SUBJEKTE { get; set; }
+        public virtual DbSet<KODE_POSTAR> KODE_POSTAR { get; set; }
+        public virtual DbSet<KURSI> KURSIs { get; set; }
+        public virtual DbSet<PERQINDJE_KLIENTE_SUBJEKTE> PERQINDJE_KLIENTE_SUBJEKTE { get; set; }
+        public virtual DbSet<TVSH> TVSHes { get; set; }
+        public virtual DbSet<ARSYE_MOSDOREZIMI> ARSYE_MOSDOREZIMI { get; set; }
+        public virtual DbSet<CANTA_PODE> CANTA_PODE { get; set; }
+        public virtual DbSet<CANTA_STATUS_ROW> CANTA_STATUS_ROW { get; set; }
+        public virtual DbSet<CANTAT> CANTATs { get; set; }
+        public virtual DbSet<Gjenero_Cante_Pod> Gjenero_Cante_Pod { get; set; }
+        public virtual DbSet<STATUS_CANTA> STATUS_CANTA { get; set; }
+        public virtual DbSet<STATUS_POD> STATUS_POD { get; set; }
+        public virtual DbSet<KODI_SHERBIMIT> KODI_SHERBIMIT { get; set; }
+        public virtual DbSet<LEVIZJA_BRAND> LEVIZJA_BRAND { get; set; }
+        public virtual DbSet<LEVIZJA_DREJTIM> LEVIZJA_DREJTIM { get; set; }
+        public virtual DbSet<SHTESA_TYPE> SHTESA_TYPE { get; set; }
+    
+        public virtual int PROC_SAVE_NEW_POD_ORDER_ZONE_KONFIRMIM(string pKodi, string pAgjensiaSource, string pQytetiDestinacion, string pKorrieriKodi, string pKodiProduktit, string pCope, string pPesha, string pPeshaVolumetrike, string pData, string pPershkrimi, string pEmriDergues, string pMbiemriDergues, string pAdresaDergues, string pQytetiDergues, string pShtetiDergues, string pTelefoniDergues, string pKodiPostaDergues, string pEmriMarres, string pMbiemriMarres, string pAdresaMarres, string pQytetitMarres, string pShtetiMarres, string pTelefoniMarres, string pKodiPostarMarres, string pCmimiBaze, string pShtesa, string pTvsh, string pShumaSherbimeExtra, string pMenyrePagese, string pKushPaguan, string pSherbimeExtra, string pMenyrePageseSherbimeExtra, string pKlienteSubjekteDergues, string pKlienteSubjekteMarres, string pDateRregjistrimi, Nullable<long> perdoruesId, string pNumriCheck, string pMonedhaExtra, string pPodStatus, string pBanka, string pSiguruar, string pVleraSiguruar, string pKodiPostarMarresit, string pVleraJashteZone, string pKodiPershkrimit, string pMonedhaCmimiBaze, string pPerqindjeDiscount, string pKursiCmimiBaze, string pCmimiBazeEuro, string pKodiLevizjes, string pPerqindjeTvsh, string pAgjensiaPikePike, string pAgjensiaRemote, string pTerminalProcessorId, string pTerminalSerialBios, string pAgjensiaDestinacionEmri, string pKodiSherbimit, string pPerqindjeTakseKarburanti, string pValueLekTakseKarburanti, string pValueEuroTakseKarburanti, string pKodReference, string tvshALLShtesa, string pCmimi_Zbritje, string pDerguesKundrejtPagese, string pFshat, string pQytet, string pBrand, string pDrejtim, string pTranzit, string pKonfirmim, ObjectParameter pMessageType, ObjectParameter pMessage, ObjectParameter podId)
+        {
+            var pKodiParameter = pKodi != null ?
+                new ObjectParameter("pKodi", pKodi) :
+                new ObjectParameter("pKodi", typeof(string));
+    
+            var pAgjensiaSourceParameter = pAgjensiaSource != null ?
+                new ObjectParameter("pAgjensiaSource", pAgjensiaSource) :
+                new ObjectParameter("pAgjensiaSource", typeof(string));
+    
+            var pQytetiDestinacionParameter = pQytetiDestinacion != null ?
+                new ObjectParameter("pQytetiDestinacion", pQytetiDestinacion) :
+                new ObjectParameter("pQytetiDestinacion", typeof(string));
+    
+            var pKorrieriKodiParameter = pKorrieriKodi != null ?
+                new ObjectParameter("pKorrieriKodi", pKorrieriKodi) :
+                new ObjectParameter("pKorrieriKodi", typeof(string));
+    
+            var pKodiProduktitParameter = pKodiProduktit != null ?
+                new ObjectParameter("pKodiProduktit", pKodiProduktit) :
+                new ObjectParameter("pKodiProduktit", typeof(string));
+    
+            var pCopeParameter = pCope != null ?
+                new ObjectParameter("pCope", pCope) :
+                new ObjectParameter("pCope", typeof(string));
+    
+            var pPeshaParameter = pPesha != null ?
+                new ObjectParameter("pPesha", pPesha) :
+                new ObjectParameter("pPesha", typeof(string));
+    
+            var pPeshaVolumetrikeParameter = pPeshaVolumetrike != null ?
+                new ObjectParameter("pPeshaVolumetrike", pPeshaVolumetrike) :
+                new ObjectParameter("pPeshaVolumetrike", typeof(string));
+    
+            var pDataParameter = pData != null ?
+                new ObjectParameter("pData", pData) :
+                new ObjectParameter("pData", typeof(string));
+    
+            var pPershkrimiParameter = pPershkrimi != null ?
+                new ObjectParameter("pPershkrimi", pPershkrimi) :
+                new ObjectParameter("pPershkrimi", typeof(string));
+    
+            var pEmriDerguesParameter = pEmriDergues != null ?
+                new ObjectParameter("pEmriDergues", pEmriDergues) :
+                new ObjectParameter("pEmriDergues", typeof(string));
+    
+            var pMbiemriDerguesParameter = pMbiemriDergues != null ?
+                new ObjectParameter("pMbiemriDergues", pMbiemriDergues) :
+                new ObjectParameter("pMbiemriDergues", typeof(string));
+    
+            var pAdresaDerguesParameter = pAdresaDergues != null ?
+                new ObjectParameter("pAdresaDergues", pAdresaDergues) :
+                new ObjectParameter("pAdresaDergues", typeof(string));
+    
+            var pQytetiDerguesParameter = pQytetiDergues != null ?
+                new ObjectParameter("pQytetiDergues", pQytetiDergues) :
+                new ObjectParameter("pQytetiDergues", typeof(string));
+    
+            var pShtetiDerguesParameter = pShtetiDergues != null ?
+                new ObjectParameter("pShtetiDergues", pShtetiDergues) :
+                new ObjectParameter("pShtetiDergues", typeof(string));
+    
+            var pTelefoniDerguesParameter = pTelefoniDergues != null ?
+                new ObjectParameter("pTelefoniDergues", pTelefoniDergues) :
+                new ObjectParameter("pTelefoniDergues", typeof(string));
+    
+            var pKodiPostaDerguesParameter = pKodiPostaDergues != null ?
+                new ObjectParameter("pKodiPostaDergues", pKodiPostaDergues) :
+                new ObjectParameter("pKodiPostaDergues", typeof(string));
+    
+            var pEmriMarresParameter = pEmriMarres != null ?
+                new ObjectParameter("pEmriMarres", pEmriMarres) :
+                new ObjectParameter("pEmriMarres", typeof(string));
+    
+            var pMbiemriMarresParameter = pMbiemriMarres != null ?
+                new ObjectParameter("pMbiemriMarres", pMbiemriMarres) :
+                new ObjectParameter("pMbiemriMarres", typeof(string));
+    
+            var pAdresaMarresParameter = pAdresaMarres != null ?
+                new ObjectParameter("pAdresaMarres", pAdresaMarres) :
+                new ObjectParameter("pAdresaMarres", typeof(string));
+    
+            var pQytetitMarresParameter = pQytetitMarres != null ?
+                new ObjectParameter("pQytetitMarres", pQytetitMarres) :
+                new ObjectParameter("pQytetitMarres", typeof(string));
+    
+            var pShtetiMarresParameter = pShtetiMarres != null ?
+                new ObjectParameter("pShtetiMarres", pShtetiMarres) :
+                new ObjectParameter("pShtetiMarres", typeof(string));
+    
+            var pTelefoniMarresParameter = pTelefoniMarres != null ?
+                new ObjectParameter("pTelefoniMarres", pTelefoniMarres) :
+                new ObjectParameter("pTelefoniMarres", typeof(string));
+    
+            var pKodiPostarMarresParameter = pKodiPostarMarres != null ?
+                new ObjectParameter("pKodiPostarMarres", pKodiPostarMarres) :
+                new ObjectParameter("pKodiPostarMarres", typeof(string));
+    
+            var pCmimiBazeParameter = pCmimiBaze != null ?
+                new ObjectParameter("pCmimiBaze", pCmimiBaze) :
+                new ObjectParameter("pCmimiBaze", typeof(string));
+    
+            var pShtesaParameter = pShtesa != null ?
+                new ObjectParameter("pShtesa", pShtesa) :
+                new ObjectParameter("pShtesa", typeof(string));
+    
+            var pTvshParameter = pTvsh != null ?
+                new ObjectParameter("pTvsh", pTvsh) :
+                new ObjectParameter("pTvsh", typeof(string));
+    
+            var pShumaSherbimeExtraParameter = pShumaSherbimeExtra != null ?
+                new ObjectParameter("pShumaSherbimeExtra", pShumaSherbimeExtra) :
+                new ObjectParameter("pShumaSherbimeExtra", typeof(string));
+    
+            var pMenyrePageseParameter = pMenyrePagese != null ?
+                new ObjectParameter("pMenyrePagese", pMenyrePagese) :
+                new ObjectParameter("pMenyrePagese", typeof(string));
+    
+            var pKushPaguanParameter = pKushPaguan != null ?
+                new ObjectParameter("pKushPaguan", pKushPaguan) :
+                new ObjectParameter("pKushPaguan", typeof(string));
+    
+            var pSherbimeExtraParameter = pSherbimeExtra != null ?
+                new ObjectParameter("pSherbimeExtra", pSherbimeExtra) :
+                new ObjectParameter("pSherbimeExtra", typeof(string));
+    
+            var pMenyrePageseSherbimeExtraParameter = pMenyrePageseSherbimeExtra != null ?
+                new ObjectParameter("pMenyrePageseSherbimeExtra", pMenyrePageseSherbimeExtra) :
+                new ObjectParameter("pMenyrePageseSherbimeExtra", typeof(string));
+    
+            var pKlienteSubjekteDerguesParameter = pKlienteSubjekteDergues != null ?
+                new ObjectParameter("pKlienteSubjekteDergues", pKlienteSubjekteDergues) :
+                new ObjectParameter("pKlienteSubjekteDergues", typeof(string));
+    
+            var pKlienteSubjekteMarresParameter = pKlienteSubjekteMarres != null ?
+                new ObjectParameter("pKlienteSubjekteMarres", pKlienteSubjekteMarres) :
+                new ObjectParameter("pKlienteSubjekteMarres", typeof(string));
+    
+            var pDateRregjistrimiParameter = pDateRregjistrimi != null ?
+                new ObjectParameter("pDateRregjistrimi", pDateRregjistrimi) :
+                new ObjectParameter("pDateRregjistrimi", typeof(string));
+    
+            var perdoruesIdParameter = perdoruesId.HasValue ?
+                new ObjectParameter("PerdoruesId", perdoruesId) :
+                new ObjectParameter("PerdoruesId", typeof(long));
+    
+            var pNumriCheckParameter = pNumriCheck != null ?
+                new ObjectParameter("pNumriCheck", pNumriCheck) :
+                new ObjectParameter("pNumriCheck", typeof(string));
+    
+            var pMonedhaExtraParameter = pMonedhaExtra != null ?
+                new ObjectParameter("pMonedhaExtra", pMonedhaExtra) :
+                new ObjectParameter("pMonedhaExtra", typeof(string));
+    
+            var pPodStatusParameter = pPodStatus != null ?
+                new ObjectParameter("pPodStatus", pPodStatus) :
+                new ObjectParameter("pPodStatus", typeof(string));
+    
+            var pBankaParameter = pBanka != null ?
+                new ObjectParameter("pBanka", pBanka) :
+                new ObjectParameter("pBanka", typeof(string));
+    
+            var pSiguruarParameter = pSiguruar != null ?
+                new ObjectParameter("pSiguruar", pSiguruar) :
+                new ObjectParameter("pSiguruar", typeof(string));
+    
+            var pVleraSiguruarParameter = pVleraSiguruar != null ?
+                new ObjectParameter("pVleraSiguruar", pVleraSiguruar) :
+                new ObjectParameter("pVleraSiguruar", typeof(string));
+    
+            var pKodiPostarMarresitParameter = pKodiPostarMarresit != null ?
+                new ObjectParameter("pKodiPostarMarresit", pKodiPostarMarresit) :
+                new ObjectParameter("pKodiPostarMarresit", typeof(string));
+    
+            var pVleraJashteZoneParameter = pVleraJashteZone != null ?
+                new ObjectParameter("pVleraJashteZone", pVleraJashteZone) :
+                new ObjectParameter("pVleraJashteZone", typeof(string));
+    
+            var pKodiPershkrimitParameter = pKodiPershkrimit != null ?
+                new ObjectParameter("pKodiPershkrimit", pKodiPershkrimit) :
+                new ObjectParameter("pKodiPershkrimit", typeof(string));
+    
+            var pMonedhaCmimiBazeParameter = pMonedhaCmimiBaze != null ?
+                new ObjectParameter("pMonedhaCmimiBaze", pMonedhaCmimiBaze) :
+                new ObjectParameter("pMonedhaCmimiBaze", typeof(string));
+    
+            var pPerqindjeDiscountParameter = pPerqindjeDiscount != null ?
+                new ObjectParameter("pPerqindjeDiscount", pPerqindjeDiscount) :
+                new ObjectParameter("pPerqindjeDiscount", typeof(string));
+    
+            var pKursiCmimiBazeParameter = pKursiCmimiBaze != null ?
+                new ObjectParameter("pKursiCmimiBaze", pKursiCmimiBaze) :
+                new ObjectParameter("pKursiCmimiBaze", typeof(string));
+    
+            var pCmimiBazeEuroParameter = pCmimiBazeEuro != null ?
+                new ObjectParameter("pCmimiBazeEuro", pCmimiBazeEuro) :
+                new ObjectParameter("pCmimiBazeEuro", typeof(string));
+    
+            var pKodiLevizjesParameter = pKodiLevizjes != null ?
+                new ObjectParameter("pKodiLevizjes", pKodiLevizjes) :
+                new ObjectParameter("pKodiLevizjes", typeof(string));
+    
+            var pPerqindjeTvshParameter = pPerqindjeTvsh != null ?
+                new ObjectParameter("pPerqindjeTvsh", pPerqindjeTvsh) :
+                new ObjectParameter("pPerqindjeTvsh", typeof(string));
+    
+            var pAgjensiaPikePikeParameter = pAgjensiaPikePike != null ?
+                new ObjectParameter("pAgjensiaPikePike", pAgjensiaPikePike) :
+                new ObjectParameter("pAgjensiaPikePike", typeof(string));
+    
+            var pAgjensiaRemoteParameter = pAgjensiaRemote != null ?
+                new ObjectParameter("pAgjensiaRemote", pAgjensiaRemote) :
+                new ObjectParameter("pAgjensiaRemote", typeof(string));
+    
+            var pTerminalProcessorIdParameter = pTerminalProcessorId != null ?
+                new ObjectParameter("pTerminalProcessorId", pTerminalProcessorId) :
+                new ObjectParameter("pTerminalProcessorId", typeof(string));
+    
+            var pTerminalSerialBiosParameter = pTerminalSerialBios != null ?
+                new ObjectParameter("pTerminalSerialBios", pTerminalSerialBios) :
+                new ObjectParameter("pTerminalSerialBios", typeof(string));
+    
+            var pAgjensiaDestinacionEmriParameter = pAgjensiaDestinacionEmri != null ?
+                new ObjectParameter("pAgjensiaDestinacionEmri", pAgjensiaDestinacionEmri) :
+                new ObjectParameter("pAgjensiaDestinacionEmri", typeof(string));
+    
+            var pKodiSherbimitParameter = pKodiSherbimit != null ?
+                new ObjectParameter("pKodiSherbimit", pKodiSherbimit) :
+                new ObjectParameter("pKodiSherbimit", typeof(string));
+    
+            var pPerqindjeTakseKarburantiParameter = pPerqindjeTakseKarburanti != null ?
+                new ObjectParameter("pPerqindjeTakseKarburanti", pPerqindjeTakseKarburanti) :
+                new ObjectParameter("pPerqindjeTakseKarburanti", typeof(string));
+    
+            var pValueLekTakseKarburantiParameter = pValueLekTakseKarburanti != null ?
+                new ObjectParameter("pValueLekTakseKarburanti", pValueLekTakseKarburanti) :
+                new ObjectParameter("pValueLekTakseKarburanti", typeof(string));
+    
+            var pValueEuroTakseKarburantiParameter = pValueEuroTakseKarburanti != null ?
+                new ObjectParameter("pValueEuroTakseKarburanti", pValueEuroTakseKarburanti) :
+                new ObjectParameter("pValueEuroTakseKarburanti", typeof(string));
+    
+            var pKodReferenceParameter = pKodReference != null ?
+                new ObjectParameter("pKodReference", pKodReference) :
+                new ObjectParameter("pKodReference", typeof(string));
+    
+            var tvshALLShtesaParameter = tvshALLShtesa != null ?
+                new ObjectParameter("TvshALLShtesa", tvshALLShtesa) :
+                new ObjectParameter("TvshALLShtesa", typeof(string));
+    
+            var pCmimi_ZbritjeParameter = pCmimi_Zbritje != null ?
+                new ObjectParameter("pCmimi_Zbritje", pCmimi_Zbritje) :
+                new ObjectParameter("pCmimi_Zbritje", typeof(string));
+    
+            var pDerguesKundrejtPageseParameter = pDerguesKundrejtPagese != null ?
+                new ObjectParameter("pDerguesKundrejtPagese", pDerguesKundrejtPagese) :
+                new ObjectParameter("pDerguesKundrejtPagese", typeof(string));
+    
+            var pFshatParameter = pFshat != null ?
+                new ObjectParameter("pFshat", pFshat) :
+                new ObjectParameter("pFshat", typeof(string));
+    
+            var pQytetParameter = pQytet != null ?
+                new ObjectParameter("pQytet", pQytet) :
+                new ObjectParameter("pQytet", typeof(string));
+    
+            var pBrandParameter = pBrand != null ?
+                new ObjectParameter("pBrand", pBrand) :
+                new ObjectParameter("pBrand", typeof(string));
+    
+            var pDrejtimParameter = pDrejtim != null ?
+                new ObjectParameter("pDrejtim", pDrejtim) :
+                new ObjectParameter("pDrejtim", typeof(string));
+    
+            var pTranzitParameter = pTranzit != null ?
+                new ObjectParameter("pTranzit", pTranzit) :
+                new ObjectParameter("pTranzit", typeof(string));
+    
+            var pKonfirmimParameter = pKonfirmim != null ?
+                new ObjectParameter("pKonfirmim", pKonfirmim) :
+                new ObjectParameter("pKonfirmim", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PROC_SAVE_NEW_POD_ORDER_ZONE_KONFIRMIM", pKodiParameter, pAgjensiaSourceParameter, pQytetiDestinacionParameter, pKorrieriKodiParameter, pKodiProduktitParameter, pCopeParameter, pPeshaParameter, pPeshaVolumetrikeParameter, pDataParameter, pPershkrimiParameter, pEmriDerguesParameter, pMbiemriDerguesParameter, pAdresaDerguesParameter, pQytetiDerguesParameter, pShtetiDerguesParameter, pTelefoniDerguesParameter, pKodiPostaDerguesParameter, pEmriMarresParameter, pMbiemriMarresParameter, pAdresaMarresParameter, pQytetitMarresParameter, pShtetiMarresParameter, pTelefoniMarresParameter, pKodiPostarMarresParameter, pCmimiBazeParameter, pShtesaParameter, pTvshParameter, pShumaSherbimeExtraParameter, pMenyrePageseParameter, pKushPaguanParameter, pSherbimeExtraParameter, pMenyrePageseSherbimeExtraParameter, pKlienteSubjekteDerguesParameter, pKlienteSubjekteMarresParameter, pDateRregjistrimiParameter, perdoruesIdParameter, pNumriCheckParameter, pMonedhaExtraParameter, pPodStatusParameter, pBankaParameter, pSiguruarParameter, pVleraSiguruarParameter, pKodiPostarMarresitParameter, pVleraJashteZoneParameter, pKodiPershkrimitParameter, pMonedhaCmimiBazeParameter, pPerqindjeDiscountParameter, pKursiCmimiBazeParameter, pCmimiBazeEuroParameter, pKodiLevizjesParameter, pPerqindjeTvshParameter, pAgjensiaPikePikeParameter, pAgjensiaRemoteParameter, pTerminalProcessorIdParameter, pTerminalSerialBiosParameter, pAgjensiaDestinacionEmriParameter, pKodiSherbimitParameter, pPerqindjeTakseKarburantiParameter, pValueLekTakseKarburantiParameter, pValueEuroTakseKarburantiParameter, pKodReferenceParameter, tvshALLShtesaParameter, pCmimi_ZbritjeParameter, pDerguesKundrejtPageseParameter, pFshatParameter, pQytetParameter, pBrandParameter, pDrejtimParameter, pTranzitParameter, pKonfirmimParameter, pMessageType, pMessage, podId);
+        }
+    
+        public virtual int PROC_KRIJO_CANTE(string pCantaKodi, string pAgjensiaBurim, string pAgjensiaDestinacion, string pPesha, Nullable<long> pPerdoruesId, string pNrRripeSigurimi, string pCantaStatusRowEmer, string pProcesorId, string pSerialBios, ObjectParameter pData, ObjectParameter pLastId, ObjectParameter pMessage, ObjectParameter pMessageType)
+        {
+            var pCantaKodiParameter = pCantaKodi != null ?
+                new ObjectParameter("pCantaKodi", pCantaKodi) :
+                new ObjectParameter("pCantaKodi", typeof(string));
+    
+            var pAgjensiaBurimParameter = pAgjensiaBurim != null ?
+                new ObjectParameter("pAgjensiaBurim", pAgjensiaBurim) :
+                new ObjectParameter("pAgjensiaBurim", typeof(string));
+    
+            var pAgjensiaDestinacionParameter = pAgjensiaDestinacion != null ?
+                new ObjectParameter("pAgjensiaDestinacion", pAgjensiaDestinacion) :
+                new ObjectParameter("pAgjensiaDestinacion", typeof(string));
+    
+            var pPeshaParameter = pPesha != null ?
+                new ObjectParameter("pPesha", pPesha) :
+                new ObjectParameter("pPesha", typeof(string));
+    
+            var pPerdoruesIdParameter = pPerdoruesId.HasValue ?
+                new ObjectParameter("pPerdoruesId", pPerdoruesId) :
+                new ObjectParameter("pPerdoruesId", typeof(long));
+    
+            var pNrRripeSigurimiParameter = pNrRripeSigurimi != null ?
+                new ObjectParameter("pNrRripeSigurimi", pNrRripeSigurimi) :
+                new ObjectParameter("pNrRripeSigurimi", typeof(string));
+    
+            var pCantaStatusRowEmerParameter = pCantaStatusRowEmer != null ?
+                new ObjectParameter("pCantaStatusRowEmer", pCantaStatusRowEmer) :
+                new ObjectParameter("pCantaStatusRowEmer", typeof(string));
+    
+            var pProcesorIdParameter = pProcesorId != null ?
+                new ObjectParameter("pProcesorId", pProcesorId) :
+                new ObjectParameter("pProcesorId", typeof(string));
+    
+            var pSerialBiosParameter = pSerialBios != null ?
+                new ObjectParameter("pSerialBios", pSerialBios) :
+                new ObjectParameter("pSerialBios", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PROC_KRIJO_CANTE", pCantaKodiParameter, pAgjensiaBurimParameter, pAgjensiaDestinacionParameter, pPeshaParameter, pPerdoruesIdParameter, pNrRripeSigurimiParameter, pCantaStatusRowEmerParameter, pProcesorIdParameter, pSerialBiosParameter, pData, pLastId, pMessage, pMessageType);
+        }
+    
+        public virtual int PROC_KRIJO_CANTE_PODE(string pCantaId, string pCantaItemKodi, string pPodItemKodi, Nullable<long> pPerdoruesId, string pProcesorId, string pSerialBios, ObjectParameter pData, ObjectParameter pLastId, ObjectParameter pMessage, ObjectParameter pMessageType)
+        {
+            var pCantaIdParameter = pCantaId != null ?
+                new ObjectParameter("pCantaId", pCantaId) :
+                new ObjectParameter("pCantaId", typeof(string));
+    
+            var pCantaItemKodiParameter = pCantaItemKodi != null ?
+                new ObjectParameter("pCantaItemKodi", pCantaItemKodi) :
+                new ObjectParameter("pCantaItemKodi", typeof(string));
+    
+            var pPodItemKodiParameter = pPodItemKodi != null ?
+                new ObjectParameter("pPodItemKodi", pPodItemKodi) :
+                new ObjectParameter("pPodItemKodi", typeof(string));
+    
+            var pPerdoruesIdParameter = pPerdoruesId.HasValue ?
+                new ObjectParameter("pPerdoruesId", pPerdoruesId) :
+                new ObjectParameter("pPerdoruesId", typeof(long));
+    
+            var pProcesorIdParameter = pProcesorId != null ?
+                new ObjectParameter("pProcesorId", pProcesorId) :
+                new ObjectParameter("pProcesorId", typeof(string));
+    
+            var pSerialBiosParameter = pSerialBios != null ?
+                new ObjectParameter("pSerialBios", pSerialBios) :
+                new ObjectParameter("pSerialBios", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PROC_KRIJO_CANTE_PODE", pCantaIdParameter, pCantaItemKodiParameter, pPodItemKodiParameter, pPerdoruesIdParameter, pProcesorIdParameter, pSerialBiosParameter, pData, pLastId, pMessage, pMessageType);
+        }
     }
 }

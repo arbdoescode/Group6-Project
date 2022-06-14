@@ -21,6 +21,102 @@
           <Property Name="AKTIVE" Type="bit" Nullable="false" />
           <Property Name="NIPT" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ARSYE_MOSDOREZIMI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KODI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CANTA_PODE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CANTA_ID" Type="bigint" Nullable="false" />
+          <Property Name="POD_ITEM_ID" Type="bigint" />
+          <Property Name="PERDORUES_ID" Type="bigint" Nullable="false" />
+          <Property Name="DATE_RREGJISTRIMI" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CANTA_STATUS_ROW">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CANTAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KODI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AGJENSIA_SOURCE_ID" Type="bigint" Nullable="false" />
+          <Property Name="DATE_RREGJISTRIMI" Type="datetime" Nullable="false" />
+          <Property Name="PERDORUES_ID" Type="bigint" Nullable="false" />
+          <Property Name="PESHA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NR_RRIPI_SIGURIMI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CANTA_STATUS_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONFIG_TAKSE_KARBURANTI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KODI_LEVIZJES" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PERQINDJE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATA" Type="datetime" Nullable="false" />
+          <Property Name="AKTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gjenero_Cante_Pod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Shkronja" Type="varchar" MaxLength="10" />
+          <Property Name="Numra" Type="int" />
+          <Property Name="NumraTrue" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="KLIENTE_SUBJEKTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KODI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ADRESA" Type="varchar" MaxLength="350" />
+          <Property Name="QYTETI_ID" Type="bigint" Nullable="false" />
+          <Property Name="SHTETI_ID" Type="bigint" Nullable="false" />
+          <Property Name="TEL" Type="varchar" MaxLength="250" />
+          <Property Name="KODI_POSTAR_ID" Type="bigint" />
+          <Property Name="AKTIVE" Type="bit" Nullable="false" />
+          <Property Name="NIPT" Type="varchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="250" />
+          <Property Name="PERSON_KONTAKTI" Type="varchar" MaxLength="250" />
+          <Property Name="MENYRE_PAGESE_ID" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Emer_Administratori" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KODE_POSTAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KODI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="QYTETI_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="KODI_SHERBIMIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KODI_LEVIZJES" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="KORRIERET">
           <Key>
             <PropertyRef Name="ID" />
@@ -34,6 +130,35 @@
           <Property Name="AGJENSIA_ID" Type="bigint" Nullable="false" />
           <Property Name="TIPI_PUNONJESI_ID" Type="bigint" Nullable="false" />
         </EntityType>
+        <EntityType Name="KURSI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MONEDHA_SOURCE_ID" Type="bigint" Nullable="false" />
+          <Property Name="MONEDHA_DESTINACION_ID" Type="bigint" Nullable="false" />
+          <Property Name="VEPRIMI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KURSI" Type="varchar" MaxLength="50" />
+          <Property Name="Date_Modified" Type="datetime" />
+          <Property Name="ModifiedBY" Type="varchar" MaxLength="50" />
+          <Property Name="KURSI_BF_CH" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LEVIZJA_BRAND">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BRAND" Type="varchar" MaxLength="50" />
+          <Property Name="LEVIZJA" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LEVIZJA_DREJTIM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LEVIZJA" Type="varchar" MaxLength="50" />
+          <Property Name="DREJTIM" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="PERDORUES">
           <Key>
             <PropertyRef Name="ID" />
@@ -44,6 +169,19 @@
           <Property Name="AKTIVE" Type="bit" Nullable="false" />
           <Property Name="KlienteSubjekteId" Type="bigint" />
           <Property Name="RoleID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="PERQINDJE_KLIENTE_SUBJEKTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KLIENTE_SUBJEKTE_ID" Type="bigint" Nullable="false" />
+          <Property Name="PERQINDJE_DISCOUNT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATE_RREGJISTRIMI" Type="datetime" Nullable="false" />
+          <Property Name="KODI_LEVIZJES" Type="varchar" MaxLength="50" />
+          <Property Name="KODI_SHERBIMIT" Type="varchar" MaxLength="50" />
+          <Property Name="AKTIVE" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="UPDATED_BY_ID" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="POD">
           <Key>
@@ -123,6 +261,95 @@
           <Property Name="KONFIRMIM" Type="bit" />
           <Property Name="AGJENSI_TRANZIT" Type="bigint" />
         </EntityType>
+        <EntityType Name="POD_ORDERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KODI" Type="varchar" MaxLength="350" />
+          <Property Name="AGJENSIA_ORIGJINE_ID" Type="bigint" Nullable="false" />
+          <Property Name="QYTETI_DESTINACION_ID" Type="bigint" />
+          <Property Name="KORRIERI_ID" Type="bigint" />
+          <Property Name="KODI_PRODUKTI_ID" Type="bigint" Nullable="false" />
+          <Property Name="COPE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PESHA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PESHA_VOLUMETRIKE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATA" Type="datetime" Nullable="false" />
+          <Property Name="PERSHKRIMI" Type="varchar" MaxLength="255" />
+          <Property Name="DER_EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DER_MBIEMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DER_ADRESA" Type="varchar" MaxLength="150" />
+          <Property Name="DER_QYTETI_ID" Type="bigint" Nullable="false" />
+          <Property Name="DER_SHTETI_ID" Type="bigint" Nullable="false" />
+          <Property Name="DER_TEL" Type="varchar" MaxLength="150" />
+          <Property Name="DER_KODI_POSTAR_ID" Type="bigint" Nullable="false" />
+          <Property Name="MAR_EMRI" Type="varchar" MaxLength="150" />
+          <Property Name="MAR_MBIEMRI" Type="varchar" MaxLength="50" />
+          <Property Name="MAR_ADRESA" Type="varchar" MaxLength="150" />
+          <Property Name="MAR_QYTETI_ID" Type="bigint" />
+          <Property Name="MAR_SHTETI_ID" Type="bigint" />
+          <Property Name="MAR_TEL" Type="varchar" MaxLength="50" />
+          <Property Name="MAR_KODI_POSTAR_ID" Type="bigint" />
+          <Property Name="CMIMI_BAZE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SHTESA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TVSH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SHUMA_SHERBIME_EXTRA" Type="varchar" MaxLength="50" />
+          <Property Name="MENYRA_PAGESES_ID" Type="bigint" />
+          <Property Name="PAGUESI_DERGUES_MARRES" Type="bit" />
+          <Property Name="SHERBIME_EXTRA" Type="varchar" MaxLength="50" />
+          <Property Name="SHERBIME_EXTRA_MENYRE_PAGESE_ID" Type="bigint" />
+          <Property Name="DER_SUBJ_ID" Type="bigint" />
+          <Property Name="MARR_SUBJ_ID" Type="bigint" />
+          <Property Name="DATE_RREGJISTRIMI" Type="datetime" />
+          <Property Name="PERDORUES_ID" Type="bigint" />
+          <Property Name="NUMRI_CEK" Type="varchar" MaxLength="50" />
+          <Property Name="MONEDHA_EXTRA_ID" Type="bigint" />
+          <Property Name="POD_STATUS_ID" Type="bigint" />
+          <Property Name="BANKA_ID" Type="bigint" />
+          <Property Name="SIGURUAR" Type="bit" />
+          <Property Name="VLERA_SIGURUAR" Type="varchar" MaxLength="50" />
+          <Property Name="KODI_POSTAR_MARRES" Type="varchar" MaxLength="50" />
+          <Property Name="VLERA_JASHTE_ZONE" Type="varchar" MaxLength="50" />
+          <Property Name="KODI_PERSHKRIMIT_ID" Type="bigint" />
+          <Property Name="MONEDHA_CMIMI_BAZE_ID" Type="bigint" />
+          <Property Name="PERQINDJE_DISCOUNT" Type="varchar" MaxLength="50" />
+          <Property Name="KURSI_CMIMI_BAZE" Type="varchar" MaxLength="50" />
+          <Property Name="CMIMI_BAZE_EURO" Type="varchar" MaxLength="50" />
+          <Property Name="KODI_LEVIZJES" Type="varchar" MaxLength="50" />
+          <Property Name="PERQINDJE_TVSH" Type="varchar" MaxLength="50" />
+          <Property Name="AGJENSIA_DEST_PIKE_PIKE_ID" Type="bigint" />
+          <Property Name="AGJENSIA_REMOTE_ID" Type="bigint" />
+          <Property Name="TERMINAL_PROCESSOR_ID" Type="varchar" MaxLength="50" />
+          <Property Name="TERMINAL_SERIAL_BIOS" Type="varchar" MaxLength="50" />
+          <Property Name="AGJENSIA_DESTINACION_ID" Type="bigint" />
+          <Property Name="KODI_SHERBIMIT" Type="varchar" MaxLength="150" />
+          <Property Name="PERQINDJE_TAKSE_KARBURANTI" Type="varchar" MaxLength="50" />
+          <Property Name="TAKSE_KARBURANTI_VALUE_LEK" Type="varchar" MaxLength="50" />
+          <Property Name="TAKSE_KARBURANTI_VALUE_EURO" Type="varchar" MaxLength="50" />
+          <Property Name="KODI_REFERENCE" Type="varchar" MaxLength="50" />
+          <Property Name="TVSH_SHTESA" Type="varchar" MaxLength="50" />
+          <Property Name="TVSH_VL_SIGURUAR" Type="varchar" MaxLength="50" />
+          <Property Name="TVSH_CMIMI_BAZE" Type="varchar" MaxLength="50" />
+          <Property Name="CMIMI_ZBRITJE" Type="varchar" MaxLength="50" />
+          <Property Name="DERGUES_KUNDREJT_PAGESE_ID" Type="bigint" />
+          <Property Name="STATUSI" Type="varchar" MaxLength="50" />
+          <Property Name="DATA_SKANIMI" Type="datetime" />
+          <Property Name="ZONA_ID" Type="bigint" />
+          <Property Name="KOMENTE_SHTESE" Type="varchar" MaxLength="255" />
+          <Property Name="KOMENTE_STATUS" Type="varchar" MaxLength="255" />
+          <Property Name="NJESI_ADMINISTRATIVE" Type="varchar" MaxLength="50" />
+          <Property Name="UPDATE_BY" Type="bigint" />
+          <Property Name="DATE_UPDATED" Type="datetime" />
+          <Property Name="KOD_POSTAR" Type="varchar" MaxLength="50" />
+          <Property Name="FSHAT_ID" Type="bigint" />
+          <Property Name="QYTET_ID_NEW" Type="bigint" />
+          <Property Name="BRAND_ID" Type="bigint" />
+          <Property Name="DREJTIM_ID" Type="bigint" />
+          <Property Name="AGJENSI_TRANZIT" Type="bigint" />
+          <Property Name="LLOJ_PRODUKTI" Type="varchar" MaxLength="150" />
+          <Property Name="AKSI_ID" Type="bigint" />
+          <Property Name="KONFIRMIM" Type="bit" />
+        </EntityType>
         <EntityType Name="QYTETE">
           <Key>
             <PropertyRef Name="ID" />
@@ -133,18 +360,34 @@
           <Property Name="KODI_LEVIZES" Type="varchar" MaxLength="50" />
           <Property Name="AKTIVE" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Group6DB.dbo.ROLES' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ROLES">
-          <Property Name="RoleID" Type="int" />
-          <Property Name="RoleName" Type="varchar" MaxLength="255" />
-        </EntityType>-->
+        <EntityType Name="SHTESA_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aktive" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="SHTETE">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EMRI" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STATUS_CANTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STATUS_POD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMRI" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TERMINAL_PERDORUES">
           <Key>
@@ -174,16 +417,154 @@ warning 6013: The table/view 'Group6DB.dbo.ROLES' does not have a primary key de
           <Property Name="USERNAME" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="DATETIME" Type="datetime" />
         </EntityType>
+        <EntityType Name="TVSH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PERQINDJE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATA" Type="datetime" />
+          <Property Name="AKTIVE" Type="char" MaxLength="10" />
+        </EntityType>
+        <Function Name="GetCantaIdByKodi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+          <Parameter Name="cKodi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetCantaStatusRowIdByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+          <Parameter Name="pEmri" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetGrumbullimeIdByKodi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+          <Parameter Name="gKodi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PROC_KRIJO_CANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pCantaKodi" Type="varchar" Mode="In" />
+          <Parameter Name="pAgjensiaBurim" Type="varchar" Mode="In" />
+          <Parameter Name="pAgjensiaDestinacion" Type="varchar" Mode="In" />
+          <Parameter Name="pPesha" Type="varchar" Mode="In" />
+          <Parameter Name="pPerdoruesId" Type="bigint" Mode="In" />
+          <Parameter Name="pNrRripeSigurimi" Type="varchar" Mode="In" />
+          <Parameter Name="pCantaStatusRowEmer" Type="varchar" Mode="In" />
+          <Parameter Name="pProcesorId" Type="varchar" Mode="In" />
+          <Parameter Name="pSerialBios" Type="varchar" Mode="In" />
+          <Parameter Name="pData" Type="varchar" Mode="InOut" />
+          <Parameter Name="pLastId" Type="bigint" Mode="InOut" />
+          <Parameter Name="pMessage" Type="varchar" Mode="InOut" />
+          <Parameter Name="pMessageType" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="PROC_KRIJO_CANTE_PODE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pCantaId" Type="varchar" Mode="In" />
+          <Parameter Name="pCantaItemKodi" Type="varchar" Mode="In" />
+          <Parameter Name="pPodItemKodi" Type="varchar" Mode="In" />
+          <Parameter Name="pPerdoruesId" Type="bigint" Mode="In" />
+          <Parameter Name="pProcesorId" Type="varchar" Mode="In" />
+          <Parameter Name="pSerialBios" Type="varchar" Mode="In" />
+          <Parameter Name="pData" Type="varchar" Mode="InOut" />
+          <Parameter Name="pLastId" Type="bigint" Mode="InOut" />
+          <Parameter Name="pMessage" Type="varchar" Mode="InOut" />
+          <Parameter Name="pMessageType" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="PROC_SAVE_NEW_POD_ORDER_ZONE_KONFIRMIM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pKodi" Type="varchar" Mode="In" />
+          <Parameter Name="pAgjensiaSource" Type="varchar" Mode="In" />
+          <Parameter Name="pQytetiDestinacion" Type="varchar" Mode="In" />
+          <Parameter Name="pKorrieriKodi" Type="varchar" Mode="In" />
+          <Parameter Name="pKodiProduktit" Type="varchar" Mode="In" />
+          <Parameter Name="pCope" Type="varchar" Mode="In" />
+          <Parameter Name="pPesha" Type="varchar" Mode="In" />
+          <Parameter Name="pPeshaVolumetrike" Type="varchar" Mode="In" />
+          <Parameter Name="pData" Type="varchar" Mode="In" />
+          <Parameter Name="pPershkrimi" Type="varchar" Mode="In" />
+          <Parameter Name="pEmriDergues" Type="varchar" Mode="In" />
+          <Parameter Name="pMbiemriDergues" Type="varchar" Mode="In" />
+          <Parameter Name="pAdresaDergues" Type="varchar" Mode="In" />
+          <Parameter Name="pQytetiDergues" Type="varchar" Mode="In" />
+          <Parameter Name="pShtetiDergues" Type="varchar" Mode="In" />
+          <Parameter Name="pTelefoniDergues" Type="varchar" Mode="In" />
+          <Parameter Name="pKodiPostaDergues" Type="varchar" Mode="In" />
+          <Parameter Name="pEmriMarres" Type="varchar" Mode="In" />
+          <Parameter Name="pMbiemriMarres" Type="varchar" Mode="In" />
+          <Parameter Name="pAdresaMarres" Type="varchar" Mode="In" />
+          <Parameter Name="pQytetitMarres" Type="varchar" Mode="In" />
+          <Parameter Name="pShtetiMarres" Type="varchar" Mode="In" />
+          <Parameter Name="pTelefoniMarres" Type="varchar" Mode="In" />
+          <Parameter Name="pKodiPostarMarres" Type="varchar" Mode="In" />
+          <Parameter Name="pCmimiBaze" Type="varchar" Mode="In" />
+          <Parameter Name="pShtesa" Type="varchar" Mode="In" />
+          <Parameter Name="pTvsh" Type="varchar" Mode="In" />
+          <Parameter Name="pShumaSherbimeExtra" Type="varchar" Mode="In" />
+          <Parameter Name="pMenyrePagese" Type="varchar" Mode="In" />
+          <Parameter Name="pKushPaguan" Type="varchar" Mode="In" />
+          <Parameter Name="pSherbimeExtra" Type="varchar" Mode="In" />
+          <Parameter Name="pMenyrePageseSherbimeExtra" Type="varchar" Mode="In" />
+          <Parameter Name="pKlienteSubjekteDergues" Type="varchar" Mode="In" />
+          <Parameter Name="pKlienteSubjekteMarres" Type="varchar" Mode="In" />
+          <Parameter Name="pDateRregjistrimi" Type="varchar" Mode="In" />
+          <Parameter Name="PerdoruesId" Type="bigint" Mode="In" />
+          <Parameter Name="pNumriCheck" Type="varchar" Mode="In" />
+          <Parameter Name="pMonedhaExtra" Type="varchar" Mode="In" />
+          <Parameter Name="pPodStatus" Type="varchar" Mode="In" />
+          <Parameter Name="pBanka" Type="varchar" Mode="In" />
+          <Parameter Name="pSiguruar" Type="varchar" Mode="In" />
+          <Parameter Name="pVleraSiguruar" Type="varchar" Mode="In" />
+          <Parameter Name="pKodiPostarMarresit" Type="varchar" Mode="In" />
+          <Parameter Name="pVleraJashteZone" Type="varchar" Mode="In" />
+          <Parameter Name="pKodiPershkrimit" Type="varchar" Mode="In" />
+          <Parameter Name="pMonedhaCmimiBaze" Type="varchar" Mode="In" />
+          <Parameter Name="pPerqindjeDiscount" Type="varchar" Mode="In" />
+          <Parameter Name="pKursiCmimiBaze" Type="varchar" Mode="In" />
+          <Parameter Name="pCmimiBazeEuro" Type="varchar" Mode="In" />
+          <Parameter Name="pKodiLevizjes" Type="varchar" Mode="In" />
+          <Parameter Name="pPerqindjeTvsh" Type="varchar" Mode="In" />
+          <Parameter Name="pAgjensiaPikePike" Type="varchar" Mode="In" />
+          <Parameter Name="pAgjensiaRemote" Type="varchar" Mode="In" />
+          <Parameter Name="pTerminalProcessorId" Type="varchar" Mode="In" />
+          <Parameter Name="pTerminalSerialBios" Type="varchar" Mode="In" />
+          <Parameter Name="pAgjensiaDestinacionEmri" Type="varchar" Mode="In" />
+          <Parameter Name="pKodiSherbimit" Type="varchar" Mode="In" />
+          <Parameter Name="pPerqindjeTakseKarburanti" Type="varchar" Mode="In" />
+          <Parameter Name="pValueLekTakseKarburanti" Type="varchar" Mode="In" />
+          <Parameter Name="pValueEuroTakseKarburanti" Type="varchar" Mode="In" />
+          <Parameter Name="pKodReference" Type="varchar" Mode="In" />
+          <Parameter Name="TvshALLShtesa" Type="varchar" Mode="In" />
+          <Parameter Name="pCmimi_Zbritje" Type="varchar" Mode="In" />
+          <Parameter Name="pDerguesKundrejtPagese" Type="varchar" Mode="In" />
+          <Parameter Name="pFshat" Type="varchar" Mode="In" />
+          <Parameter Name="pQytet" Type="varchar" Mode="In" />
+          <Parameter Name="pBrand" Type="varchar" Mode="In" />
+          <Parameter Name="pDrejtim" Type="varchar" Mode="In" />
+          <Parameter Name="pTranzit" Type="varchar" Mode="In" />
+          <Parameter Name="pKonfirmim" Type="varchar" Mode="In" />
+          <Parameter Name="pMessageType" Type="varchar" Mode="InOut" />
+          <Parameter Name="pMessage" Type="varchar" Mode="InOut" />
+          <Parameter Name="PodId" Type="bigint" Mode="InOut" />
+        </Function>
         <EntityContainer Name="Group6DBModelGjashtStoreContainer">
           <EntitySet Name="AGJENSITE" EntityType="Self.AGJENSITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARSYE_MOSDOREZIMI" EntityType="Self.ARSYE_MOSDOREZIMI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CANTA_PODE" EntityType="Self.CANTA_PODE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CANTA_STATUS_ROW" EntityType="Self.CANTA_STATUS_ROW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CANTAT" EntityType="Self.CANTAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONFIG_TAKSE_KARBURANTI" EntityType="Self.CONFIG_TAKSE_KARBURANTI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gjenero_Cante_Pod" EntityType="Self.Gjenero_Cante_Pod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KLIENTE_SUBJEKTE" EntityType="Self.KLIENTE_SUBJEKTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KODE_POSTAR" EntityType="Self.KODE_POSTAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KODI_SHERBIMIT" EntityType="Self.KODI_SHERBIMIT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KORRIERET" EntityType="Self.KORRIERET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KURSI" EntityType="Self.KURSI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LEVIZJA_BRAND" EntityType="Self.LEVIZJA_BRAND" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LEVIZJA_DREJTIM" EntityType="Self.LEVIZJA_DREJTIM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERDORUES" EntityType="Self.PERDORUES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERQINDJE_KLIENTE_SUBJEKTE" EntityType="Self.PERQINDJE_KLIENTE_SUBJEKTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="POD" EntityType="Self.POD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POD_ORDERS" EntityType="Self.POD_ORDERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QYTETE" EntityType="Self.QYTETE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SHTESA_TYPE" EntityType="Self.SHTESA_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SHTETE" EntityType="Self.SHTETE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATUS_CANTA" EntityType="Self.STATUS_CANTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATUS_POD" EntityType="Self.STATUS_POD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TERMINAL_PERDORUES" EntityType="Self.TERMINAL_PERDORUES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TERMINALE" EntityType="Self.TERMINALE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Token_AGJ" EntityType="Self.Token_AGJ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TVSH" EntityType="Self.TVSH" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -254,6 +635,126 @@ warning 6013: The table/view 'Group6DB.dbo.ROLES' does not have a primary key de
           <EntitySet Name="PODs" EntityType="Group6DBModelGjasht.POD" />
           <EntitySet Name="QYTETEs" EntityType="Group6DBModelGjasht.QYTETE" />
           <EntitySet Name="SHTETEs" EntityType="Group6DBModelGjasht.SHTETE" />
+          <FunctionImport Name="PROC_SAVE_NEW_POD_ORDER_ZONE_KONFIRMIM">
+            <Parameter Name="pKodi" Mode="In" Type="String" />
+            <Parameter Name="pAgjensiaSource" Mode="In" Type="String" />
+            <Parameter Name="pQytetiDestinacion" Mode="In" Type="String" />
+            <Parameter Name="pKorrieriKodi" Mode="In" Type="String" />
+            <Parameter Name="pKodiProduktit" Mode="In" Type="String" />
+            <Parameter Name="pCope" Mode="In" Type="String" />
+            <Parameter Name="pPesha" Mode="In" Type="String" />
+            <Parameter Name="pPeshaVolumetrike" Mode="In" Type="String" />
+            <Parameter Name="pData" Mode="In" Type="String" />
+            <Parameter Name="pPershkrimi" Mode="In" Type="String" />
+            <Parameter Name="pEmriDergues" Mode="In" Type="String" />
+            <Parameter Name="pMbiemriDergues" Mode="In" Type="String" />
+            <Parameter Name="pAdresaDergues" Mode="In" Type="String" />
+            <Parameter Name="pQytetiDergues" Mode="In" Type="String" />
+            <Parameter Name="pShtetiDergues" Mode="In" Type="String" />
+            <Parameter Name="pTelefoniDergues" Mode="In" Type="String" />
+            <Parameter Name="pKodiPostaDergues" Mode="In" Type="String" />
+            <Parameter Name="pEmriMarres" Mode="In" Type="String" />
+            <Parameter Name="pMbiemriMarres" Mode="In" Type="String" />
+            <Parameter Name="pAdresaMarres" Mode="In" Type="String" />
+            <Parameter Name="pQytetitMarres" Mode="In" Type="String" />
+            <Parameter Name="pShtetiMarres" Mode="In" Type="String" />
+            <Parameter Name="pTelefoniMarres" Mode="In" Type="String" />
+            <Parameter Name="pKodiPostarMarres" Mode="In" Type="String" />
+            <Parameter Name="pCmimiBaze" Mode="In" Type="String" />
+            <Parameter Name="pShtesa" Mode="In" Type="String" />
+            <Parameter Name="pTvsh" Mode="In" Type="String" />
+            <Parameter Name="pShumaSherbimeExtra" Mode="In" Type="String" />
+            <Parameter Name="pMenyrePagese" Mode="In" Type="String" />
+            <Parameter Name="pKushPaguan" Mode="In" Type="String" />
+            <Parameter Name="pSherbimeExtra" Mode="In" Type="String" />
+            <Parameter Name="pMenyrePageseSherbimeExtra" Mode="In" Type="String" />
+            <Parameter Name="pKlienteSubjekteDergues" Mode="In" Type="String" />
+            <Parameter Name="pKlienteSubjekteMarres" Mode="In" Type="String" />
+            <Parameter Name="pDateRregjistrimi" Mode="In" Type="String" />
+            <Parameter Name="PerdoruesId" Mode="In" Type="Int64" />
+            <Parameter Name="pNumriCheck" Mode="In" Type="String" />
+            <Parameter Name="pMonedhaExtra" Mode="In" Type="String" />
+            <Parameter Name="pPodStatus" Mode="In" Type="String" />
+            <Parameter Name="pBanka" Mode="In" Type="String" />
+            <Parameter Name="pSiguruar" Mode="In" Type="String" />
+            <Parameter Name="pVleraSiguruar" Mode="In" Type="String" />
+            <Parameter Name="pKodiPostarMarresit" Mode="In" Type="String" />
+            <Parameter Name="pVleraJashteZone" Mode="In" Type="String" />
+            <Parameter Name="pKodiPershkrimit" Mode="In" Type="String" />
+            <Parameter Name="pMonedhaCmimiBaze" Mode="In" Type="String" />
+            <Parameter Name="pPerqindjeDiscount" Mode="In" Type="String" />
+            <Parameter Name="pKursiCmimiBaze" Mode="In" Type="String" />
+            <Parameter Name="pCmimiBazeEuro" Mode="In" Type="String" />
+            <Parameter Name="pKodiLevizjes" Mode="In" Type="String" />
+            <Parameter Name="pPerqindjeTvsh" Mode="In" Type="String" />
+            <Parameter Name="pAgjensiaPikePike" Mode="In" Type="String" />
+            <Parameter Name="pAgjensiaRemote" Mode="In" Type="String" />
+            <Parameter Name="pTerminalProcessorId" Mode="In" Type="String" />
+            <Parameter Name="pTerminalSerialBios" Mode="In" Type="String" />
+            <Parameter Name="pAgjensiaDestinacionEmri" Mode="In" Type="String" />
+            <Parameter Name="pKodiSherbimit" Mode="In" Type="String" />
+            <Parameter Name="pPerqindjeTakseKarburanti" Mode="In" Type="String" />
+            <Parameter Name="pValueLekTakseKarburanti" Mode="In" Type="String" />
+            <Parameter Name="pValueEuroTakseKarburanti" Mode="In" Type="String" />
+            <Parameter Name="pKodReference" Mode="In" Type="String" />
+            <Parameter Name="TvshALLShtesa" Mode="In" Type="String" />
+            <Parameter Name="pCmimi_Zbritje" Mode="In" Type="String" />
+            <Parameter Name="pDerguesKundrejtPagese" Mode="In" Type="String" />
+            <Parameter Name="pFshat" Mode="In" Type="String" />
+            <Parameter Name="pQytet" Mode="In" Type="String" />
+            <Parameter Name="pBrand" Mode="In" Type="String" />
+            <Parameter Name="pDrejtim" Mode="In" Type="String" />
+            <Parameter Name="pTranzit" Mode="In" Type="String" />
+            <Parameter Name="pKonfirmim" Mode="In" Type="String" />
+            <Parameter Name="pMessageType" Mode="InOut" Type="String" />
+            <Parameter Name="pMessage" Mode="InOut" Type="String" />
+            <Parameter Name="PodId" Mode="InOut" Type="Int64" />
+          </FunctionImport>
+          <EntitySet Name="POD_ORDERS" EntityType="Group6DBModelGjasht.POD_ORDERS" />
+          <EntitySet Name="CONFIG_TAKSE_KARBURANTI" EntityType="Group6DBModelGjasht.CONFIG_TAKSE_KARBURANTI" />
+          <EntitySet Name="KLIENTE_SUBJEKTE" EntityType="Group6DBModelGjasht.KLIENTE_SUBJEKTE" />
+          <EntitySet Name="KODE_POSTAR" EntityType="Group6DBModelGjasht.KODE_POSTAR" />
+          <EntitySet Name="KURSIs" EntityType="Group6DBModelGjasht.KURSI" />
+          <EntitySet Name="PERQINDJE_KLIENTE_SUBJEKTE" EntityType="Group6DBModelGjasht.PERQINDJE_KLIENTE_SUBJEKTE" />
+          <EntitySet Name="TVSHes" EntityType="Group6DBModelGjasht.TVSH" />
+          <EntitySet Name="ARSYE_MOSDOREZIMI" EntityType="Group6DBModelGjasht.ARSYE_MOSDOREZIMI" />
+          <EntitySet Name="CANTA_PODE" EntityType="Group6DBModelGjasht.CANTA_PODE" />
+          <EntitySet Name="CANTA_STATUS_ROW" EntityType="Group6DBModelGjasht.CANTA_STATUS_ROW" />
+          <EntitySet Name="CANTATs" EntityType="Group6DBModelGjasht.CANTAT" />
+          <EntitySet Name="Gjenero_Cante_Pod" EntityType="Group6DBModelGjasht.Gjenero_Cante_Pod" />
+          <EntitySet Name="STATUS_CANTA" EntityType="Group6DBModelGjasht.STATUS_CANTA" />
+          <EntitySet Name="STATUS_POD" EntityType="Group6DBModelGjasht.STATUS_POD" />
+          <FunctionImport Name="PROC_KRIJO_CANTE">
+            <Parameter Name="pCantaKodi" Mode="In" Type="String" />
+            <Parameter Name="pAgjensiaBurim" Mode="In" Type="String" />
+            <Parameter Name="pAgjensiaDestinacion" Mode="In" Type="String" />
+            <Parameter Name="pPesha" Mode="In" Type="String" />
+            <Parameter Name="pPerdoruesId" Mode="In" Type="Int64" />
+            <Parameter Name="pNrRripeSigurimi" Mode="In" Type="String" />
+            <Parameter Name="pCantaStatusRowEmer" Mode="In" Type="String" />
+            <Parameter Name="pProcesorId" Mode="In" Type="String" />
+            <Parameter Name="pSerialBios" Mode="In" Type="String" />
+            <Parameter Name="pData" Mode="InOut" Type="String" />
+            <Parameter Name="pLastId" Mode="InOut" Type="Int64" />
+            <Parameter Name="pMessage" Mode="InOut" Type="String" />
+            <Parameter Name="pMessageType" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_KRIJO_CANTE_PODE">
+            <Parameter Name="pCantaId" Mode="In" Type="String" />
+            <Parameter Name="pCantaItemKodi" Mode="In" Type="String" />
+            <Parameter Name="pPodItemKodi" Mode="In" Type="String" />
+            <Parameter Name="pPerdoruesId" Mode="In" Type="Int64" />
+            <Parameter Name="pProcesorId" Mode="In" Type="String" />
+            <Parameter Name="pSerialBios" Mode="In" Type="String" />
+            <Parameter Name="pData" Mode="InOut" Type="String" />
+            <Parameter Name="pLastId" Mode="InOut" Type="Int64" />
+            <Parameter Name="pMessage" Mode="InOut" Type="String" />
+            <Parameter Name="pMessageType" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="KODI_SHERBIMIT" EntityType="Group6DBModelGjasht.KODI_SHERBIMIT" />
+          <EntitySet Name="LEVIZJA_BRAND" EntityType="Group6DBModelGjasht.LEVIZJA_BRAND" />
+          <EntitySet Name="LEVIZJA_DREJTIM" EntityType="Group6DBModelGjasht.LEVIZJA_DREJTIM" />
+          <EntitySet Name="SHTESA_TYPE" EntityType="Group6DBModelGjasht.SHTESA_TYPE" />
         </EntityContainer>
         <EntityType Name="KORRIERET">
           <Key>
@@ -362,6 +863,264 @@ warning 6013: The table/view 'Group6DB.dbo.ROLES' does not have a primary key de
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EMRI" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="POD_ORDERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KODI" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="AGJENSIA_ORIGJINE_ID" Type="Int64" Nullable="false" />
+          <Property Name="QYTETI_DESTINACION_ID" Type="Int64" />
+          <Property Name="KORRIERI_ID" Type="Int64" />
+          <Property Name="KODI_PRODUKTI_ID" Type="Int64" Nullable="false" />
+          <Property Name="COPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PESHA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PESHA_VOLUMETRIKE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PERSHKRIMI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DER_EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DER_MBIEMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DER_ADRESA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DER_QYTETI_ID" Type="Int64" Nullable="false" />
+          <Property Name="DER_SHTETI_ID" Type="Int64" Nullable="false" />
+          <Property Name="DER_TEL" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DER_KODI_POSTAR_ID" Type="Int64" Nullable="false" />
+          <Property Name="MAR_EMRI" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="MAR_MBIEMRI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAR_ADRESA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="MAR_QYTETI_ID" Type="Int64" />
+          <Property Name="MAR_SHTETI_ID" Type="Int64" />
+          <Property Name="MAR_TEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAR_KODI_POSTAR_ID" Type="Int64" />
+          <Property Name="CMIMI_BAZE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHTESA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TVSH" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHUMA_SHERBIME_EXTRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MENYRA_PAGESES_ID" Type="Int64" />
+          <Property Name="PAGUESI_DERGUES_MARRES" Type="Boolean" />
+          <Property Name="SHERBIME_EXTRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHERBIME_EXTRA_MENYRE_PAGESE_ID" Type="Int64" />
+          <Property Name="DER_SUBJ_ID" Type="Int64" />
+          <Property Name="MARR_SUBJ_ID" Type="Int64" />
+          <Property Name="DATE_RREGJISTRIMI" Type="DateTime" Precision="3" />
+          <Property Name="PERDORUES_ID" Type="Int64" />
+          <Property Name="NUMRI_CEK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MONEDHA_EXTRA_ID" Type="Int64" />
+          <Property Name="POD_STATUS_ID" Type="Int64" />
+          <Property Name="BANKA_ID" Type="Int64" />
+          <Property Name="SIGURUAR" Type="Boolean" />
+          <Property Name="VLERA_SIGURUAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_POSTAR_MARRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VLERA_JASHTE_ZONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_PERSHKRIMIT_ID" Type="Int64" />
+          <Property Name="MONEDHA_CMIMI_BAZE_ID" Type="Int64" />
+          <Property Name="PERQINDJE_DISCOUNT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KURSI_CMIMI_BAZE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CMIMI_BAZE_EURO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_LEVIZJES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PERQINDJE_TVSH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AGJENSIA_DEST_PIKE_PIKE_ID" Type="Int64" />
+          <Property Name="AGJENSIA_REMOTE_ID" Type="Int64" />
+          <Property Name="TERMINAL_PROCESSOR_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TERMINAL_SERIAL_BIOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AGJENSIA_DESTINACION_ID" Type="Int64" />
+          <Property Name="KODI_SHERBIMIT" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PERQINDJE_TAKSE_KARBURANTI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TAKSE_KARBURANTI_VALUE_LEK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TAKSE_KARBURANTI_VALUE_EURO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_REFERENCE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TVSH_SHTESA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TVSH_VL_SIGURUAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TVSH_CMIMI_BAZE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CMIMI_ZBRITJE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DERGUES_KUNDREJT_PAGESE_ID" Type="Int64" />
+          <Property Name="STATUSI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_SKANIMI" Type="DateTime" Precision="3" />
+          <Property Name="ZONA_ID" Type="Int64" />
+          <Property Name="KOMENTE_SHTESE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KOMENTE_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NJESI_ADMINISTRATIVE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_BY" Type="Int64" />
+          <Property Name="DATE_UPDATED" Type="DateTime" Precision="3" />
+          <Property Name="KOD_POSTAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FSHAT_ID" Type="Int64" />
+          <Property Name="QYTET_ID_NEW" Type="Int64" />
+          <Property Name="BRAND_ID" Type="Int64" />
+          <Property Name="DREJTIM_ID" Type="Int64" />
+          <Property Name="AGJENSI_TRANZIT" Type="Int64" />
+          <Property Name="LLOJ_PRODUKTI" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="AKSI_ID" Type="Int64" />
+          <Property Name="KONFIRMIM" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="CONFIG_TAKSE_KARBURANTI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KODI_LEVIZJES" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PERQINDJE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AKTIVE" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KLIENTE_SUBJEKTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KODI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ADRESA" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="QYTETI_ID" Type="Int64" Nullable="false" />
+          <Property Name="SHTETI_ID" Type="Int64" Nullable="false" />
+          <Property Name="TEL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_POSTAR_ID" Type="Int64" />
+          <Property Name="AKTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="NIPT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PERSON_KONTAKTI" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MENYRE_PAGESE_ID" Type="Int64" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Emer_Administratori" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KODE_POSTAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KODI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QYTETI_ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="KURSI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MONEDHA_SOURCE_ID" Type="Int64" Nullable="false" />
+          <Property Name="MONEDHA_DESTINACION_ID" Type="Int64" Nullable="false" />
+          <Property Name="VEPRIMI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KURSI1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Modified" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KURSI_BF_CH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PERQINDJE_KLIENTE_SUBJEKTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KLIENTE_SUBJEKTE_ID" Type="Int64" Nullable="false" />
+          <Property Name="PERQINDJE_DISCOUNT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATE_RREGJISTRIMI" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="KODI_LEVIZJES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_SHERBIMIT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AKTIVE" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="UPDATED_BY_ID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TVSH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PERQINDJE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATA" Type="DateTime" Precision="3" />
+          <Property Name="AKTIVE" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ARSYE_MOSDOREZIMI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KODI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CANTA_PODE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CANTA_ID" Type="Int64" Nullable="false" />
+          <Property Name="POD_ITEM_ID" Type="Int64" />
+          <Property Name="PERDORUES_ID" Type="Int64" Nullable="false" />
+          <Property Name="DATE_RREGJISTRIMI" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CANTA_STATUS_ROW">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CANTAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KODI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AGJENSIA_SOURCE_ID" Type="Int64" Nullable="false" />
+          <Property Name="DATE_RREGJISTRIMI" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PERDORUES_ID" Type="Int64" Nullable="false" />
+          <Property Name="PESHA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NR_RRIPI_SIGURIMI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CANTA_STATUS_ID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gjenero_Cante_Pod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Shkronja" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Numra" Type="Int32" />
+          <Property Name="NumraTrue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STATUS_CANTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STATUS_POD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KODI_SHERBIMIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KODI_LEVIZJES" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LEVIZJA_BRAND">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BRAND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LEVIZJA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LEVIZJA_DREJTIM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LEVIZJA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DREJTIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SHTESA_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMRI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Aktive" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -536,6 +1295,285 @@ warning 6013: The table/view 'Group6DB.dbo.ROLES' does not have a primary key de
           <EntitySetMapping Name="SHTETEs">
             <EntityTypeMapping TypeName="Group6DBModelGjasht.SHTETE">
               <MappingFragment StoreEntitySet="SHTETE">
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PROC_SAVE_NEW_POD_ORDER_ZONE_KONFIRMIM" FunctionName="Group6DBModelGjasht.Store.PROC_SAVE_NEW_POD_ORDER_ZONE_KONFIRMIM" />
+          <EntitySetMapping Name="POD_ORDERS">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.POD_ORDERS">
+              <MappingFragment StoreEntitySet="POD_ORDERS">
+                <ScalarProperty Name="KONFIRMIM" ColumnName="KONFIRMIM" />
+                <ScalarProperty Name="AKSI_ID" ColumnName="AKSI_ID" />
+                <ScalarProperty Name="LLOJ_PRODUKTI" ColumnName="LLOJ_PRODUKTI" />
+                <ScalarProperty Name="AGJENSI_TRANZIT" ColumnName="AGJENSI_TRANZIT" />
+                <ScalarProperty Name="DREJTIM_ID" ColumnName="DREJTIM_ID" />
+                <ScalarProperty Name="BRAND_ID" ColumnName="BRAND_ID" />
+                <ScalarProperty Name="QYTET_ID_NEW" ColumnName="QYTET_ID_NEW" />
+                <ScalarProperty Name="FSHAT_ID" ColumnName="FSHAT_ID" />
+                <ScalarProperty Name="KOD_POSTAR" ColumnName="KOD_POSTAR" />
+                <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+                <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+                <ScalarProperty Name="NJESI_ADMINISTRATIVE" ColumnName="NJESI_ADMINISTRATIVE" />
+                <ScalarProperty Name="KOMENTE_STATUS" ColumnName="KOMENTE_STATUS" />
+                <ScalarProperty Name="KOMENTE_SHTESE" ColumnName="KOMENTE_SHTESE" />
+                <ScalarProperty Name="ZONA_ID" ColumnName="ZONA_ID" />
+                <ScalarProperty Name="DATA_SKANIMI" ColumnName="DATA_SKANIMI" />
+                <ScalarProperty Name="STATUSI" ColumnName="STATUSI" />
+                <ScalarProperty Name="DERGUES_KUNDREJT_PAGESE_ID" ColumnName="DERGUES_KUNDREJT_PAGESE_ID" />
+                <ScalarProperty Name="CMIMI_ZBRITJE" ColumnName="CMIMI_ZBRITJE" />
+                <ScalarProperty Name="TVSH_CMIMI_BAZE" ColumnName="TVSH_CMIMI_BAZE" />
+                <ScalarProperty Name="TVSH_VL_SIGURUAR" ColumnName="TVSH_VL_SIGURUAR" />
+                <ScalarProperty Name="TVSH_SHTESA" ColumnName="TVSH_SHTESA" />
+                <ScalarProperty Name="KODI_REFERENCE" ColumnName="KODI_REFERENCE" />
+                <ScalarProperty Name="TAKSE_KARBURANTI_VALUE_EURO" ColumnName="TAKSE_KARBURANTI_VALUE_EURO" />
+                <ScalarProperty Name="TAKSE_KARBURANTI_VALUE_LEK" ColumnName="TAKSE_KARBURANTI_VALUE_LEK" />
+                <ScalarProperty Name="PERQINDJE_TAKSE_KARBURANTI" ColumnName="PERQINDJE_TAKSE_KARBURANTI" />
+                <ScalarProperty Name="KODI_SHERBIMIT" ColumnName="KODI_SHERBIMIT" />
+                <ScalarProperty Name="AGJENSIA_DESTINACION_ID" ColumnName="AGJENSIA_DESTINACION_ID" />
+                <ScalarProperty Name="TERMINAL_SERIAL_BIOS" ColumnName="TERMINAL_SERIAL_BIOS" />
+                <ScalarProperty Name="TERMINAL_PROCESSOR_ID" ColumnName="TERMINAL_PROCESSOR_ID" />
+                <ScalarProperty Name="AGJENSIA_REMOTE_ID" ColumnName="AGJENSIA_REMOTE_ID" />
+                <ScalarProperty Name="AGJENSIA_DEST_PIKE_PIKE_ID" ColumnName="AGJENSIA_DEST_PIKE_PIKE_ID" />
+                <ScalarProperty Name="PERQINDJE_TVSH" ColumnName="PERQINDJE_TVSH" />
+                <ScalarProperty Name="KODI_LEVIZJES" ColumnName="KODI_LEVIZJES" />
+                <ScalarProperty Name="CMIMI_BAZE_EURO" ColumnName="CMIMI_BAZE_EURO" />
+                <ScalarProperty Name="KURSI_CMIMI_BAZE" ColumnName="KURSI_CMIMI_BAZE" />
+                <ScalarProperty Name="PERQINDJE_DISCOUNT" ColumnName="PERQINDJE_DISCOUNT" />
+                <ScalarProperty Name="MONEDHA_CMIMI_BAZE_ID" ColumnName="MONEDHA_CMIMI_BAZE_ID" />
+                <ScalarProperty Name="KODI_PERSHKRIMIT_ID" ColumnName="KODI_PERSHKRIMIT_ID" />
+                <ScalarProperty Name="VLERA_JASHTE_ZONE" ColumnName="VLERA_JASHTE_ZONE" />
+                <ScalarProperty Name="KODI_POSTAR_MARRES" ColumnName="KODI_POSTAR_MARRES" />
+                <ScalarProperty Name="VLERA_SIGURUAR" ColumnName="VLERA_SIGURUAR" />
+                <ScalarProperty Name="SIGURUAR" ColumnName="SIGURUAR" />
+                <ScalarProperty Name="BANKA_ID" ColumnName="BANKA_ID" />
+                <ScalarProperty Name="POD_STATUS_ID" ColumnName="POD_STATUS_ID" />
+                <ScalarProperty Name="MONEDHA_EXTRA_ID" ColumnName="MONEDHA_EXTRA_ID" />
+                <ScalarProperty Name="NUMRI_CEK" ColumnName="NUMRI_CEK" />
+                <ScalarProperty Name="PERDORUES_ID" ColumnName="PERDORUES_ID" />
+                <ScalarProperty Name="DATE_RREGJISTRIMI" ColumnName="DATE_RREGJISTRIMI" />
+                <ScalarProperty Name="MARR_SUBJ_ID" ColumnName="MARR_SUBJ_ID" />
+                <ScalarProperty Name="DER_SUBJ_ID" ColumnName="DER_SUBJ_ID" />
+                <ScalarProperty Name="SHERBIME_EXTRA_MENYRE_PAGESE_ID" ColumnName="SHERBIME_EXTRA_MENYRE_PAGESE_ID" />
+                <ScalarProperty Name="SHERBIME_EXTRA" ColumnName="SHERBIME_EXTRA" />
+                <ScalarProperty Name="PAGUESI_DERGUES_MARRES" ColumnName="PAGUESI_DERGUES_MARRES" />
+                <ScalarProperty Name="MENYRA_PAGESES_ID" ColumnName="MENYRA_PAGESES_ID" />
+                <ScalarProperty Name="SHUMA_SHERBIME_EXTRA" ColumnName="SHUMA_SHERBIME_EXTRA" />
+                <ScalarProperty Name="TVSH" ColumnName="TVSH" />
+                <ScalarProperty Name="SHTESA" ColumnName="SHTESA" />
+                <ScalarProperty Name="CMIMI_BAZE" ColumnName="CMIMI_BAZE" />
+                <ScalarProperty Name="MAR_KODI_POSTAR_ID" ColumnName="MAR_KODI_POSTAR_ID" />
+                <ScalarProperty Name="MAR_TEL" ColumnName="MAR_TEL" />
+                <ScalarProperty Name="MAR_SHTETI_ID" ColumnName="MAR_SHTETI_ID" />
+                <ScalarProperty Name="MAR_QYTETI_ID" ColumnName="MAR_QYTETI_ID" />
+                <ScalarProperty Name="MAR_ADRESA" ColumnName="MAR_ADRESA" />
+                <ScalarProperty Name="MAR_MBIEMRI" ColumnName="MAR_MBIEMRI" />
+                <ScalarProperty Name="MAR_EMRI" ColumnName="MAR_EMRI" />
+                <ScalarProperty Name="DER_KODI_POSTAR_ID" ColumnName="DER_KODI_POSTAR_ID" />
+                <ScalarProperty Name="DER_TEL" ColumnName="DER_TEL" />
+                <ScalarProperty Name="DER_SHTETI_ID" ColumnName="DER_SHTETI_ID" />
+                <ScalarProperty Name="DER_QYTETI_ID" ColumnName="DER_QYTETI_ID" />
+                <ScalarProperty Name="DER_ADRESA" ColumnName="DER_ADRESA" />
+                <ScalarProperty Name="DER_MBIEMRI" ColumnName="DER_MBIEMRI" />
+                <ScalarProperty Name="DER_EMRI" ColumnName="DER_EMRI" />
+                <ScalarProperty Name="PERSHKRIMI" ColumnName="PERSHKRIMI" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="PESHA_VOLUMETRIKE" ColumnName="PESHA_VOLUMETRIKE" />
+                <ScalarProperty Name="PESHA" ColumnName="PESHA" />
+                <ScalarProperty Name="COPE" ColumnName="COPE" />
+                <ScalarProperty Name="KODI_PRODUKTI_ID" ColumnName="KODI_PRODUKTI_ID" />
+                <ScalarProperty Name="KORRIERI_ID" ColumnName="KORRIERI_ID" />
+                <ScalarProperty Name="QYTETI_DESTINACION_ID" ColumnName="QYTETI_DESTINACION_ID" />
+                <ScalarProperty Name="AGJENSIA_ORIGJINE_ID" ColumnName="AGJENSIA_ORIGJINE_ID" />
+                <ScalarProperty Name="KODI" ColumnName="KODI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIG_TAKSE_KARBURANTI">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.CONFIG_TAKSE_KARBURANTI">
+              <MappingFragment StoreEntitySet="CONFIG_TAKSE_KARBURANTI">
+                <ScalarProperty Name="AKTIVE" ColumnName="AKTIVE" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="PERQINDJE" ColumnName="PERQINDJE" />
+                <ScalarProperty Name="KODI_LEVIZJES" ColumnName="KODI_LEVIZJES" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KLIENTE_SUBJEKTE">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.KLIENTE_SUBJEKTE">
+              <MappingFragment StoreEntitySet="KLIENTE_SUBJEKTE">
+                <ScalarProperty Name="Emer_Administratori" ColumnName="Emer_Administratori" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="MENYRE_PAGESE_ID" ColumnName="MENYRE_PAGESE_ID" />
+                <ScalarProperty Name="PERSON_KONTAKTI" ColumnName="PERSON_KONTAKTI" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="NIPT" ColumnName="NIPT" />
+                <ScalarProperty Name="AKTIVE" ColumnName="AKTIVE" />
+                <ScalarProperty Name="KODI_POSTAR_ID" ColumnName="KODI_POSTAR_ID" />
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
+                <ScalarProperty Name="SHTETI_ID" ColumnName="SHTETI_ID" />
+                <ScalarProperty Name="QYTETI_ID" ColumnName="QYTETI_ID" />
+                <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="KODI" ColumnName="KODI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KODE_POSTAR">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.KODE_POSTAR">
+              <MappingFragment StoreEntitySet="KODE_POSTAR">
+                <ScalarProperty Name="QYTETI_ID" ColumnName="QYTETI_ID" />
+                <ScalarProperty Name="KODI" ColumnName="KODI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KURSIs">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.KURSI">
+              <MappingFragment StoreEntitySet="KURSI">
+                <ScalarProperty Name="KURSI_BF_CH" ColumnName="KURSI_BF_CH" />
+                <ScalarProperty Name="ModifiedBY" ColumnName="ModifiedBY" />
+                <ScalarProperty Name="Date_Modified" ColumnName="Date_Modified" />
+                <ScalarProperty Name="KURSI1" ColumnName="KURSI" />
+                <ScalarProperty Name="VEPRIMI" ColumnName="VEPRIMI" />
+                <ScalarProperty Name="MONEDHA_DESTINACION_ID" ColumnName="MONEDHA_DESTINACION_ID" />
+                <ScalarProperty Name="MONEDHA_SOURCE_ID" ColumnName="MONEDHA_SOURCE_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERQINDJE_KLIENTE_SUBJEKTE">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.PERQINDJE_KLIENTE_SUBJEKTE">
+              <MappingFragment StoreEntitySet="PERQINDJE_KLIENTE_SUBJEKTE">
+                <ScalarProperty Name="UPDATED_BY_ID" ColumnName="UPDATED_BY_ID" />
+                <ScalarProperty Name="AKTIVE" ColumnName="AKTIVE" />
+                <ScalarProperty Name="KODI_SHERBIMIT" ColumnName="KODI_SHERBIMIT" />
+                <ScalarProperty Name="KODI_LEVIZJES" ColumnName="KODI_LEVIZJES" />
+                <ScalarProperty Name="DATE_RREGJISTRIMI" ColumnName="DATE_RREGJISTRIMI" />
+                <ScalarProperty Name="PERQINDJE_DISCOUNT" ColumnName="PERQINDJE_DISCOUNT" />
+                <ScalarProperty Name="KLIENTE_SUBJEKTE_ID" ColumnName="KLIENTE_SUBJEKTE_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TVSHes">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.TVSH">
+              <MappingFragment StoreEntitySet="TVSH">
+                <ScalarProperty Name="AKTIVE" ColumnName="AKTIVE" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="PERQINDJE" ColumnName="PERQINDJE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARSYE_MOSDOREZIMI">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.ARSYE_MOSDOREZIMI">
+              <MappingFragment StoreEntitySet="ARSYE_MOSDOREZIMI">
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="KODI" ColumnName="KODI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CANTA_PODE">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.CANTA_PODE">
+              <MappingFragment StoreEntitySet="CANTA_PODE">
+                <ScalarProperty Name="DATE_RREGJISTRIMI" ColumnName="DATE_RREGJISTRIMI" />
+                <ScalarProperty Name="PERDORUES_ID" ColumnName="PERDORUES_ID" />
+                <ScalarProperty Name="POD_ITEM_ID" ColumnName="POD_ITEM_ID" />
+                <ScalarProperty Name="CANTA_ID" ColumnName="CANTA_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CANTA_STATUS_ROW">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.CANTA_STATUS_ROW">
+              <MappingFragment StoreEntitySet="CANTA_STATUS_ROW">
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CANTATs">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.CANTAT">
+              <MappingFragment StoreEntitySet="CANTAT">
+                <ScalarProperty Name="CANTA_STATUS_ID" ColumnName="CANTA_STATUS_ID" />
+                <ScalarProperty Name="NR_RRIPI_SIGURIMI" ColumnName="NR_RRIPI_SIGURIMI" />
+                <ScalarProperty Name="PESHA" ColumnName="PESHA" />
+                <ScalarProperty Name="PERDORUES_ID" ColumnName="PERDORUES_ID" />
+                <ScalarProperty Name="DATE_RREGJISTRIMI" ColumnName="DATE_RREGJISTRIMI" />
+                <ScalarProperty Name="AGJENSIA_SOURCE_ID" ColumnName="AGJENSIA_SOURCE_ID" />
+                <ScalarProperty Name="KODI" ColumnName="KODI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gjenero_Cante_Pod">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.Gjenero_Cante_Pod">
+              <MappingFragment StoreEntitySet="Gjenero_Cante_Pod">
+                <ScalarProperty Name="NumraTrue" ColumnName="NumraTrue" />
+                <ScalarProperty Name="Numra" ColumnName="Numra" />
+                <ScalarProperty Name="Shkronja" ColumnName="Shkronja" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATUS_CANTA">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.STATUS_CANTA">
+              <MappingFragment StoreEntitySet="STATUS_CANTA">
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATUS_POD">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.STATUS_POD">
+              <MappingFragment StoreEntitySet="STATUS_POD">
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PROC_KRIJO_CANTE" FunctionName="Group6DBModelGjasht.Store.PROC_KRIJO_CANTE" />
+          <FunctionImportMapping FunctionImportName="PROC_KRIJO_CANTE_PODE" FunctionName="Group6DBModelGjasht.Store.PROC_KRIJO_CANTE_PODE" />
+          <EntitySetMapping Name="KODI_SHERBIMIT">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.KODI_SHERBIMIT">
+              <MappingFragment StoreEntitySet="KODI_SHERBIMIT">
+                <ScalarProperty Name="KODI_LEVIZJES" ColumnName="KODI_LEVIZJES" />
+                <ScalarProperty Name="EMRI" ColumnName="EMRI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEVIZJA_BRAND">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.LEVIZJA_BRAND">
+              <MappingFragment StoreEntitySet="LEVIZJA_BRAND">
+                <ScalarProperty Name="LEVIZJA" ColumnName="LEVIZJA" />
+                <ScalarProperty Name="BRAND" ColumnName="BRAND" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEVIZJA_DREJTIM">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.LEVIZJA_DREJTIM">
+              <MappingFragment StoreEntitySet="LEVIZJA_DREJTIM">
+                <ScalarProperty Name="DREJTIM" ColumnName="DREJTIM" />
+                <ScalarProperty Name="LEVIZJA" ColumnName="LEVIZJA" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SHTESA_TYPE">
+            <EntityTypeMapping TypeName="Group6DBModelGjasht.SHTESA_TYPE">
+              <MappingFragment StoreEntitySet="SHTESA_TYPE">
+                <ScalarProperty Name="Aktive" ColumnName="Aktive" />
                 <ScalarProperty Name="EMRI" ColumnName="EMRI" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

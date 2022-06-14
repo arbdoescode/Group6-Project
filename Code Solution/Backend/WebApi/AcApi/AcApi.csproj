@@ -156,6 +156,21 @@
       <DependentUpon>DataBaseGjashte.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ARSYE_MOSDOREZIMI.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CANTAT.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CANTA_PODE.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CANTA_STATUS_ROW.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONFIG_TAKSE_KARBURANTI.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PodController.cs" />
     <Compile Include="DataBaseGjashte.Context.cs">
@@ -173,10 +188,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBaseGjashte.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Gjenero_Cante_Pod.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="KLIENTE_SUBJEKTE.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KODE_POSTAR.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KODI_SHERBIMIT.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
     <Compile Include="KORRIERET.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KURSI.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LEVIZJA_BRAND.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LEVIZJA_DREJTIM.cs">
       <DependentUpon>DataBaseGjashte.tt</DependentUpon>
     </Compile>
     <Compile Include="Middleware\UserKeyValidatorsModule.cs" />
@@ -225,11 +261,18 @@
     <Compile Include="Models\Response\TransactionLogDorezime.cs" />
     <Compile Include="Models\Response\TransactionLogGrumbullime.cs" />
     <Compile Include="Models\Response\TransactionLogGrumbullimeArka.cs" />
+    <Compile Include="Models\Response\UserInfoRes.cs" />
     <Compile Include="Models\Response\VerifikoCanteRes.cs" />
     <Compile Include="PERDORUE.cs">
       <DependentUpon>DataBaseGjashte.tt</DependentUpon>
     </Compile>
+    <Compile Include="PERQINDJE_KLIENTE_SUBJEKTE.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
     <Compile Include="POD.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POD_ORDERS.cs">
       <DependentUpon>DataBaseGjashte.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -237,7 +280,16 @@
       <DependentUpon>DataBaseGjashte.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\Pod.cs" />
+    <Compile Include="SHTESA_TYPE.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
     <Compile Include="SHTETE.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STATUS_CANTA.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STATUS_POD.cs">
       <DependentUpon>DataBaseGjashte.tt</DependentUpon>
     </Compile>
     <Compile Include="TERMINALE.cs">
@@ -247,6 +299,9 @@
       <DependentUpon>DataBaseGjashte.tt</DependentUpon>
     </Compile>
     <Compile Include="Token_AGJ.cs">
+      <DependentUpon>DataBaseGjashte.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TVSH.cs">
       <DependentUpon>DataBaseGjashte.tt</DependentUpon>
     </Compile>
   </ItemGroup>

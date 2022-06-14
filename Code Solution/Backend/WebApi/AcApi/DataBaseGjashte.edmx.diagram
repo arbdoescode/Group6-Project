@@ -4,16 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0a87cff8682b4fd993f0874f48bc72f7" Name="Diagram1">
+      <Diagram DiagramId="0a87cff8682b4fd993f0874f48bc72f7" Name="Diagram1" ZoomLevel="71">
         <EntityTypeShape EntityType="Group6DBModelGjasht.AGJENSITE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Group6DBModelGjasht.PERDORUE" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Group6DBModelGjasht.TERMINAL_PERDORUES" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Group6DBModelGjasht.TERMINALE" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Group6DBModelGjasht.Token_AGJ" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Group6DBModelGjasht.KORRIERET" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="Group6DBModelGjasht.POD" Width="1.5" PointX="2.75" PointY="6.75" />
-        <EntityTypeShape EntityType="Group6DBModelGjasht.QYTETE" Width="1.5" PointX="4.75" PointY="6.75" />
-        <EntityTypeShape EntityType="Group6DBModelGjasht.SHTETE" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.POD" Width="1.5" PointX="6.75" PointY="0.625" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.QYTETE" Width="1.5" PointX="0.625" PointY="4.25" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.SHTETE" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.POD_ORDERS" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.CONFIG_TAKSE_KARBURANTI" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.KLIENTE_SUBJEKTE" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.KODE_POSTAR" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.KURSI" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.PERQINDJE_KLIENTE_SUBJEKTE" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.TVSH" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.ARSYE_MOSDOREZIMI" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.CANTA_PODE" Width="1.5" PointX="9.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.CANTA_STATUS_ROW" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.CANTAT" Width="1.5" PointX="11.75" PointY="13.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.Gjenero_Cante_Pod" Width="1.5" PointX="13.75" PointY="13.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.STATUS_CANTA" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.STATUS_POD" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.KODI_SHERBIMIT" Width="1.5" PointX="14.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.LEVIZJA_BRAND" Width="1.5" PointX="15.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.LEVIZJA_DREJTIM" Width="1.5" PointX="15.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Group6DBModelGjasht.SHTESA_TYPE" Width="1.5" PointX="16.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
