@@ -13,7 +13,7 @@ namespace AcApi.Models.Request
         public string AgjensiaBurim { get; set; }
 
         public string AgjensiaDest { get; set; }
-
+        public string Veprimi { get; set; }
         public string Ora { get; set; }
 
         public string StatusPod { get; set; }
