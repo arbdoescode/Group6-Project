@@ -1260,6 +1260,58 @@ namespace AcApi.Services
         }
 
         
+        public List<string> LlogaritCmiminTotal(PodSaveReq pReq)
+        {
+            List<string> rsp = new List<string>();
+            double cbaze = double.Parse(pReq.CmimiBazeTry);
+            double zbritje = 0;
+            double kursi = 1;
+            if (pReq.hasZbritje == false)
+            {
+                if (pReq.hasZbritje2 == false)
+                {
+                    zbritje = 0;
+                }
+                else
+                {
+                    zbritje = 20;
+                }
+            }
+            else
+            {
+                zbritje = 10;
+            }
+            
+            cbaze = cbaze - ((cbaze * zbritje) / 100);
+            
+            double tvsh = (cbaze * 1.2);
+            if (pReq.Levizja != "KOMBETAR")
+            {
+                var query = dbContext.KURSIs.FirstOrDefault(e => e.ID == 1).KURSI1;
+                cbaze = cbaze * double.Parse(query);
+                tvsh = tvsh * double.Parse(query);
+                rsp.Add(pReq.CmimiBazeTry);
+                rsp.Add(cbaze.ToString());
+                rsp.Add("0");
+                rsp.Add(tvsh.ToString());
+                rsp.Add(query.ToString());
+
+            }
+            else
+            {
+                rsp.Add(pReq.CmimiBazeTry);
+                rsp.Add(cbaze.ToString());
+                rsp.Add("0");
+                rsp.Add(tvsh.ToString());
+                rsp.Add("1");
+            }
+
+            return rsp;
+
+        }
+
+
+
         
             
         #endregion
