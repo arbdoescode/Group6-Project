@@ -20,6 +20,8 @@ namespace AcApi.Models.Response
         public string IdProcesori;
 
         public string Agjensi;
+        
+        public string UserRole;
 
     }
 }
