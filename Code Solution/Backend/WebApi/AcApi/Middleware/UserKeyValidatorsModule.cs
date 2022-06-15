@@ -394,6 +394,8 @@ namespace AcApi.Middleware
                 || context.Request.Path == "/api/POD/PrintoManifestCante"
                 || context.Request.Path == "/api/POD/RaportOperativ"
                 || context.Request.Path == "/api/POD/GetUserForAdmin"
+                || context.Request.Path == "/api/POD/TransactionLogGrumbullimeNew2"
+                || context.Request.Path == "/api/POD/DashboardTest"
                 )
 
             {
