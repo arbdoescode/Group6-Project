@@ -23,6 +23,183 @@ namespace AcApi.Services
         #region Arb Koci
 
         
+        public List<string> GetAllPodOrders(string klient, string kodProdukti, string pNga, string pDeri, string klientSubjekt, string kodLevizje)
+        {
+
+            var query = new List<string>();
+
+            
+                DateTime dtNgaMin = new DateTime(DateTime.Now.Date.AddDays(-7).Year, DateTime.Now.Date.AddDays(-7).Month, DateTime.Now.Date.AddDays(-7).Day, 0, 0, 0, 0);
+                DateTime dtDeriMax = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, DateTime.Now.Date.Day, 23, 59, 59, 999);
+               
+                query = dbContext.PODs.Where( e => e.DATA >= dtNgaMin && e.DATA <= dtDeriMax
+                                                             ).Select(e => e.KODI).ToList();
+            
+
+
+            if (query.Count() == 0)
+            {
+                return query;
+            }
+
+            return query;
+
+        }
+        public DashbaordRes2 GetDashboard(string klient, string kodProdukti, string pNga, string pDeri, string klientSubjekt, string kodLevizje)
+        {
+            DashbaordRes2 res = new DashbaordRes2();
+
+
+
+            List<string> pode = GetAllPodOrders(klient, kodProdukti, pNga, pDeri, klientSubjekt, kodLevizje);
+
+            if (pode.Count() == 0)
+            {
+                return res;
+            }
+            else if (pode.Count() != 0)
+            {
+                foreach (var itm in pode)
+                {
+                    var queryStatus = dbContext.PODs.FirstOrDefault(e => e.KODI == itm).POD_STATUS_ID;
+
+                    if (queryStatus == 1)
+                    {
+                        res.NrDorezime++;
+                    }
+
+                    else if (queryStatus == 6)
+                    {
+
+                        res.NrPorosi++;
+                    }
+                    else if (queryStatus == 2)
+                    {
+                        res.NrPodHub++;
+                    }
+
+                    else if (queryStatus == 3)
+                    {
+                        res.NrMosDorezime++;
+                    }
+                    else if (queryStatus == 5)
+                    {
+                        res.NrDeleguarKorrier++;
+                    }
+
+                    res.NrGrumbullime++;
+
+
+                }
+            }
+
+
+
+
+
+            return res;
+        }
+
+
+
+        public BindingList<TransactionLogGrumbullime> TransactionLogVetem_Grumbullime_New(CriteriaTransLogGrumbullimParam param)
+        {
+
+            BindingList<TransactionLogGrumbullime> retList = new BindingList<TransactionLogGrumbullime>();
+            BindingList<TransactionLogGrumbullime> retList2 = new BindingList<TransactionLogGrumbullime>();
+            BindingList<TransactionLogGrumbullime> returnList = new BindingList<TransactionLogGrumbullime>();
+
+            try
+            {
+
+
+                DateTime dtNgaMin = new DateTime(DateTime.Now.Date.AddDays(-7).Year, DateTime.Now.Date.AddDays(-7).Month, DateTime.Now.Date.AddDays(-7).Day, 0, 0, 0, 0);
+                DateTime dtDeriMax = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, DateTime.Now.Date.Day, 23, 59, 59, 999);
+                long status = 1;
+                if(param.pStatus== "Grumbulluar")
+                {
+                    status = 4;
+                }else if (param.pStatus == "Porosia Krijuar")
+                {
+                    status = 6;
+                }
+                else if (param.pStatus == "Dorezuar ne Klient")
+                {
+                    status = 1;
+                }
+                else if (param.pStatus == "Nuk u Dorezua ne Klient")
+                {
+                    status = 3;
+                }
+                else
+                {
+                    status = 5;
+                }
+                        
+
+
+
+                var query = (from obj in dbContext.PODs
+                             where
+                                     (obj.DATA >= dtNgaMin && obj.DATA <= dtDeriMax)
+                                     &&
+                                     (obj.POD_STATUS_ID==status)
+
+
+                             select obj);
+
+
+                foreach (var obj in query)
+                {
+
+                    TransactionLogGrumbullime res = new TransactionLogGrumbullime();
+
+                    res.POD = obj.KODI;
+                    // res.AgjensiaDestinacion = obj.Agjensia_Destinacion;
+                    //  res.AgjensiaRemote = obj.AgjensiaRemote;
+                    //  res.Banka = obj.Banka;
+                    res.Cmimi_Baze = obj.CMIMI_BAZE.ToString();
+                    res.Cmimi_me_zbritje = obj.CMIMI_ZBRITJE;
+                    res.Data = obj.DATA;
+                    res.Derguesi = obj.DER_EMRI;
+                    res.Kod_Levizje = obj.KODI_LEVIZJES;
+                    res.Kod_Reference = obj.KODI_REFERENCE;
+                    res.Kodi_Produktit = obj.KODI_PRODUKTI_ID.ToString();
+                    res.EmriMarresit = obj.MAR_EMRI;
+                    res.QytetiMarres = "TIRANE";
+                    res.Pesha = obj.PESHA;
+                    res.VleraKP = obj.VLERA_SIGURUAR;
+                    res.KushPaguan = "Marresi";
+                    
+
+                        res.Total = 0;
+                    
+
+
+                    retList.Add(res);
+
+
+                }
+
+
+                return retList;
+            }
+
+
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+
+            }
+        }
+
+
+
+            
+            
         public BaseRes DorezoPod(DorezoPodReq param)
         {
             BaseRes res = new BaseRes();
