@@ -349,6 +349,367 @@ namespace AcApi.Services
 
         
 
+        public long GetCitybyId(string qyteti)
+        {
+            long rsp = 0;
+
+            var ret = dbContext.QYTETEs.Where(
+                               e => e.EMRI == qyteti
+                              ).Select(e => e.ID); 
+
+            rsp = ret.FirstOrDefault<long>();
+            return rsp;
+        }
+
+        public long GetStatebyId(string shteti)
+        {
+            long rsp = 0;
+
+            var ret = dbContext.SHTETEs.Where(
+                               e => e.EMRI == shteti
+                              ).Select(e => e.ID);
+
+            
+            rsp = ret.FirstOrDefault<long>();
+            return rsp;
+        }
+
+        private PodSaveRes ProcSaveNewPod(PodSaveReq pReq)
+        {
+
+            //****************************
+            PodSaveRes ret2;
+            POD saveorder = new POD();
+            //****************************
+
+            string strAgjOrigjine = pReq.AgjensiaOrigjine;
+
+            string strEmriKlientSubjekt = pReq.KlientSubjektID;
+
+            string idKLSubjekte = GetIDKlientSubjekt(pReq.KlientSubjektID);
+
+            string strMbiemriDergues = "";
+            string strAdresaDergues = pReq.AdresaDerguesi;
+            string strQyetetiDergues = pReq.QytetiDergues;
+            string strShtetiDergues = pReq.ShtetiDergues;
+            string strTelDergues = pReq.TelDerguesi;
+            string strKodiPostarDergues = GetKodPostarDergues(idKLSubjekte);
+
+
+
+            //int? iDKs = GetAgjensiaDestinacionKSTest(pReq.QytetiMarres, pReq.KlientSubjektID);
+            //   string strKodLevizjeje = GetKodLevizjeOnePod(pReq.IdGrumbullim); //GetKodLevizjeKS(pReq.QytetiMarres);
+
+
+
+
+            string strAgjensiaDestinacion = pReq.Destinacion;
+            //GetAgjensiaDestinacion(pReq.QytetiMarres);
+
+            //int? iDKs = GetIDAgjensiaDestinacionOnePod(pReq.QytetiMarres);  //GetAgjensiaDestinacionKSTest(pReq.QytetiMarres, pReq.KlientSubjektID);
+
+            String strQytetiMarres = pReq.QytetiMarres;//GetQytetiDestiancionOnePOd(iDKs);//GetQytetiDestiancionKS2(pReq.IdGrumbullim);
+            string strKodLevizjeje = pReq.KodiLevizjes;
+            //  string strQytetiMarres = GetQytetiDestiancionKS2(iDKs);
+            string strKlientSubjektDergues = null;
+            string strKlientSubjektMarres = null;
+
+            string strTvsh;
+
+            if (strKodLevizjeje == "AL-AL" || strKodLevizjeje == "Brenda Qytetit")
+            {
+                strTvsh = GetPerqindjeTvsh();
+                pReq.MonedhaCmimiBaze = "LEKE";
+
+            }
+            else { strTvsh = "0"; pReq.MonedhaCmimiBaze = "EURO"; }
+
+
+            //****************************************************************************************
+            string strSherbimeExtraMenyrePagese = null;
+            string strShumaSherbimeExtra = "0";
+            string strSherbimiExtra = "Jo";
+            string strBanka = null;
+            string strNumriCek = "";
+            string strMonedhaExtra = "";
+            if (pReq.KundrejtPageseLekeCheck == true)
+            {
+                strSherbimeExtraMenyrePagese = "Me Kesh";
+                strShumaSherbimeExtra = pReq.ShumaSherbimeExtra;
+                strMonedhaExtra = pReq.MonedhaExtra;
+                strSherbimiExtra = pReq.KodiProduktit;
+
+            }
+
+
+
+
+
+            string strSiguruar = "false";
+            string strVleraSiguruar = "0";
+            string strVleraJashteZone = "0";
+            string strDiscountKlient = null;
+            if (pReq.hasZbritje == false)
+            {
+                if (pReq.hasZbritje2 == false)
+                {
+                    strDiscountKlient = GetDiscountKlient(idKLSubjekte);
+                }
+                else
+                {
+                    if (GetDiscountKlient(idKLSubjekte) == null)
+                    {
+                        strDiscountKlient = "20";
+                    }
+                    else
+                    {
+                        float getDiscount = float.Parse(GetDiscountKlient(idKLSubjekte)) + 10;
+                        strDiscountKlient = getDiscount.ToString();
+                    }
+                }
+            }
+            else
+            {
+                if (GetDiscountKlient(idKLSubjekte) == null)
+                {
+                    strDiscountKlient = "10";
+                }
+                else
+                {
+                    float getDiscount = float.Parse(GetDiscountKlient(idKLSubjekte)) + 10;
+                    strDiscountKlient = getDiscount.ToString();
+                }
+            }
+
+            string strKursiCmimiBaze = "0";
+            string strCmimiBazeEuro = "";
+            string strCmimiBaze = "1";
+            string strShtesa = "0";
+
+            if (pReq.ShteseLekeCheck == true)
+            {
+                strShtesa = pReq.ShteseLekeVlera;
+            }
+
+            if (pReq.MonedhaCmimiBaze == "LEKE")
+            {
+                strKursiCmimiBaze = "1";
+                strCmimiBaze = pReq.CmimiBaze;
+
+            }
+            else if (pReq.MonedhaCmimiBaze == "EURO")
+            {
+                strKursiCmimiBaze = GetKursi();
+                strCmimiBazeEuro = pReq.CmimiBaze;//(txtMerrCmimLekeEuro(ret.ResultMessage)).ToString("0.00");
+                strCmimiBaze = (float.Parse(pReq.CmimiBaze) * float.Parse(strKursiCmimiBaze)).ToString();
+            }
+
+            string strAgjensiaRemote = null;
+            string strTerminal = pReq.Terminal;
+            string strTerminalSerialBios = null;
+            string strKodiSherbimit;
+
+            string strPerqindjeTakseKarburanti = "0";
+            strPerqindjeTakseKarburanti = GetPerqindjeTakseKArburanti(strKodLevizjeje, pReq.KodPershkrimi, pReq.Pesha);
+
+            string QytetNew = "";
+            string Fshat = "";
+
+            if (pReq.isFshat == true)
+            {
+                QytetNew = pReq.QytetFshat;
+            }
+            else
+            {
+                Fshat = pReq.QytetFshat;
+            }
+
+
+            string strValueTakseKarburantiLeke = "0";
+            string strValueTakseKarburantiEuro = "0";
+            string strCmimiZbritje = strCmimiBaze;
+            if (strDiscountKlient == null)
+            {
+                strDiscountKlient = "0";
+            }
+            if (strDiscountKlient != "0")
+            {
+                decimal valuezbritje = (decimal.Parse(strCmimiBaze) - (decimal.Parse(strCmimiBaze) * (decimal.Parse(strDiscountKlient) / 100)));
+                strCmimiZbritje = Decimal.Round(valuezbritje, 2).ToString();
+            }
+
+            decimal decTakseKarburantiValueLeke = (decimal.Parse(strKursiCmimiBaze) * decimal.Parse(strCmimiBaze)) * decimal.Parse(strPerqindjeTakseKarburanti) / 100;
+            decTakseKarburantiValueLeke = Decimal.Round(decTakseKarburantiValueLeke, 2);
+
+
+            strValueTakseKarburantiLeke = decTakseKarburantiValueLeke.ToString();
+            strCmimiBaze = (float.Parse(strCmimiBaze) + float.Parse(strValueTakseKarburantiLeke)).ToString();
+
+            if (strCmimiBazeEuro != "")
+            {
+                //Value ne Euro e Takse Karburanti
+                decimal decTakseKarburantiValueEuro = decimal.Parse(strCmimiBazeEuro) * decimal.Parse(strPerqindjeTakseKarburanti) / 100;
+                decTakseKarburantiValueEuro = decimal.Round(decTakseKarburantiValueEuro, 2);
+
+
+                strValueTakseKarburantiEuro = decTakseKarburantiValueEuro.ToString();
+                strCmimiBazeEuro = (float.Parse(strCmimiBazeEuro) + float.Parse(strValueTakseKarburantiEuro)).ToString();
+            }
+
+            string strTvshAllShtesa = "0";
+
+            string konfirm;
+
+            if (pReq.hasConfirmed == true)
+            {
+                konfirm = "1";
+            }
+            else
+            {
+                konfirm = null;
+            }
+
+            string strKodiKorr = pReq.Korrieri;
+            strKodiKorr = strKodiKorr.Substring(strKodiKorr.IndexOf("|") + 1).Trim();
+
+            string strDerguesKunderPagese = "";
+
+            if (pReq.MenyrePagese == "Me Kesh" && pReq.KundrejtPageseLekeCheck && pReq.KushPaguan == "False")
+            {
+                strDerguesKunderPagese = pReq.KlientSubjektID;//GetNameKlientSubjekt(pReq.KlientSubjektID);
+            }
+            //else
+            //{
+            //    strDerguesKunderPagese = "";
+            //}
+            else
+            {
+                if (pReq.MenyrePagese == "Me Kredi" && pReq.KushPaguan == "True" && (pReq.KodiProduktit == "D2D" || pReq.KodiProduktit == "P2P" || pReq.KodiProduktit == "P2D" || pReq.KodiProduktit == "D2P"))
+                {
+                    strKlientSubjektDergues = pReq.KlientSubjektID;  //GetNameKlientSubjekt(pReq.KlientSubjektID);
+                    // strKlientSubjektMarres = null;
+                }
+                else if (pReq.MenyrePagese == "Me Kesh" && pReq.KushPaguan == "False" && pReq.KodiProduktit == "D2D")
+                {
+                    strKlientSubjektDergues = pReq.KlientSubjektID;
+                }
+                else
+                {
+                    strKlientSubjektMarres = pReq.KlientSubjektID;
+                    //  strKlientSubjektDergues = null;
+
+                }
+            }
+
+            //  ****************************************************************************************
+            ObjectParameter objParamMsgType = new ObjectParameter("pMessageType", typeof(string));
+            ObjectParameter objParamMsg = new ObjectParameter("pMessage", typeof(string));
+            ObjectParameter objParamId = new ObjectParameter("podid", typeof(string));
+            //objParam.ParameterType = 
+            //****************************************************************************************
+
+
+            //int result = dbContext.PROC_SAVE_NEW_POD_ORDER_ZONE_KONFIRMIM(
+            saveorder.KODI = pReq.PODNr; //Pod Nr
+            saveorder.AGJENSIA_ORIGJINE_ID = 8;//strAgjOrigjine; //Agjensia Source, agjensia e celur per keta kliente
+            saveorder.QYTETI_DESTINACION_ID = GetCitybyId(strQytetiMarres);//Qyeteti Destinacion
+            saveorder.KORRIERI_ID = 6;
+            saveorder.KODI_PRODUKTI_ID = 2;//Kodi i Produktit
+            saveorder.COPE = pReq.Cope;
+            saveorder.PESHA = pReq.Pesha;
+            saveorder.PESHA_VOLUMETRIKE="0";  //peshaVolumetrike
+            saveorder.DATA = DateTime.Now;
+            saveorder.PERSHKRIMI = pReq.Komente; // pReq.Pershkrime, //comments addto interface dhe Req
+            saveorder.DER_EMRI = pReq.Derguesi; //emri i derguesit Kliente Subjekti , private function
+            saveorder.DER_MBIEMRI = strMbiemriDergues;// derguesi eshte KS,
+            saveorder.DER_ADRESA = strAdresaDergues; //adresa e derguesit KS , 
+            saveorder.DER_QYTETI_ID = GetCitybyId(strQyetetiDergues);//Qyteti Dergues, KS
+            saveorder.DER_SHTETI_ID = GetStatebyId(strShtetiDergues);//Shteti Dergues  KS
+            saveorder.DER_TEL = strTelDergues; //tel Dergues
+            saveorder.DER_KODI_POSTAR_ID = 2; //kodi postal dergues
+            saveorder.MAR_EMRI = pReq.Marresi;  //emri marresit
+            saveorder.MAR_MBIEMRI = "";   //mbiemri i marresit
+            saveorder.MAR_ADRESA = pReq.AdresaMarresi + pReq.QytetiMarres;
+            saveorder.MAR_QYTETI_ID = GetCitybyId(strQytetiMarres);
+            saveorder.MAR_SHTETI_ID = GetCitybyId(pReq.ShtetiMarres);
+            saveorder.MAR_TEL = pReq.TelMarresi;
+            saveorder.MAR_KODI_POSTAR_ID = 1;
+            saveorder.CMIMI_BAZE = strCmimiBaze;  //cmimi baze
+            saveorder.SHTESA = strShtesa;  // shtesat check takse peshe takse karburanti, 0
+            saveorder.TVSH = "0"; //tvsh po/jo shtesa e shtuar me lart//// jo
+            saveorder.SHUMA_SHERBIME_EXTRA = strShumaSherbimeExtra;  // shuma sherbime extra
+            saveorder.MENYRA_PAGESES_ID = 1 ; // kesh apo kredi 
+            saveorder.PAGUESI_DERGUES_MARRES = true; // marres ose dergues KS same 
+            saveorder.SHERBIME_EXTRA = strSherbimiExtra;//pReq.KodiProduktit,  //   sherbimet extra nese kodi i levizjes eshte P2PK ose D2DP pReq.KodiProduktit
+            saveorder.SHERBIME_EXTRA_MENYRE_PAGESE_ID = 1;  // me kesh dropdown
+            saveorder.DER_SUBJ_ID = 1; // ne varesi kush paguan i jepet vlere, nese paguan derguesi KlientSubjektDergues=ks
+            saveorder.MARR_SUBJ_ID = 1;  // // ne varesi kush paguan i jepet vlere, nese paguan marresi KlientSubjektDergues=ks
+            saveorder.DATE_RREGJISTRIMI = DateTime.Now;
+            saveorder.PERDORUES_ID = int.Parse(pReq.UsernameID);  //Perdorues ID per tr2019 konfig per Agjensi
+            saveorder.NUMRI_CEK = strNumriCek; //numriCheck tek sherbimet extra ""
+            saveorder.MONEDHA_EXTRA_ID = 1;
+            saveorder.POD_STATUS_ID = 4;
+            saveorder.BANKA_ID = 0;
+            saveorder.SIGURUAR = true;
+            saveorder.VLERA_SIGURUAR = strVleraSiguruar;
+            saveorder.KODI_POSTAR_MARRES = pReq.KodiPostarMarres;
+            saveorder.VLERA_JASHTE_ZONE = strVleraJashteZone;
+            saveorder.KODI_PERSHKRIMIT_ID = 1;
+            saveorder.MONEDHA_CMIMI_BAZE_ID = 1;//add to interface 
+            saveorder.PERQINDJE_DISCOUNT = strDiscountKlient;   //GetPerqindjeDiscountByKlientSubjekte  add function and proc: LOAD_PERQINDJE_DISCOUNT_BY_KLIENT_SUBJEKTE  tabela PERQINDJE_KLIENTE_SUBJEKTE
+            saveorder.KURSI_CMIMI_BAZE = strKursiCmimiBaze;  // kursi cmimiBaze
+            saveorder.CMIMI_BAZE_EURO = strCmimiBazeEuro;
+            saveorder.KODI_LEVIZJES = strKodLevizjeje;   //function getKodiLevizjes nga qytetet
+            saveorder.PERQINDJE_TVSH = strTvsh;    //GetTvshPerqindje GETPERQINDJETVSH
+            saveorder.AGJENSIA_DEST_PIKE_PIKE_ID = null;  // agjensi destinacion pike pike 
+            saveorder.AGJENSIA_REMOTE_ID = 1;
+            saveorder.TERMINAL_PROCESSOR_ID = strTerminal;
+
+            saveorder.TERMINAL_SERIAL_BIOS = strTerminalSerialBios;
+            saveorder.AGJENSIA_DESTINACION_ID = 1; //agjensia Destinacion emri function
+            saveorder.KODI_SHERBIMIT = pReq.KodiSherbimit; //ac ekspres
+            saveorder.PERQINDJE_TAKSE_KARBURANTI = strPerqindjeTakseKarburanti;
+            saveorder.TAKSE_KARBURANTI_VALUE_LEK = strValueTakseKarburantiLeke;
+            saveorder.TAKSE_KARBURANTI_VALUE_EURO = strValueTakseKarburantiEuro;
+            saveorder.KODI_REFERENCE = pReq.KodReference;
+            saveorder.TVSH_SHTESA = "0"; //frmain get all tvsh
+            saveorder.TVSH_VL_SIGURUAR = strCmimiZbritje;  //discounti
+            saveorder.TVSH_CMIMI_BAZE = strDerguesKunderPagese; // merr vlere nese eshte me kesh             
+            saveorder.CMIMI_ZBRITJE = Fshat;
+            saveorder.DERGUES_KUNDREJT_PAGESE_ID = 1;
+            saveorder.BRAND_ID = 1;
+            saveorder.DREJTIM_ID = 1;
+            saveorder.FSHAT_ID = 1;
+            saveorder.QYTET_ID_NEW = 1;
+            saveorder.KONFIRMIM = true;
+            saveorder.AGJENSI_TRANZIT = 1;
+
+
+
+
+
+            dbContext.PODs.Add(saveorder);
+            dbContext.SaveChanges();
+
+
+
+
+
+
+            ret2 = new PodSaveRes();
+
+
+            ret2.Result = true;
+            ret2.ResultMessage = "Pod - i u rregjistrua me sukses!";
+            //ret2.ResultMessageTotali = "test";
+            //ret2.ResultDescription = objParamMsg.Value.ToString();
+            //ret2.PodId =objParamId.Value.ToString();
+            //ret2.ResultCode = 1;
+
+            return ret2;
+
+        }
+
         public PodSaveRes SavePOD(PodSaveReq param)
         {
             PodSaveRes ret = new PodSaveRes();
@@ -359,9 +720,9 @@ namespace AcApi.Services
             {
 
                 POD p = new POD();
-
+                
                 param.CmimiBaze = param.CmimiBazeTry;
-                //ret2 = ProcSaveNewPod(param);
+                ret2 = ProcSaveNewPod(param);
 
 
 
