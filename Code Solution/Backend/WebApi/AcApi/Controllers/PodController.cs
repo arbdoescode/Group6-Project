@@ -910,7 +910,53 @@ namespace AcApi.Controllers
             return ret;
         }
         
+        
+
+        [HttpPost]
+        [Route("api/POD/DashboardTest")]
+        public DashbaordRes2 DashboardTest(CriticalDashboardReq param)
+        {
+            DashbaordRes2 ret = new DashbaordRes2();
+
+            try
+            {
+                ret = pod.GetDashboard(param.KlientSubjektEmri, param.KodiProduktit, param.pNga, param.pDeri, param.KlientSubjektID, param.Pershkrimi);
 
 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+        }
+
+
+
+        
+        [HttpPost]
+        [Route("api/POD/TransactionLogGrumbullimeNew2")]
+        public BindingList<TransactionLogGrumbullime> TransactionLogGrumbullimeNew2([FromBody] CriteriaTransLogGrumbullimParam param)
+        {
+
+
+
+            BindingList<TransactionLogGrumbullime> ret = null;
+
+            try
+            {
+                
+                    ret = pod.TransactionLogVetem_Grumbullime_New(param);
+               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ret;
+
+
+        }
+      
     }
 }
