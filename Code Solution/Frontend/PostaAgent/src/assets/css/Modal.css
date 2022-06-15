@@ -9,13 +9,22 @@
 .modal-main {
   position: fixed;
   background: white;
-  width: 50%;
+  width: 75%;
   height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+.modal-main2 {
+  position: fixed;
+  background: white;
+  width: 85%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5%;
+}
 .display-block {
   display: block;
 }
@@ -25,4 +34,80 @@
 }
 .nav {
   display: grid !important;
+}
+.leftgroup {
+  margin: auto;
+  width: 100%;
+  padding-right: 52%;
+  position: absolute;
+}
+.rightgroup {
+  margin: auto;
+  width: 100%;
+  padding-left: 52%;
+}
+.centergroup {
+  margin: auto;
+  width: 50%;
+  padding: 0px;
+}
+.selectstyle {
+  width: 100%;
+  height: 40px;
+  color: #424949;
+  border-radius: 2%;
+  border: 0.5px solid #e6e6e6;
+  padding-left: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='grey' height='28' viewBox='0 0 28 24' width='26' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+  border: 1px solid #dfdfdf;
+  border-radius: 2px;
+}
+.opt {
+  color: #b3b3b3;
+}
+/* screen.height */
+
+@media only screen and (max-width: 610px) {
+  .modal-main {
+    overflow: "scroll";
+  }
+}
+
+.text-in-label {
+  padding-left: 12px;
+  padding-top: 3px;
+  font-size: 12px;
+  position: absolute;
+}
+.icon-a {
+  color: #1dc7ea;
+}
+.icon-b {
+  color: #fb404b;
+}
+.icon-c {
+  color: #ffa83b;
+}
+.icon-d {
+  color: #9368e9;
+}
+.icon-e {
+  color: #87cb16;
+}
+.icon-f {
+  color: #1b8dff;
+}
+.icon-g {
+  color: #5e5e5e;
+}
+.icon-h {
+  color: #dd4b39;
+}
+.icon-i {
+  color: #000;
 }
