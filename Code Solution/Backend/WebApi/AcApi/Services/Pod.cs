@@ -73,7 +73,7 @@ namespace AcApi.Services
 
                         res.NrPorosi++;
                     }
-                    else if (queryStatus == 2)
+                    else if (queryStatus == 4)
                     {
                         res.NrPodHub++;
                     }
