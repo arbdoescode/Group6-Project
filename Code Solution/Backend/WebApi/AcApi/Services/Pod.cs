@@ -1423,92 +1423,79 @@ namespace AcApi.Services
             ObjectParameter objParamMsg1 = new ObjectParameter("pMessage", typeof(string));
             ObjectParameter objParamMsgType1 = new ObjectParameter("pMessageType", typeof(string));
 
-            using (var transaction = dbContext.Database.BeginTransaction())
-            {
 
-                try
-
-                {
-                    var result = dbContext.PROC_KRIJO_CANTE(
-                                                                    pReq.CantaKodi,
-                                                                    pReq.AgjensiaDestinacion,
-                                                                    pReq.AgjensiaDestinacion,
-                                                                    pReq.Pesha,
-                                                                    pReq.PerdoruesId,
-                                                                    pReq.NrRripSigurimi, //pReq.StatusFizikPod,
-                                                                    "JOANULLUAR",
-                                                                    "0004",
-                                                                     "",
-                                                                    objData,
-                                                                    objLastId,
-                                                                    objParamMsg,
-                                                                    objParamMsgType
-
-                                                                    );
+                try {
 
 
-                    if (result == 0 || result == null)
+                    var ret = dbContext.CANTATs.Where(e => e.KODI == pReq.CantaKodi).Select(e => e).ToList();
+                   
+                    if (ret.Count != 0)
                     {
                         res.Result = false;
-                        res.ResultMessage = "Ka ndodhur nje gabim. Fjalekalimi nuk eshte ndryshuar!" + objParamMsg.Value.ToString();
-
+                        res.ResultMessage = "Kjo Cante existon";
                     }
-                    else if (objParamMsgType.Value.ToString() == "Error")
-                    {
-                        res.Result = false;
-                        res.ResultMessage = objParamMsg.Value.ToString();
+                    else {
 
-                    }
-                    else
-                    {
-                        res.Result = true;
-                        res.ResultMessage = objParamMsg.Value.ToString();
-                    }
-
-                    dbContext.SaveChanges();
-
-                    if (res.Result == true)
-                    {
-
-                        for (int i = 0; i < pReq.NrPod.Length; i++)
+                        CANTAT savebag = new CANTAT();
+                        bool checkpods = true;
+                        for(int i = 0; i < pReq.NrPod.Length; i++)
                         {
-                            pReq.CantaId = objLastId.Value.ToString();
-
-                            var result2 = dbContext.PROC_KRIJO_CANTE_PODE(
-                                                                           pReq.CantaId,
-                                                                           "",
-                                                                           pReq.NrPod[i],
-                                                                           pReq.PerdoruesId,
-                                                                           "",
-                                                                           "",
-                                                                           objData1,
-                                                                           objLastId1,
-                                                                           objParamMsg1,
-                                                                           objParamMsgType1
-                                                                            );
-                        }
-
-                        if (result == 0 || result == null)
-                        {
-                            res.Result = false;
-                            res.ResultMessage = "Ka ndodhur nje gabim. Fjalekalimi nuk eshte ndryshuar!" + objParamMsg.Value.ToString();
+                            string pOdI = pReq.NrPod[i];
+                            var retPod = dbContext.PODs.Where(e => e.KODI == pOdI).Select(e => e.POD_STATUS_ID).FirstOrDefault();
+                            if (retPod == 1 || retPod == 5)
+                            {
+                                checkpods = false;
+                                break;
+                            }
+                            else
+                            {
+                                continue;
+                            }
 
                         }
-                        else if (objParamMsgType1.Value.ToString() == "Error")
+                        if (checkpods == false)
                         {
                             res.Result = false;
-                            res.ResultMessage = objParamMsg1.Value.ToString();
-
-
+                            res.ResultMessage = "Podet ne cante jane dorezuar ose pjese e nje cante tjeter";
                         }
                         else
                         {
-                            res.Result = true;
-                            res.ResultMessage = objParamMsg1.Value.ToString();
-
+                            savebag.KODI = pReq.CantaKodi;
+                            savebag.AGJENSIA_SOURCE_ID = 8;
+                            savebag.DATE_RREGJISTRIMI = DateTime.Now;
+                            savebag.PERDORUES_ID = 1;
+                            savebag.PESHA = pReq.Pesha;
+                            savebag.NR_RRIPI_SIGURIMI = pReq.NrRripSigurimi;
+                            savebag.CANTA_STATUS_ID = 1;
+                            dbContext.CANTATs.Add(savebag);
                             dbContext.SaveChanges();
-                            transaction.Commit();
+                            var showPiece = dbContext.CANTATs
+                            .OrderByDescending(p => p.ID).Select(e => e.ID)
+                            .FirstOrDefault();
+
+                            CANTA_PODE saveorder = new CANTA_PODE();
+                            for (int i = 0; i < pReq.NrPod.Length; i++)
+                            {
+                                string pOdI = pReq.NrPod[i];
+                                saveorder.CANTA_ID = showPiece;
+                                var showorder = dbContext.PODs.Where(e => e.KODI == pOdI).Select(e => e.ID).FirstOrDefault();
+                                saveorder.POD_ITEM_ID = showorder;
+                                saveorder.PERDORUES_ID = 1;
+                                saveorder.DATE_RREGJISTRIMI = DateTime.Now;
+                                dbContext.CANTA_PODE.Add(saveorder);
+
+                                var recordToUpdate = (from p in dbContext.PODs
+                                                     where (p.KODI == pOdI)
+                                                     select p).Single();
+                                recordToUpdate.POD_STATUS_ID = 5;
+                                dbContext.SaveChanges();
+                            }
+
+
+                            res.Result = true;
+                            res.ResultMessage = "Canta u krijua me sukses";
                         }
+
 
                     }
 
@@ -1518,12 +1505,12 @@ namespace AcApi.Services
                 {
                     res.Result = false;
                     res.ResultMessage = "Ka ndodhur nje gabim : " + ex.Message;
-                    transaction.Rollback();
 
                 }
-            }
+            
             return res;
         }
+
 
         public string GjeneroPodCante()
         {
