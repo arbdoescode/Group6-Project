@@ -1,0 +1,10 @@
+USERNAME	PASSWORD
+
+testuser	12345678
+testagent	asdfghjkl
+testcourier	police
+
+
+Database IP: groupsix.database.windows.net
+user: arbserver
+password: wvh3r8f1ytjk.
