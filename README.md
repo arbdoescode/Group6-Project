@@ -1,5 +1,4 @@
-![Group 6](https://www.linkpicture.com/q/Gr6logo_1.png)<br>
-Project repository for Software Engineering Course, CEN 3, Epoka University, Academic year 2021-2022
+Courier Management Software
 ----------------------------------------------------------------------------------------------------
 
 ## Project Description
